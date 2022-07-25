@@ -146,20 +146,22 @@ class ChordsTable extends Component {
 
     render() { 
         return (
-            <table>
-                <tbody>
-                    {this.state.playChords.map((chord, index, array) => {
-                        if(index % this.props.cellsPerRow === 0) {
-                            return <ChordPlayRow key={index} chords={array.slice(index, index + this.props.cellsPerRow)} 
-                            drop={this.drop} idNumbers={Array.from({length: this.props.cellsPerRow}, (_, i) => index + i)}
-                            doubleClick={this.doubleClickPlayCell}/>
-                        }
-                    })}
-                   <ChordProgressionRow progression={this.state.progression} click={this.clickProgressionChord}/>
-                   <ChordRootRow roots={this.state.roots} click={this.clickRoot}/>
-                   <ChordModeRow modes={this.state.modalScales} click={this.clickMode}/> 
-                </tbody>
-            </table>
+            <div className='chords-table'>
+                <table className='chords-table'>
+                    <tbody className='chords-table'>
+                        {this.state.playChords.map((chord, index, array) => {
+                            if(index % this.props.cellsPerRow === 0) {
+                                return <ChordPlayRow key={index} chords={array.slice(index, index + this.props.cellsPerRow)} 
+                                drop={this.drop} idNumbers={Array.from({length: this.props.cellsPerRow}, (_, i) => index + i)}
+                                doubleClick={this.doubleClickPlayCell}/>
+                            }
+                        })}
+                    <ChordProgressionRow progression={this.state.progression} click={this.clickProgressionChord}/>
+                    <ChordRootRow roots={this.state.roots} click={this.clickRoot}/>
+                    <ChordModeRow modes={this.state.modalScales} click={this.clickMode}/> 
+                    </tbody>
+                </table>
+            </div>
         );
     }
 }
