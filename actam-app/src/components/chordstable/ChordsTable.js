@@ -22,9 +22,29 @@ class ChordsTable extends Component {
             modalScales: chordProgressionHandler.getModalScales(),
         }
 
+        this.clickProgressionChord = this.clickProgressionChord.bind(this);
         this.clickRoot = this.clickRoot.bind(this);
         this.clickMode = this.clickMode.bind(this);
         this.drop = this.drop.bind(this);
+    }
+
+    /**
+     * Called when a progression chord cell is clicked.
+     * Sets the text of the first play-chord empty cell
+     * to the chord of the clicked cell
+     * @param {*} chord progression chord of the clicked cell
+     */
+    clickProgressionChord(chord) {
+        const newPlayChords = [...this.state.playChords];
+        newPlayChords.find((element, index) => {
+            if(element === "") {
+                newPlayChords[index] = chord
+                this.setState(() => ({
+                    playChords: newPlayChords,
+                }))
+                return true;
+            }
+        })
     }
 
     /**
@@ -57,12 +77,19 @@ class ChordsTable extends Component {
     drop(event) {
         try {
             const data = JSON.parse(event.dataTransfer.getData("draggedData"));
-            const dropId = parseInt(event.target.closest("td").id.slice(-1));
+            const dropId = event.target.closest("td").id.slice(-1);
             const newPlayChords = [...this.state.playChords]; //Duplicates the array
+
+            if(dropId > "0" && this.state.playChords[dropId - 1] === "") {
+                return;
+            }
 
             // If the data has a dragId it means that it comes from a play-chord cell
             // so the two chords have to be switched
             if(data.dragId !== undefined) {
+                if(newPlayChords[dropId] === "" || newPlayChords[data.dragId] === "") {
+                    return;
+                }
                 const dragChord = newPlayChords[data.dragId];
                 newPlayChords[data.dragId] = this.state.playChords[dropId];
                 newPlayChords[dropId] = dragChord;
@@ -89,7 +116,7 @@ class ChordsTable extends Component {
             <table>
                 <tbody>
                    <ChordPlayRow chords={this.state.playChords} drop={this.drop}/>
-                   <ChordProgressionRow progression={this.state.progression}/>
+                   <ChordProgressionRow progression={this.state.progression} click={this.clickProgressionChord}/>
                    <ChordRootRow roots={this.state.roots} click={this.clickRoot}/>
                    <ChordModeRow modes={this.state.modalScales} click={this.clickMode}/> 
                 </tbody>

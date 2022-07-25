@@ -9,6 +9,7 @@ class ChordProgressionCell extends Component {
         super(props);
 
         this.dragStart = this.dragStart.bind(this);
+        this.click = this.click.bind(this);
     }
 
     /**
@@ -23,10 +24,19 @@ class ChordProgressionCell extends Component {
         event.dataTransfer.setData("draggedData", JSON.stringify(data));
     }
 
+    /**
+     * Function called on "dragStart" event.
+     * It calls the "click" function from the component's properties
+     * @param {*} event drag event 
+     */
+    click(event) {
+        this.props.click(this.props.chordName);
+    }
+
     render() { 
         return (  
             <td id={this.props.id} className="chord-progression-cell"
-                draggable="true" onDragStart={this.dragStart}>
+                draggable="true" onDragStart={this.dragStart} onClick={this.click}>
                 {this.props.chordName}
             </td>
         );

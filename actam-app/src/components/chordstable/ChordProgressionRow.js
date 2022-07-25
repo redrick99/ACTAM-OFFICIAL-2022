@@ -14,7 +14,7 @@ class ChordProgressionRow extends Component {
         return (
             <tr className='chord-progression-row'>
                 {this.props.progression.map((prog, idx) => 
-                    <ChordProgressionCell key={idx} id={'c-prog-'+idx} chordName={prog} />
+                    <ChordProgressionCell key={idx} id={'c-prog-'+idx} chordName={prog} click={this.props.click} />
                 )}
             </tr>
         );
