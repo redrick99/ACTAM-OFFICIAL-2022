@@ -5,7 +5,7 @@ import ChordsTable from './components/chordstable/ChordsTable';
 function App() {
   return (
     <div className="App">
-      <ChordsTable/>
+      <ChordsTable cellsPerRow={16}/>
     </div>
   );
 }

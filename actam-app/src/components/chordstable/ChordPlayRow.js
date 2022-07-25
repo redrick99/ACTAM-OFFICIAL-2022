@@ -14,7 +14,8 @@ class ChordPlayRow extends Component {
         return (
             <tr className='chord-play-row'> 
                 {this.props.chords.map((chord, idx) => 
-                    <ChordPlayCell key={idx} id={'c-play-'+idx} idNumber={idx} chordName={chord} drop={this.props.drop}/>
+                    <ChordPlayCell key={idx} id={'c-play-'+this.props.idNumbers[idx]} idNumber={this.props.idNumbers[idx]} chordName={chord} 
+                    drop={this.props.drop} doubleClick={this.props.doubleClick}/>
                 )} 
             </tr>
         );

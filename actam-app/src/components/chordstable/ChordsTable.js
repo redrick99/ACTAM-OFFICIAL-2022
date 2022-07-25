@@ -13,7 +13,7 @@ class ChordsTable extends Component {
         super(props);
         this.state = {
             // chords to be played
-            playChords: Array(16).join(".").split("."),
+            playChords: Array(this.props.cellsPerRow).join(".").split("."),
             // chords of the progression
             progression: chordProgressionHandler.getChordProgression(),
             // roots to be chosen
@@ -26,6 +26,7 @@ class ChordsTable extends Component {
         this.clickRoot = this.clickRoot.bind(this);
         this.clickMode = this.clickMode.bind(this);
         this.drop = this.drop.bind(this);
+        this.doubleClickPlayCell = this.doubleClickPlayCell.bind(this);
     }
 
     /**
@@ -38,7 +39,8 @@ class ChordsTable extends Component {
         const newPlayChords = [...this.state.playChords];
         newPlayChords.find((element, index) => {
             if(element === "") {
-                newPlayChords[index] = chord
+                newPlayChords[index] = chord;
+                this.checkArraySize(newPlayChords);
                 this.setState(() => ({
                     playChords: newPlayChords,
                 }))
@@ -50,17 +52,17 @@ class ChordsTable extends Component {
     /**
      * Called when a root cell is clicked.
      * It calls a method from the chordProgressionHandler
-     * @param {*} index 
+     * @param {*} index of the root cell clicked
      */
     clickRoot(index) {
         chordProgressionHandler.clickedOnRootKey(index);
     }
 
     /**
-     * Called when a root cell is clicked.
+     * Called when a mode cell is clicked.
      * It calls a method from the chordProgressionHandler and
      * updates both "playChords" and "progression" states
-     * @param {*} index 
+     * @param {*} index of the mode cell clicked
      */
     clickMode(index) {
         this.setState(() => ({
@@ -72,12 +74,12 @@ class ChordsTable extends Component {
     /**
      * Called when a progression or play-chord cell is dropped.
      * It sets the "playChords" state accordingly
-     * @param {*} index 
+     * @param {*} event drop event
      */
     drop(event) {
         try {
             const data = JSON.parse(event.dataTransfer.getData("draggedData"));
-            const dropId = event.target.closest("td").id.slice(-1);
+            const dropId = event.target.closest("td").id.split('-').at(-1);
             const newPlayChords = [...this.state.playChords]; //Duplicates the array
 
             if(dropId > "0" && this.state.playChords[dropId - 1] === "") {
@@ -99,6 +101,7 @@ class ChordsTable extends Component {
             else {
                 newPlayChords[dropId] = data.chordName;
             }
+            this.checkArraySize(newPlayChords);
 
             this.setState(() => ({
                 playChords: newPlayChords,
@@ -111,11 +114,47 @@ class ChordsTable extends Component {
         }
     }
 
+    /**
+     * Called then a "play-chord" cell is double-clicked
+     * It removes the chord from the list and adjusts the array
+     * accordingly
+     * @param {*} index of the cell clicked
+     */
+    doubleClickPlayCell(index) {
+        const newPlayChords = [...this.state.playChords];
+        newPlayChords.splice(index, 1);
+        newPlayChords.push('');
+        newPlayChords.find((element, index) => {
+            if(element === '' && index % (this.props.cellsPerRow) === (this.props.cellsPerRow-1)) {
+                newPlayChords.splice(index + 1, newPlayChords.length - (index + 1));
+            }
+        })
+        this.setState(() => ({
+            playChords: newPlayChords,
+        }))
+    }
+
+    /**
+     * Checks if an array is full to fill it with new blank string elements 
+     * @param {*} array to be checked
+     */
+    checkArraySize(array) {
+        if(array.at(-1) !== '') {
+            array = array.push(...Array(this.props.cellsPerRow).join(".").split("."));
+        }
+    }
+
     render() { 
         return (
             <table>
                 <tbody>
-                   <ChordPlayRow chords={this.state.playChords} drop={this.drop}/>
+                    {this.state.playChords.map((chord, index, array) => {
+                        if(index % this.props.cellsPerRow === 0) {
+                            return <ChordPlayRow key={index} chords={array.slice(index, index + this.props.cellsPerRow)} 
+                            drop={this.drop} idNumbers={Array.from({length: this.props.cellsPerRow}, (_, i) => index + i)}
+                            doubleClick={this.doubleClickPlayCell}/>
+                        }
+                    })}
                    <ChordProgressionRow progression={this.state.progression} click={this.clickProgressionChord}/>
                    <ChordRootRow roots={this.state.roots} click={this.clickRoot}/>
                    <ChordModeRow modes={this.state.modalScales} click={this.clickMode}/> 

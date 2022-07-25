@@ -16,6 +16,7 @@ class ChordPlayCell extends Component {
         this.dragStart = this.dragStart.bind(this);
         this.dragOver = this.dragOver.bind(this);
         this.dragLeave = this.dragLeave.bind(this);
+        this.doubleClick = this.doubleClick.bind(this);
     }
 
     /**
@@ -54,10 +55,15 @@ class ChordPlayCell extends Component {
         }));   
     }
 
+    doubleClick(event) {
+        this.props.doubleClick(this.props.idNumber);
+    }
+
     render() { 
         return (  
             <td id={this.props.id} className={"chord-play-cell "+ (this.state.isDragOver ? "drag-over" : "")}
-                draggable={this.props.chordName != ""} onDragStart={this.dragStart} onDragOver={this.dragOver} onDragLeave={this.dragLeave} onDrop={this.props.drop}>
+                draggable={this.props.chordName != ""} onDragStart={this.dragStart} 
+                onDragOver={this.dragOver} onDragLeave={this.dragLeave} onDrop={this.props.drop} onDoubleClick={this.doubleClick}>
                 {this.props.chordName}
             </td>
         );
