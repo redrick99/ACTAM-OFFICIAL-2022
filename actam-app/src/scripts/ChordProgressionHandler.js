@@ -7,6 +7,7 @@
 const chordProgressionHandler = (function() {
     let fundamental = 0; //Keeps track of the current fundamental
     let currentMode = 0; //Keeps track of the current modal scale
+    let currentProgression = []; //Keeps track of the current progression
 
     // Constant variables which contain: all roots, the basic progression symbols,
     // the modal scales in order, the major scale chord tonalities and the ionian
@@ -70,6 +71,21 @@ const chordProgressionHandler = (function() {
 
         return newChords;
     }
+
+    /**
+     * Finds s chord's fundamental note given its index inside the
+     * current progression
+     * @param {*} index of the chord's symbol in "currentProgression"
+     * @returns an integer representing the fundamental note
+     */
+    function getChordFundamental(index) {
+        const intervals = scalesInterals[currentMode];
+        let fund = fundamental;
+        intervals.slice(0, index).forEach((element) => {
+            fund += element;
+        });
+        return fund;
+    }
     
     // --- Public functions --- //
     return {
@@ -109,8 +125,44 @@ const chordProgressionHandler = (function() {
          * Getter of the chord progression given the current mode
          */
         getChordProgression: function() {
-            return getProgressionFromModeIndex(currentMode);
+            currentProgression = getProgressionFromModeIndex(currentMode);
+            return [...currentProgression];
         },
+
+        /**
+         * Translates a chord symbol into an array representing the corresponding notes
+         * @param {string} symbol of the chord
+         * @returns an array of integers containing the chord's notes
+         */
+        getChordArray: function(symbol) {
+            const index = currentProgression.indexOf(symbol);
+            const fund = getChordFundamental(index);
+            const tonality = chordTonalityMap.get((modalScales[currentMode])[index]);
+            const chord = [fund, fund, fund, fund];
+
+            chord.forEach((element, idx) => {
+                element += tonality[idx];
+                chord[idx] = element;
+            });
+
+            return chord;
+        },
+
+        /**
+         * Translates an array of chord symbols into an array of 
+         * arrays containing the corresponding notes
+         * @param {string[]} symbols of the chords
+         * @returns an array of arrays of integers containing the chords' notes
+         */
+        getChordsArrays: function(symbols) {
+            const chords = [];
+            symbols.forEach((symbol, index) => {
+                if(symbol === '')
+                    return;
+                chords[index] = this.getChordArray(symbol);
+            });
+            return chords;
+        }
     };
 })();
 
