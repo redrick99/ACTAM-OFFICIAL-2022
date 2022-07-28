@@ -4,6 +4,8 @@ import ChordPlayRow from './ChordPlayRow';
 import ChordProgressionRow from './ChordProgressionRow';
 import ChordRootRow from './ChordRootRow';
 import chordProgressionHandler from '../../scripts/ChordProgressionHandler';
+import voicingsHandler from '../../scripts/VoicingsHandler';
+import { modalScalesText, rootKeys, voicingsTypes } from '../../scripts/GlobalVariables'
  
 /**
  * Table where the chords to be played can be selected
@@ -17,9 +19,9 @@ class ChordsTable extends Component {
             // chords of the progression
             progression: chordProgressionHandler.getChordProgression(),
             // roots to be chosen
-            roots: chordProgressionHandler.getRootKeyes(),
+            roots: rootKeys,
             // modal scaled to be chosen
-            modalScales: chordProgressionHandler.getModalScales(),
+            modalScales: modalScalesText,
         }
 
         this.clickProgressionChord = this.clickProgressionChord.bind(this);
@@ -27,6 +29,7 @@ class ChordsTable extends Component {
         this.clickMode = this.clickMode.bind(this);
         this.drop = this.drop.bind(this);
         this.doubleClickPlayCell = this.doubleClickPlayCell.bind(this);
+        this.clickButton = this.clickButton.bind(this);
     }
 
     /**
@@ -69,6 +72,7 @@ class ChordsTable extends Component {
             playChords: chordProgressionHandler.clickedOnMode(index, this.state.playChords),
             progression: chordProgressionHandler.getChordProgression(),
         }))
+        voicingsHandler.clickedOnMode(index);
     }
 
     /**
@@ -134,6 +138,14 @@ class ChordsTable extends Component {
         }))
     }
 
+    changeVoicingsType(event) {
+        voicingsHandler.setVoicingsType(event.target.value);
+    }
+
+    clickButton() {
+        voicingsHandler.getVoicings(this.state.playChords);
+    }
+
     /**
      * Checks if an array is full to fill it with new blank string elements 
      * @param {*} array to be checked
@@ -161,6 +173,12 @@ class ChordsTable extends Component {
                     <ChordModeRow modes={this.state.modalScales} click={this.clickMode}/> 
                     </tbody>
                 </table>
+                <select id='select-voicings-type' onChange={this.changeVoicingsType}>
+                    {voicingsTypes.map((type, index) => 
+                        <option key={index} value={index}>{type}</option>
+                    )}
+                </select>
+                <button onClick={this.clickButton}>GET VOICINGS</button>
             </div>
         );
     }

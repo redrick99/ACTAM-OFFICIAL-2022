@@ -1,3 +1,4 @@
+import { rootKeys, basicProgression, modalScales, modalScalesText, assignables} from "./GlobalVariables";
 /**
  * IIFE - Singleton Implementation.
  * 
@@ -5,36 +6,6 @@
  * and the chosen root
  */
 const chordProgressionHandler = (function() {
-    let fundamental = 0; //Keeps track of the current fundamental
-    let currentMode = 0; //Keeps track of the current modal scale
-    let currentProgression = []; //Keeps track of the current progression
-
-    // Constant variables which contain: all roots, the basic progression symbols,
-    // the modal scales in order, the major scale chord tonalities and the ionian
-    // tonal distance
-    const rootKeys = "C C# D D# E F F# G G# A A# B".split(" ");
-    const basicProgression = "I II III IV V VI VII".split(" ");
-    const modalScalesText = "ionian dorian phrygian lydian mixolydian aeolian locrian".split(" ");
-    const majorScale = "△ -7 -7 △ 7 -7 -7♭5".split(" ");
-    const ionianTonalDistance = [2, 2, 1, 2, 2, 2, 1];
-
-    // All modal scales and intervals (referred to the scales) are put in arrays to be easilly accessed
-    // Positions in array: 0 = ionian, 1 = dorian, ..., 6 = locrian
-    const modalScales = [];
-    const scalesInterals = [];
-    for(let i = 0; i < 7; i++) {
-        modalScales[i] = majorScale.slice(i, majorScale.length).concat(majorScale.slice(0, i));
-        scalesInterals[i] = ionianTonalDistance.slice(i, ionianTonalDistance.length).concat(ionianTonalDistance.slice(0, i));
-    }
-
-    // Map containing the actual integer distances between the notes of a chord given
-    // the symbol of the tonality of the chord
-    const chordTonalityMap = new Map();
-    chordTonalityMap.set("△", [0, 4, 7, 11]);
-    chordTonalityMap.set("-7", [0, 3, 7, 10]);
-    chordTonalityMap.set("7", [0, 4, 7, 10]);
-    chordTonalityMap.set("-7♭5", [0, 3, 6, 10])
-
     // -- Private functions -- //
 
     /**
@@ -71,21 +42,6 @@ const chordProgressionHandler = (function() {
 
         return newChords;
     }
-
-    /**
-     * Finds s chord's fundamental note given its index inside the
-     * current progression
-     * @param {*} index of the chord's symbol in "currentProgression"
-     * @returns an integer representing the fundamental note
-     */
-    function getChordFundamental(index) {
-        const intervals = scalesInterals[currentMode];
-        let fund = fundamental;
-        intervals.slice(0, index).forEach((element) => {
-            fund += element;
-        });
-        return fund;
-    }
     
     // --- Public functions --- //
     return {
@@ -97,8 +53,8 @@ const chordProgressionHandler = (function() {
          */
         clickedOnMode: function(index, chords) {
             if(index < 0 || index > modalScales.length) return;
-            const newChords = changeModeOfChords(currentMode, index, chords);
-            currentMode = index;
+            const newChords = changeModeOfChords(assignables.currentMode, index, chords);
+            assignables.currentMode = index;
             return newChords;
         },
         /**
@@ -107,62 +63,15 @@ const chordProgressionHandler = (function() {
          */
         clickedOnRootKey: function(index) {
             if(index < 0 || index > rootKeys.length) return;
-            fundamental = index;
-        },
-        /**
-         * Getter of all root keys
-         */
-        getRootKeyes: function() {
-            return rootKeys;
-        },
-        /**
-         * Getter of all modal scales
-         */
-        getModalScales: function() {
-            return modalScalesText;
+            assignables.currentKey = index;
         },
         /**
          * Getter of the chord progression given the current mode
          */
         getChordProgression: function() {
-            currentProgression = getProgressionFromModeIndex(currentMode);
-            return [...currentProgression];
+            assignables.currentProgression = getProgressionFromModeIndex(assignables.currentMode);
+            return [...assignables.currentProgression];
         },
-
-        /**
-         * Translates a chord symbol into an array representing the corresponding notes
-         * @param {string} symbol of the chord
-         * @returns an array of integers containing the chord's notes
-         */
-        getChordArray: function(symbol) {
-            const index = currentProgression.indexOf(symbol);
-            const fund = getChordFundamental(index);
-            const tonality = chordTonalityMap.get((modalScales[currentMode])[index]);
-            const chord = [fund, fund, fund, fund];
-
-            chord.forEach((element, idx) => {
-                element += tonality[idx];
-                chord[idx] = element;
-            });
-
-            return chord;
-        },
-
-        /**
-         * Translates an array of chord symbols into an array of 
-         * arrays containing the corresponding notes
-         * @param {string[]} symbols of the chords
-         * @returns an array of arrays of integers containing the chords' notes
-         */
-        getChordsArrays: function(symbols) {
-            const chords = [];
-            symbols.forEach((symbol, index) => {
-                if(symbol === '')
-                    return;
-                chords[index] = this.getChordArray(symbol);
-            });
-            return chords;
-        }
     };
 })();
 
