@@ -34,7 +34,7 @@ const voicingsHandler = (function() {
         return fund;
     }
 
-    function getChordVoicings(symbol) {
+    function getChordVoicings(symbol, duration) {
         const mode = assignables.currentMode;
         const key = assignables.currentKey;
         const grade = assignables.currentProgression.indexOf(symbol);
@@ -55,6 +55,7 @@ const voicingsHandler = (function() {
             key: key, 
             intervals: intervalsPerGrade[grade],
             tonality: tonality,
+            duration: duration,
         });
     }
 
@@ -65,13 +66,16 @@ const voicingsHandler = (function() {
             assignables.currentModalIntervals = getIntervals(0, index);
         },
 
-        setVoicingsType(index) {
+        setVoicingsType: function(index) {
             calculateVoicings = voicingsFunctions[index];
         },
 
-        getVoicings: function(symbols) {
-            console.log(Array.from(symbols.slice(0, symbols.indexOf('')), symbol => getChordVoicings(symbol)));
-            //return Array.from(symbols.slice(0, symbols.indexOf('')), symbol => getChordVoicings(symbol));
+        //getVoicings: function(symbols) {
+        //    return Array.from(symbols, symbol => getChordVoicings(symbol));
+        //}
+
+        getVoicings: function(chord) {
+            return getChordVoicings(chord.symbol, chord.duration);
         }
     }
 

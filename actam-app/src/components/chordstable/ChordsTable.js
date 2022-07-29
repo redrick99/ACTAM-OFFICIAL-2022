@@ -14,8 +14,6 @@ class ChordsTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // chords to be played
-            playChords: Array(this.props.cellsPerRow).join(".").split("."),
             // chords of the progression
             progression: chordProgressionHandler.getChordProgression(),
             // roots to be chosen
@@ -29,7 +27,6 @@ class ChordsTable extends Component {
         this.clickMode = this.clickMode.bind(this);
         this.drop = this.drop.bind(this);
         this.doubleClickPlayCell = this.doubleClickPlayCell.bind(this);
-        this.clickButton = this.clickButton.bind(this);
     }
 
     /**
@@ -39,14 +36,12 @@ class ChordsTable extends Component {
      * @param {*} chord progression chord of the clicked cell
      */
     clickProgressionChord(chord) {
-        const newPlayChords = [...this.state.playChords];
+        const newPlayChords = [...this.props.playChords];
         newPlayChords.find((element, index) => {
             if(element === "") {
                 newPlayChords[index] = chord;
                 this.checkArraySize(newPlayChords);
-                this.setState(() => ({
-                    playChords: newPlayChords,
-                }))
+                this.props.setChords(newPlayChords);
                 return true;
             }
         })
@@ -68,8 +63,8 @@ class ChordsTable extends Component {
      * @param {*} index of the mode cell clicked
      */
     clickMode(index) {
+        this.props.setChords(chordProgressionHandler.clickedOnMode(index, this.props.playChords));
         this.setState(() => ({
-            playChords: chordProgressionHandler.clickedOnMode(index, this.state.playChords),
             progression: chordProgressionHandler.getChordProgression(),
         }))
         voicingsHandler.clickedOnMode(index);
@@ -84,9 +79,9 @@ class ChordsTable extends Component {
         try {
             const data = JSON.parse(event.dataTransfer.getData("draggedData"));
             const dropId = event.target.closest("td").id.split('-').at(-1);
-            const newPlayChords = [...this.state.playChords]; //Duplicates the array
+            const newPlayChords = [...this.props.playChords]; //Duplicates the array
 
-            if(dropId > "0" && this.state.playChords[dropId - 1] === "") {
+            if(dropId > "0" && this.props.playChords[dropId - 1] === "") {
                 return;
             }
 
@@ -97,7 +92,7 @@ class ChordsTable extends Component {
                     return;
                 }
                 const dragChord = newPlayChords[data.dragId];
-                newPlayChords[data.dragId] = this.state.playChords[dropId];
+                newPlayChords[data.dragId] = this.props.playChords[dropId];
                 newPlayChords[dropId] = dragChord;
             }
             // Otherwise the data comes from a progression-cell so the value is
@@ -106,10 +101,7 @@ class ChordsTable extends Component {
                 newPlayChords[dropId] = data.chordName;
             }
             this.checkArraySize(newPlayChords);
-
-            this.setState(() => ({
-                playChords: newPlayChords,
-            }))
+            this.props.setChords(newPlayChords);
 
         // An exeption is thrown if parsing fails
         } catch(e) {
@@ -125,7 +117,7 @@ class ChordsTable extends Component {
      * @param {*} index of the cell clicked
      */
     doubleClickPlayCell(index) {
-        const newPlayChords = [...this.state.playChords];
+        const newPlayChords = [...this.props.playChords];
         newPlayChords.splice(index, 1);
         newPlayChords.push('');
         newPlayChords.find((element, index) => {
@@ -133,17 +125,11 @@ class ChordsTable extends Component {
                 newPlayChords.splice(index + 1, newPlayChords.length - (index + 1));
             }
         })
-        this.setState(() => ({
-            playChords: newPlayChords,
-        }))
+        this.props.setChords(newPlayChords);
     }
 
     changeVoicingsType(event) {
         voicingsHandler.setVoicingsType(event.target.value);
-    }
-
-    clickButton() {
-        voicingsHandler.getVoicings(this.state.playChords);
     }
 
     /**
@@ -161,7 +147,7 @@ class ChordsTable extends Component {
             <div className='chords-table'>
                 <table className='chords-table'>
                     <tbody className='chords-table'>
-                        {this.state.playChords.map((chord, index, array) => {
+                        {this.props.playChords.map((chord, index, array) => {
                             if(index % this.props.cellsPerRow === 0) {
                                 return <ChordPlayRow key={index} chords={array.slice(index, index + this.props.cellsPerRow)} 
                                 drop={this.drop} idNumbers={Array.from({length: this.props.cellsPerRow}, (_, i) => index + i)}
@@ -178,7 +164,6 @@ class ChordsTable extends Component {
                         <option key={index} value={index}>{type}</option>
                     )}
                 </select>
-                <button onClick={this.clickButton}>GET VOICINGS</button>
             </div>
         );
     }

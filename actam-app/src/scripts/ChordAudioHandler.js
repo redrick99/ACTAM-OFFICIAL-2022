@@ -10,9 +10,9 @@ const chordAudioHandler = (function() {
     }
 
     return {
-        playChord: function(chord, tStart, tDuration) {
+        playChord: function(chord, tStart, tDuration, bpm) {
             const freqsArray = Array.from(chord.array, element => frequencies[element]);
-            instrument.play(freqsArray, tStart, tDuration);
+            instrument.play(freqsArray, tStart, tDuration*bpm/60);
         },
         stop: function() {
             instrument.stop();

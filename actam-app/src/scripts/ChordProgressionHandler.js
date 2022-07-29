@@ -72,6 +72,53 @@ const chordProgressionHandler = (function() {
             assignables.currentProgression = getProgressionFromModeIndex(assignables.currentMode);
             return [...assignables.currentProgression];
         },
+
+        parseChordsArray: function(array, legato) {
+            const chords = [];
+            if(legato) {
+                let prevSymbol= ''
+                let duration_ = 1;
+                array.forEach((symbol) => {
+                    if(symbol === '') return chords;
+                    if(symbol === prevSymbol) chords[chords.length-1].duration ++;
+                    else {
+                        prevSymbol = symbol;
+                        chords.push({
+                            symbol: symbol,
+                            duration: duration_,
+                        })
+                    }
+                })
+            }
+            else {
+                array.forEach((symbol) => {
+                    if(symbol === '') return chords;
+                    chords.push({
+                        symbol: symbol,
+                        duration: 1,
+                    })
+                })
+            }
+            return chords;
+        },
+
+        getChord: function(chords, index, legato) {
+            if(legato) {
+                const symbol = chords[index];
+                let duration_ = 1;
+                for(let i = index+1; i < chords.length; i++) {
+                    if(symbol === chords[i]) { 
+                        duration_ ++;
+                    }
+                    else {
+                        return [{ symbol: symbol, duration: duration_, }, i, chords[i] === '' || chords[i] === undefined];
+                    }
+                }
+            }
+            else {
+                return [{ symbol: chords[index], duration: 1, }, ++index,  chords[index] === '' || chords[index] === undefined];
+            }
+        }
     };
 })();
 
