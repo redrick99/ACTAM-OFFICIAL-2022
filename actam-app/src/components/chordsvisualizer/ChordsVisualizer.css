@@ -16,8 +16,12 @@ td.played {
     background-color: aquamarine;
 }
 
-table.chords-visualizer {
+div.chords-visualizer {
     width: 60%;
+}
+
+table.chords-visualizer {
+    width: 100%;
 }
 
 td.last {
@@ -40,8 +44,11 @@ td.first {
 }
 
 .loading-bar {
-    width: 60%;
-    height: 20px;
+    position: relative;
+    left: 33.33%;
+    top: 10px;
+    width: 33.33%;
+    height: 15px;
     background-color: aliceblue;
 }
 

@@ -28,6 +28,7 @@ export const assignables = {
     loop: false,
     legato: true,
     waitingFunction: undefined,
+    loadingBarFunction: undefined,
 }
 
 export const scoreOptions = {

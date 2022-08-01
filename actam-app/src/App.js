@@ -11,6 +11,8 @@ import ChordsVisualizer from './components/chordsvisualizer/ChordsVisualizer';
 function App() {
   const [chords, setChords] = React.useState(Array(16).join(".").split("."))
   const [visualizationChords, setVisualizationChords] = React.useState(['', '', '']);
+  const [barWidth, setBarWidth] = React.useState(0);
+  const [hiddenVisualization, setHiddenVisualization] = React.useState(true);
   const [bpm, setBpm] = React.useState(60);
   const [loop, setLoop] = React.useState(false);
   const [legato, setLegato] = React.useState(true);
@@ -42,7 +44,9 @@ function App() {
     const time = result.duration*assignables.bpm/60;
 
     // Display Chord
+    setHiddenVisualization(false);
     setVisualizationChords(chords);
+    moveBar(time);
 
     // Play Chord
     const startT = Tone.now();
@@ -57,7 +61,26 @@ function App() {
     // Stop audio
     chordAudioHandler.stop();
     // Stop animation
+    setHiddenVisualization(true);
+    setBarWidth(0);
     setVisualizationChords(['', '', '']);
+  }
+
+  function moveBar(time) {
+    if(assignables.loadingBarFunction) {
+      clearInterval(assignables.loadingBarFunction)
+    }
+    let width = 0;
+    assignables.loadingBarFunction = setInterval(() => {
+      if(width >= 100) {
+        clearInterval(assignables.loadingBarFunction);
+      }
+      else {
+        width++;
+        setBarWidth(width);
+      }
+    }, time/0.1);
+     
   }
 
   return (
@@ -65,7 +88,7 @@ function App() {
       <ChordsTable setChords={setChordsArray} playChords={chords} cellsPerRow={16} />
       <button id='start-button' onClick={() => {chords[0] !== '' ? start(0) : stop()}}>START</button>
       <button id='init' onClick={init}>INIT</button>
-      <ChordsVisualizer chords={visualizationChords} />
+      <ChordsVisualizer chords={visualizationChords} width={barWidth} hidden={hiddenVisualization}/>
     </div>
   );
 }
