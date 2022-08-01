@@ -73,51 +73,31 @@ const chordProgressionHandler = (function() {
             return [...assignables.currentProgression];
         },
 
-        parseChordsArray: function(array, legato) {
-            const chords = [];
-            if(legato) {
-                let prevSymbol= ''
-                let duration_ = 1;
-                array.forEach((symbol) => {
-                    if(symbol === '') return chords;
-                    if(symbol === prevSymbol) chords[chords.length-1].duration ++;
-                    else {
-                        prevSymbol = symbol;
-                        chords.push({
-                            symbol: symbol,
-                            duration: duration_,
-                        })
-                    }
-                })
-            }
-            else {
-                array.forEach((symbol) => {
-                    if(symbol === '') return chords;
-                    chords.push({
-                        symbol: symbol,
-                        duration: 1,
-                    })
-                })
-            }
-            return chords;
-        },
-
-        getChord: function(chords, index, legato) {
+        getChords: function(chords, index, legato) {
+            let duration = 1;
+            let idx = index;
             if(legato) {
                 const symbol = chords[index];
-                let duration_ = 1;
                 for(let i = index+1; i < chords.length; i++) {
                     if(symbol === chords[i]) { 
-                        duration_ ++;
+                        duration ++;
                     }
                     else {
-                        return [{ symbol: symbol, duration: duration_, }, i, chords[i] === '' || chords[i] === undefined];
+                        idx = i - 1;
+                        break;
                     }
                 }
             }
-            else {
-                return [{ symbol: chords[index], duration: 1, }, ++index,  chords[index] === '' || chords[index] === undefined];
-            }
+            //console.log("GET CHORDS: ")
+            //console.log(chords);
+            //console.log("index: " +index);
+            //console.log("duration: " +duration);
+            return ({
+                chords: [chords[index - 1], chords[idx], chords[idx + 1]],
+                duration: duration,
+                index: ++idx,
+                ended: chords[index] === undefined || chords[index] === '',
+            });
         }
     };
 })();

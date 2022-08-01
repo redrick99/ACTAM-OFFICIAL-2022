@@ -88,16 +88,17 @@ const voicingsFunctions = [
     (options) => {
         const f = options.fundamental;
         const k = options.key;
+        const s = options.shift;
         // Contains all notes intervals summed with the key
         const n = Array.from(assignables.currentModalIntervals, x => x + k);
         const symbol = getChordSymbol(f, options.tonality);
 
         let array;
         if(isTonic(f, k)) {
-            array = [n[7]-12, n[1], n[3]];
+            array = [s+n[7]-12, s+n[1], s+n[3]];
         }
         else {
-            array = [n[3], n[4], n[6]];
+            array = [s+n[3], s+n[4], s+n[6]];
         }
         return new Chord(f, array, options.duration, symbol);
     },

@@ -51,8 +51,9 @@ const voicingsHandler = (function() {
         const fundamental = getChordFundamental(mode, key, grade);
 
         return calculateVoicings({
-            fundamental: fundamental, 
+            fundamental: fundamental + 48, 
             key: key, 
+            shift: 48,
             intervals: intervalsPerGrade[grade],
             tonality: tonality,
             duration: duration,
@@ -70,12 +71,14 @@ const voicingsHandler = (function() {
             calculateVoicings = voicingsFunctions[index];
         },
 
-        //getVoicings: function(symbols) {
-        //    return Array.from(symbols, symbol => getChordVoicings(symbol));
-        //}
+        /*getVoicings: function(chord, duration) {
+            if(!chord || chord === '')
+                return '';
+            return getChordVoicings(chord, duration);
+        },*/
 
-        getVoicings: function(chord) {
-            return getChordVoicings(chord.symbol, chord.duration);
+        getVoicings: function(chords, duration) {
+            return Array.from(chords, chord => !chord || chord === '' ? '' : getChordVoicings(chord, duration));
         }
     }
 

@@ -1,56 +1,71 @@
 import './App.css';
-import React from 'react'
+import React, { Component, useEffect } from 'react'
+import * as Tone from 'tone'
 import ChordsTable from './components/chordstable/ChordsTable';
 import chordProgressionHandler from './scripts/ChordProgressionHandler';
+import chordAudioHandler from './scripts/ChordAudioHandler';
 import voicingsHandler from './scripts/VoicingsHandler';
+import { assignables } from './scripts/GlobalVariables';
+import ChordsVisualizer from './components/chordsvisualizer/ChordsVisualizer';
 
 function App() {
   const [chords, setChords] = React.useState(Array(16).join(".").split("."))
+  const [visualizationChords, setVisualizationChords] = React.useState(['', '', '']);
   const [bpm, setBpm] = React.useState(60);
   const [loop, setLoop] = React.useState(false);
   const [legato, setLegato] = React.useState(true);
 
-  let waitingFunction;
-
+  async function init() {
+    await Tone.start().then(() => {
+      const master = new Tone.Gain();
+      master.gain.value = 0.8;
+      chordAudioHandler.connect(master);
+      master.toDestination();
+    });
+  }
+  
   function setChordsArray(chords) {
     setChords(chords);
+    assignables.chords = chords;
   }
 
   function start(index) {
-    console.log("----- PLAY -----");
-    if(waitingFunction) {
-      clearTimeout(waitingFunction);
-    }
-
-    const [chordPreVoicings, index_, hasEnded] = chordProgressionHandler.getChord(chords, index, legato);
-
-    const chord = voicingsHandler.getVoicings(chordPreVoicings);
-
-    console.log(chord);
-
-    // Play Chord
-    // Display Chord
-
-    if(hasEnded) {
-      loop ?  waitingFunction = setTimeout(start, 1000*chordPreVoicings.duration*bpm/60, 0) : 
-      waitingFunction = setTimeout(stop, 1000*chordPreVoicings.duration*bpm/60);
+    stop();
+    const result = chordProgressionHandler.getChords(assignables.chords, index, assignables.legato);
+    if(result.ended) {
+      assignables.loop ?  start(0) : stop();
       return;
     }
-    waitingFunction = setTimeout(start, 1000*chordPreVoicings.duration*bpm/60, index_);
+    //console.log("Number: "+(index+1));
+    const chords = voicingsHandler.getVoicings(result.chords, result.duration);
+
+    const time = result.duration*assignables.bpm/60;
+
+    // Display Chord
+    setVisualizationChords(chords);
+
+    // Play Chord
+    const startT = Tone.now();
+    chordAudioHandler.playChord(chords[1], startT, time, assignables.bpm);
+
+    assignables.waitingFunction = setTimeout(start, 1000*time, result.index);
   }
 
   function stop() {
-    console.log("-----STOP-----");
-    clearTimeout(waitingFunction);
-
+    clearTimeout(assignables.waitingFunction);
+    
     // Stop audio
+    chordAudioHandler.stop();
     // Stop animation
+    setVisualizationChords(['', '', '']);
   }
 
   return (
     <div className="App">
       <ChordsTable setChords={setChordsArray} playChords={chords} cellsPerRow={16} />
-      <button onClick={() => {chords[0] !== '' ? start(0) : stop()}}>START</button>
+      <button id='start-button' onClick={() => {chords[0] !== '' ? start(0) : stop()}}>START</button>
+      <button id='init' onClick={init}>INIT</button>
+      <ChordsVisualizer chords={visualizationChords} />
     </div>
   );
 }

@@ -23,6 +23,19 @@ export const assignables = {
     currentMode: 0,
     currentProgression: Array.from(basicProgression, (element, index) => element + majorScale[index]),
     currentModalIntervals: [],
+    chords: Array(16).join(".").split("."),
+    bpm: 60,
+    loop: false,
+    legato: true,
+    waitingFunction: undefined,
+}
+
+export const scoreOptions = {
+    rWidth: 160,
+    rHeight: 200,
+    sPosX: 20,
+    sPosY: 30,
+    sWidth: 130,
 }
 
 export const functions = {

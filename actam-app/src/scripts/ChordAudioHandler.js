@@ -10,15 +10,20 @@ const chordAudioHandler = (function() {
     }
 
     return {
-        playChord: function(chord, tStart, tDuration, bpm) {
+        playChord: function(chord, tStart, tDuration) {
             const freqsArray = Array.from(chord.array, element => frequencies[element]);
-            instrument.play(freqsArray, tStart, tDuration*bpm/60);
+            instrument.play(freqsArray, tStart, tDuration);
         },
         stop: function() {
-            instrument.stop();
+            instrument.stop(frequencies);
         },
         getInstrument: function() {
             return instrument;
+        },
+        connect: function(node) {
+            instrument.connect(node);
         }
     }
 })();
+
+export default chordAudioHandler;

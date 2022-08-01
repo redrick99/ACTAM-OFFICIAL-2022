@@ -23,11 +23,11 @@ class Instrument {
     }
 
     play(notes, start, duration) {
-        this.sampler.triggerAttackRelease(notes, start, duration);
+        this.sampler.triggerAttack(notes, start, 1/notes.length);
     }
 
-    stop() {
-        this.sampler.triggerRelease();
+    stop(frequencies) {
+        this.sampler.triggerRelease(frequencies);
     }
     
     connect(node) {

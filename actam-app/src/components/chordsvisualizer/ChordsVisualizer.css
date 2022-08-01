@@ -1,0 +1,51 @@
+#disp-chord-container {
+    display: block;
+}
+
+td.chord-score {
+    border: 1px solid black;
+    width: 33.333%;
+}
+
+td.chord-score-name {
+    width: 30%;
+    border: 1px solid black;
+}
+
+td.played {
+    background-color: aquamarine;
+}
+
+table.chords-visualizer {
+    width: 60%;
+}
+
+td.last {
+    border-right: 3px solid black;
+}
+
+td.first {
+    border-left: 3px solid black;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loading-bar {
+    width: 60%;
+    height: 20px;
+    background-color: aliceblue;
+}
+
+.loading-bar-progress {
+    height: 90%;
+    background-color: aqua;
+}
