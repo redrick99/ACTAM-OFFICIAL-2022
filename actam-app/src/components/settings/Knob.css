@@ -1,0 +1,64 @@
+.container{
+  left:50%;
+  top:50%;
+}
+
+#circle { 
+  width:30px; 
+  height:30px;
+  border:2px solid #666; 
+  border-radius:100%;
+  float:left;
+  margin-right:40px;
+}
+
+#slider { 
+  position:relative; 
+  height:15px; 
+  width:15px; 
+  background:#666; 
+  left:8px; 
+  top:-8px; 
+  border-radius:100%;
+  cursor:pointer;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+    -moz-appearance: none;
+    border: 2px solid #e6e6e6;
+    border-radius: 4px;
+    color: #818181;
+    display: block;
+    font-size: 1em;
+    height: 30px;
+    padding:0 6px;
+    transition: border 0s ease 0s, width 0.4s ease-in-out 0s;
+}
+
+.range{
+  float:left;
+  width:30px;
+}
+
+.imgKnob{
+  background-image: url("./knob.png");
+  background-repeat: no-repeat;
+  background-size: 80px 80px;
+  width: 80px;
+  height: 80px;
+  transform: translate(0%, -100%);
+  cursor: pointer;
+  
+}
+
+.imgKnobIndicator{
+  background-image: url("./knobIndicator.png");
+  background-repeat: no-repeat;
+  background-size: 80px 80px;
+  width: 80px;
+  height: 80px;
+  
+
+}
