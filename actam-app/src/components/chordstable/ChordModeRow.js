@@ -30,11 +30,15 @@ class ChordModeRow extends Component {
 
     render() { 
         return (
-            <tr className='chord-mode-row'>
-                {this.props.modes.map((mode, idx) => 
-                    <ChordModeCell key={idx} id={'c-mode-'+idx} idNumber={idx} mode={mode} click={this.click} isClicked={this.state.isClicked[idx]}/>
-                )}
-            </tr>
+            <table className='chord-mode-table'>
+                <tbody>
+                    <tr className='chord-mode-row'>
+                        {this.props.modes.map((mode, idx) => 
+                            <ChordModeCell key={idx} id={'c-mode-'+idx} idNumber={idx} mode={mode} click={this.click} isClicked={this.state.isClicked[idx]}/>
+                        )}
+                    </tr>
+                </tbody>
+            </table>
         );
     }
 }

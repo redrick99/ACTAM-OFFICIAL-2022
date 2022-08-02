@@ -52,22 +52,22 @@ class ChordPlayCell extends Component {
     dragLeave(event) {
         this.setState(() => ({
             isDragOver: false,
-        }));   
+        }));
     }
 
     doubleClick(event) {
         this.props.doubleClick(this.props.idNumber);
     }
 
-    render() { 
-        return (  
-            <td id={this.props.id} className={"chord-play-cell "+ (this.state.isDragOver ? "drag-over" : "")}
-                draggable={this.props.chordName != ""} onDragStart={this.dragStart} 
+    render() {
+        return (
+            <td id={this.props.id} className={"chord-play-cell " + (this.state.isDragOver ? "drag-over " : "") + (this.props.chordName !== '' ? 'full' : '')}
+                draggable={this.props.chordName != ""} onDragStart={this.dragStart}
                 onDragOver={this.dragOver} onDragLeave={this.dragLeave} onDrop={this.props.drop} onDoubleClick={this.doubleClick}>
                 {this.props.chordName}
             </td>
         );
     }
 }
- 
+
 export default ChordPlayCell;

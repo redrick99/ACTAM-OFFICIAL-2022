@@ -85,6 +85,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1 className='title'>Voicings Generator</h1>
       <ChordsTable setChords={setChordsArray} playChords={chords} cellsPerRow={16} />
       <button id='start-button' onClick={() => {chords[0] !== '' ? start(0) : stop()}}>START</button>
       <button id='init' onClick={init}>INIT</button>

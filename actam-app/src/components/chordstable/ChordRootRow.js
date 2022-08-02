@@ -30,11 +30,15 @@ class ChordRootRow extends Component {
 
     render() { 
         return (
-            <tr className='chord-root-row'>
-                {this.props.roots.map((root, idx) => 
-                    <ChordRootCell key={idx} id={'c-root-'+idx} idNumber={idx} root={root} click={this.click} isClicked={this.state.isClicked[idx]}/>
-                )}
-            </tr>
+            <table className='chord-root-table'>
+                <tbody>
+                    <tr className='chord-root-row'>
+                        {this.props.roots.map((root, idx) => 
+                            <ChordRootCell key={idx} id={'c-root-'+idx} idNumber={idx} root={root} click={this.click} isClicked={this.state.isClicked[idx]}/>
+                        )}
+                    </tr>
+                </tbody>
+            </table>
         );
     }
 }

@@ -1,6 +1,6 @@
 export const Tonalities = {
     MAJ: '△',
-    MIN: '-7',
+    MIN: 'm7',
     DOM: '7',
-    HDIM: '-7♭5'
+    HDIM: '°'
 }

@@ -1,28 +1,98 @@
+h1.title {
+    text-align: left;
+    font-family: Arial Black, Helvetica, sans-serif;
+    margin-left: 10px;
+    margin-top: 10px;
+    color: white;
+    border: 1px solid #235789;
+    background-color: #235789;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+div.chords-options{
+    background-color: #D6D6D6;
+    width: fit-content;
+    padding: 5px;
+    border: 1px solid #D6D6D6;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+table.chord-play-table {
+    background-color: #D6D6D6;
+    width: fit-content;
+    padding: 5px;
+    border: 1px solid #D6D6D6;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+table.chord-play-table {
+    padding-bottom: 10px;
+}
+
 .chord-progression-cell {
-    border: 1px solid black;
+    border: 1px solid #235789;
+    border-radius: 5px;
+    background-color: #235789;
+    color: white;
+    font-family: Arial Black, Helvetica, sans-serif;
+    font-size: small;
+    cursor: grab;
     width: 50px;
     height: 50px;
 }
 
 .chord-play-cell {
-    border: 1px solid black;
-    background-color: bisque;
+    border: 1px solid #235789;
+    border-radius: 5px;
+    background-color: #E6E6EA;
+    color: white;
+    font-family: Arial Black, Helvetica, sans-serif;
+    font-size: small;
+    cursor: grab;
     width: 50px;
     height: 50px;
+}
+
+.chord-play-cell.full {
+    background-color: #235789;
+}
+
+.chord-play-cell:active,
+.chord-progression-cell:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
 }
 
 .chord-mode-cell {
-    border: 1px solid blue;
-    width: 50px;
-    height: 50px;
+    border: 1px solid #FFB100;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #E6E6EA;
+    color: #FFB100;
+    font-family: Arial Black, Helvetica, sans-serif;
+    width: 100px;
 }
 
 .chord-root-cell {
-    border: 1px solid brown;
-    width: 50px;
-    height: 50px;
+    border: 1px solid #FFB100;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #E6E6EA;
+    color: #FFB100;
+    font-family: Arial Black, Helvetica, sans-serif;
+    width: 40px;
+    height: 30px;
 }
 
 .clicked {
-    background-color: aquamarine;
+    background-color: #FFB100;
+    border-color: #FFB100;
+    color: white;
 }

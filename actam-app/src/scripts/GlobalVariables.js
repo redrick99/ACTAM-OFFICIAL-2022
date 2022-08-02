@@ -1,6 +1,9 @@
+import { Tonalities as T } from "./Tonalities";
+
 export const rootKeys = "C C# D D# E F F# G G# A A# B".split(" ");
 export const basicProgression = "I II III IV V VI VII".split(" ");
-export const majorScale = "△ -7 -7 △ 7 -7 -7♭5".split(" ");
+//export const majorScale = "△ -7 -7 △ 7 -7 -7♭5".split(" ");
+export const majorScale = [T.MAJ, T.MIN, T.MIN, T.MAJ, T.DOM, T.MIN, T.HDIM];
 export const ionianTonalDistance = [2, 2, 1, 2, 2, 2, 1];
 export const modalScalesText = "ionian dorian phrygian lydian mixolydian aeolian locrian".split(" ");
 export const voicingsTypes = "Rootless A, Rootless B, Monk, Powell 1, Powell 2, Powell 3, Powell 4, Three Notes, Four Notes, Open Chord 1, Open Chord 2".split(", ");

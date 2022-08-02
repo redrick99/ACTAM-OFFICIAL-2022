@@ -10,15 +10,19 @@ class ChordProgressionRow extends Component {
         super(props);
     }
 
-    render() { 
+    render() {
         return (
-            <tr className='chord-progression-row'>
-                {this.props.progression.map((prog, idx) => 
-                    <ChordProgressionCell key={idx} id={'c-prog-'+idx} chordName={prog} click={this.props.click} />
-                )}
-            </tr>
+            <table className='chord-progression-table'>
+                <tbody>
+                    <tr className='chord-progression-row'>
+                        {this.props.progression.map((prog, idx) =>
+                            <ChordProgressionCell key={idx} id={'c-prog-' + idx} chordName={prog} click={this.props.click} />
+                        )}
+                    </tr>
+                </tbody>
+            </table>
         );
     }
 }
- 
+
 export default ChordProgressionRow;
