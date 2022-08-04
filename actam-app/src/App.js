@@ -7,12 +7,13 @@ import chordAudioHandler from './scripts/ChordAudioHandler';
 import voicingsHandler from './scripts/VoicingsHandler';
 import { assignables } from './scripts/GlobalVariables';
 import ChordsVisualizer from './components/chordsvisualizer/ChordsVisualizer';
+import Chord from './scripts/Chord';
 
 function App() {
   const [chords, setChords] = React.useState(Array(16).join(".").split("."))
   const [visualizationChords, setVisualizationChords] = React.useState(['', '', '']);
   const [barWidth, setBarWidth] = React.useState(0);
-  const [hiddenVisualization, setHiddenVisualization] = React.useState(true);
+  const [playing, setPlaying] = React.useState(false);
   const [bpm, setBpm] = React.useState(60);
   const [loop, setLoop] = React.useState(false);
   const [legato, setLegato] = React.useState(true);
@@ -29,6 +30,15 @@ function App() {
   function setChordsArray(chords) {
     setChords(chords);
     assignables.chords = chords;
+
+
+    const visualizationChords = [
+      new Chord(1, [60, 62, 64, 66], 1, 'Cm7'),
+      new Chord(1, [60, 62, 64, 66], 1, 'Cm7'),
+      new Chord(1, [60, 62, 64, 66], 1, 'Cm7'),
+    ]
+
+    setVisualizationChords(visualizationChords);
   }
 
   function start(index) {
@@ -44,7 +54,7 @@ function App() {
     const time = result.duration*assignables.bpm/60;
 
     // Display Chord
-    setHiddenVisualization(false);
+    setPlaying(true);
     setVisualizationChords(chords);
     moveBar(time);
 
@@ -61,7 +71,7 @@ function App() {
     // Stop audio
     chordAudioHandler.stop();
     // Stop animation
-    setHiddenVisualization(true);
+    setPlaying(false);
     setBarWidth(0);
     setVisualizationChords(['', '', '']);
   }
@@ -86,10 +96,8 @@ function App() {
   return (
     <div className="App">
       <h1 className='title'>Voicings Generator</h1>
-      <ChordsTable setChords={setChordsArray} playChords={chords} cellsPerRow={16} />
-      <button id='start-button' onClick={() => {chords[0] !== '' ? start(0) : stop()}}>START</button>
-      <button id='init' onClick={init}>INIT</button>
-      <ChordsVisualizer chords={visualizationChords} width={barWidth} hidden={hiddenVisualization}/>
+      <ChordsTable setChords={setChordsArray} playChords={chords} cellsPerRow={16} active={playing} init={init} start={() => {chords[0] !== '' ? start(0) : stop()}} stop={stop}/>
+      <ChordsVisualizer chords={visualizationChords} width={barWidth} hidden={false}/>
     </div>
   );
 }

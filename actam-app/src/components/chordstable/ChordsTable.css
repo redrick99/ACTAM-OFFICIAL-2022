@@ -11,9 +11,19 @@ h1.title {
     border-radius: 5px;
 }
 
+div.play-div {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+}
+
+div.chords-table {
+    width: fit-content;
+}
+
 div.chords-options{
     background-color: #D6D6D6;
-    width: fit-content;
+    width: 85%;
     padding: 5px;
     border: 1px solid #D6D6D6;
     border-radius: 5px;
@@ -59,15 +69,27 @@ table.chord-play-table {
     height: 50px;
 }
 
-.chord-play-cell.full {
-    background-color: #235789;
-}
-
 .chord-play-cell:active,
 .chord-progression-cell:active {
     cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
+}
+
+.chord-play-cell:hover,
+.chord-progression-cell:hover {
+    opacity: 80%;
+}
+
+.chord-play-cell.drag-over {
+    background-color: #235789;
+    opacity: 60%;
+    cursor: grabbing;
+}
+
+.chord-play-cell.full {
+    background-color: #235789;
+    opacity: 100%;
 }
 
 .chord-mode-cell {
@@ -96,3 +118,41 @@ table.chord-play-table {
     border-color: #FFB100;
     color: white;
 }
+
+.start-button {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    border: 1px solid #FFB100;
+    border-radius: 5px;
+    background-color: #E6E6EA;
+    color: #FFB100;
+    font-family: Arial Black, Helvetica, sans-serif;
+    font-size:large;
+    animation: pulse 200ms ease-in-out infinite alternate;
+    cursor: pointer;
+    width: 15%;
+    height: 130px;
+    line-height: 130px;
+  }
+  
+  @keyframes pulse {
+    from { transform: translateX(0.5rem) scale(1); }
+    to   { transform: translateX(0.5rem) scale(1.1); }
+  }
+  
+  .start-button.active {
+    background-color: rgb(212, 12, 12);
+    border-color: rgb(212, 12, 12);
+    color: #E6E6EA;
+    animation: none;
+    display: block;
+    margin-right: 10px;
+    margin-left: 15px;
+    height: 137px;
+    line-height: 137px;
+  }

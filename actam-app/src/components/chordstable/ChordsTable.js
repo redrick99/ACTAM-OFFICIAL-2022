@@ -6,6 +6,7 @@ import ChordRootRow from './ChordRootRow';
 import chordProgressionHandler from '../../scripts/ChordProgressionHandler';
 import voicingsHandler from '../../scripts/VoicingsHandler';
 import { modalScalesText, rootKeys, voicingsTypes } from '../../scripts/GlobalVariables'
+import StartButton from '../settings/StartButton';
  
 /**
  * Table where the chords to be played can be selected
@@ -157,10 +158,13 @@ class ChordsTable extends Component {
                     })}
                     </tbody>
                 </table>
-                <div className='chords-options'>
-                <ChordProgressionRow progression={this.state.progression} click={this.clickProgressionChord}/>
-                <ChordRootRow roots={this.state.roots} click={this.clickRoot}/>
-                <ChordModeRow modes={this.state.modalScales} click={this.clickMode}/> 
+                <div className='play-div'>
+                    <div className='chords-options'>
+                    <ChordProgressionRow progression={this.state.progression} click={this.clickProgressionChord}/>
+                    <ChordRootRow roots={this.state.roots} click={this.clickRoot}/>
+                    <ChordModeRow modes={this.state.modalScales} click={this.clickMode}/> 
+                    </div>
+                    <StartButton active={this.props.active} stop={this.props.stop} start={this.props.start} init={this.props.init}/>
                 </div>
             </div>
             <select id='select-voicings-type' onChange={this.changeVoicingsType}>
