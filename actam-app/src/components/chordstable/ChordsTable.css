@@ -21,7 +21,7 @@ div.chords-table {
     width: fit-content;
 }
 
-div.chords-options{
+div.chords-options {
     background-color: #D6D6D6;
     width: 85%;
     padding: 5px;
@@ -132,27 +132,44 @@ table.chord-play-table {
     background-color: #E6E6EA;
     color: #FFB100;
     font-family: Arial Black, Helvetica, sans-serif;
-    font-size:large;
+    font-size: large;
     animation: pulse 200ms ease-in-out infinite alternate;
     cursor: pointer;
     width: 15%;
     height: 130px;
     line-height: 130px;
-  }
-  
-  @keyframes pulse {
-    from { transform: translateX(0.5rem) scale(1); }
-    to   { transform: translateX(0.5rem) scale(1.1); }
-  }
-  
-  .start-button.active {
-    background-color: rgb(212, 12, 12);
-    border-color: rgb(212, 12, 12);
+}
+
+.start-button.inactive:hover {
+    border-color: #FFB100;
+    background-color: #FFB100;
     color: #E6E6EA;
+}
+
+@keyframes pulse {
+    from {
+        transform: translateX(0.5rem) scale(1);
+    }
+
+    to {
+        transform: translateX(0.5rem) scale(1.1);
+    }
+}
+
+.start-button.active {
+    background-color: #E6E6EA;
+    border-color: rgb(212, 12, 12);
+    color: rgb(212, 12, 12);
     animation: none;
     display: block;
     margin-right: 10px;
     margin-left: 15px;
     height: 137px;
     line-height: 137px;
-  }
+}
+
+.start-button.active:hover {
+    background-color: rgb(212, 12, 12);
+    border-color: rgb(212, 12, 12);
+    color: #E6E6EA;
+}

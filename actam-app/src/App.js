@@ -31,15 +31,6 @@ function App() {
   function setChordsArray(chords) {
     setChords(chords);
     assignables.chords = chords;
-
-
-    const visualizationChords = [
-      new Chord(1, [60, 62, 64, 66], 1, 'Cm7'),
-      new Chord(1, [60, 62, 64, 66], 1, 'Cm7'),
-      new Chord(1, [60, 62, 64, 66], 1, 'Cm7'),
-    ]
-
-    setVisualizationChords(visualizationChords);
   }
 
   function start(index) {
@@ -98,7 +89,7 @@ function App() {
     <div className="App">
       <h1 className='title'>Voicings Generator</h1>
       <ChordsTable setChords={setChordsArray} playChords={chords} cellsPerRow={16} active={playing} init={init} start={() => {chords[0] !== '' ? start(0) : stop()}} stop={stop}/>
-      <ChordsVisualizer chords={visualizationChords} width={barWidth} hidden={false}/>
+      <ChordsVisualizer chords={visualizationChords} width={barWidth} hidden={!playing}/>
       <VoicingsSelector/>
     </div>
   );

@@ -7,6 +7,23 @@ td.chord-score {
     padding: 0px;
     border: 2px solid #235789;
     border-radius: 5px;
+    animation: pulse-score 400ms ease-in-out infinite alternate;
+}
+
+td.chord-score:first-child,
+td.chord-score:last-child {
+    animation: none;
+    opacity: 67%;
+}
+
+@keyframes pulse-score {
+    from {
+        transform: translateX(0.0rem) scale(1);
+    }
+
+    to {
+        transform: translateX(0.0rem) scale(1.02);
+    }
 }
 
 table.chord-score {
@@ -30,14 +47,14 @@ td.chord-score-score {
 }
 
 td.played {
-    background-color: #FFB100;
+    background-color: #235789;
 }
 
 div.chords-visualizer {
     margin-top: 10px;
     margin-left: 10px;
-    width: fit-content;
-    padding: 5px;
+    max-width: 749px;
+    padding: 0px;
     height: fit-content;
     background-color: #D6D6D6;
     border: 1px solid #D6D6D6;
@@ -46,17 +63,11 @@ div.chords-visualizer {
 
 table.chords-visualizer {
     width: 100%;
-    border-spacing: 15px;
+    border-spacing: 10px;
 }
 
 .hidden {
     visibility: hidden;
-}
-
-.center {
-    /*position: fixed;
-    left: 50%;
-    transform: translate(-50%,0);*/
 }
 
 .loading-bar {

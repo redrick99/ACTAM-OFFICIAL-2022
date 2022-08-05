@@ -23,7 +23,7 @@ class StartButton extends Component {
 
     render() { 
         return (
-            <div className={'start-button '+(this.props.active ? 'active' : '')} onClick={this.props.active ? this.props.stop : this.start}>
+            <div className={'start-button '+(this.props.active ? 'active' : 'inactive')} onClick={this.props.active ? this.props.stop : this.start}>
                 {this.props.active ? 'STOP' : 'START'}
             </div>
         );

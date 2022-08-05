@@ -20,7 +20,6 @@ class ChordsVisualizer extends Component {
                         </tr>
                     </tbody>
                 </table>
-                <LoadingBar id={0} width={this.props.width} />
             </div>
         );
     }
