@@ -8,6 +8,7 @@ import voicingsHandler from './scripts/VoicingsHandler';
 import { assignables } from './scripts/GlobalVariables';
 import ChordsVisualizer from './components/chordsvisualizer/ChordsVisualizer';
 import Chord from './scripts/Chord';
+import VoicingsSelector from './components/voicingsselector/VoicingsSelector';
 
 function App() {
   const [chords, setChords] = React.useState(Array(16).join(".").split("."))
@@ -98,6 +99,7 @@ function App() {
       <h1 className='title'>Voicings Generator</h1>
       <ChordsTable setChords={setChordsArray} playChords={chords} cellsPerRow={16} active={playing} init={init} start={() => {chords[0] !== '' ? start(0) : stop()}} stop={stop}/>
       <ChordsVisualizer chords={visualizationChords} width={barWidth} hidden={false}/>
+      <VoicingsSelector/>
     </div>
   );
 }

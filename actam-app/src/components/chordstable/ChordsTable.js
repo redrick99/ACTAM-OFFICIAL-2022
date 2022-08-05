@@ -129,10 +129,6 @@ class ChordsTable extends Component {
         this.props.setChords(newPlayChords);
     }
 
-    changeVoicingsType(event) {
-        voicingsHandler.setVoicingsType(event.target.value);
-    }
-
     /**
      * Checks if an array is full to fill it with new blank string elements 
      * @param {*} array to be checked
@@ -167,11 +163,6 @@ class ChordsTable extends Component {
                     <StartButton active={this.props.active} stop={this.props.stop} start={this.props.start} init={this.props.init}/>
                 </div>
             </div>
-            <select id='select-voicings-type' onChange={this.changeVoicingsType}>
-                {voicingsTypes.map((type, index) => 
-                    <option key={index} value={index}>{type}</option>
-                )}
-            </select>
             </React.Fragment>
         );
     }

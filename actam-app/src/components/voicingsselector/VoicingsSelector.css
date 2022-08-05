@@ -1,0 +1,95 @@
+div.voicings-selector-container {
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    height: 450px;
+    width: 900px;
+}
+
+div.voicings-selector {
+    border: 1px solid #D6D6D6;
+    padding: 0px;
+    background-color: #D6D6D6;
+    border-radius: 5px;
+    width: 15%;
+}
+
+div.voicings-description-container {
+    border: 0px solid #D6D6D6;
+    width: 85%;
+    padding-left: 15px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+h2.voicings-name {
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 1.8em;
+    height: 10%;
+    border-top-right-radius: 5px;
+    font-style: italic;
+}
+
+div.voicings-description {
+    height: 88.9%;
+    border-top: 0px;
+    text-align: left;
+}
+
+div.names-selector {
+    width: 90%;
+    margin: 10px auto;
+}
+
+button.names-selector {
+    border: 1px solid #FFB100;
+    border-radius: 5px;
+    background: #FFB100;
+    color: white;
+    font-family: Arial Black, Helvetica, sans-serif;
+    font-size: large;
+    width: 100%;
+    padding: 10px 8px;
+    position: relative;
+    text-align: center;
+}
+
+button.names-selector:hover {
+    cursor: pointer;
+}
+
+button.names-selector[aria-expanded="true"] {
+    border-radius: 0px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+ul.names-selector {
+    border: 1px solid #FFB100;
+    display: block;
+    list-style: none;
+    padding: 0;
+    margin-top: -4px;
+}
+
+ul.names-selector.hidden {
+    display: none;
+}
+
+ul.names-selector li {
+    font-family: Arial Black, Helvetica, sans-serif;
+    color: #FFB100;
+    background-color: #E6E6EA;
+    padding: 6px 10px;
+}
+
+ul.names-selector li:active,
+ul.names-selector li:focus,
+ul.names-selector li:hover {
+    background-color: #ffc53e;
+    color: white;
+    cursor: pointer;
+}
