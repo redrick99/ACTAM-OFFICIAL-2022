@@ -1,64 +1,66 @@
-.container{
-  left:50%;
-  top:50%;
-}
 
-#circle { 
-  width:30px; 
-  height:30px;
-  border:2px solid #666; 
-  border-radius:100%;
-  float:left;
-  margin-right:40px;
-}
 
-#slider { 
-  position:relative; 
-  height:15px; 
-  width:15px; 
-  background:#666; 
-  left:8px; 
-  top:-8px; 
-  border-radius:100%;
-  cursor:pointer;
-}
 
-input[type="text"],
-input[type="email"],
-input[type="password"]{
-    -moz-appearance: none;
-    border: 2px solid #e6e6e6;
-    border-radius: 4px;
-    color: #818181;
-    display: block;
-    font-size: 1em;
-    height: 30px;
-    padding:0 6px;
-    transition: border 0s ease 0s, width 0.4s ease-in-out 0s;
-}
-
-.range{
-  float:left;
-  width:30px;
+.divCont{
+  max-height: 200px;
+  max-width: 650px;
+  border: 1px solid;
+  border-color: #E6E6EA;
+  background-color: #D6D6D6;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
 }
 
 .imgKnob{
-  background-image: url("./knob.png");
+  background-image: url("./knobColored2.png");
   background-repeat: no-repeat;
   background-size: 80px 80px;
   width: 80px;
   height: 80px;
   transform: translate(0%, -100%);
   cursor: pointer;
-  
+  opacity: 100%;
 }
 
-.imgKnobIndicator{
-  background-image: url("./knobIndicator.png");
+
+.k0-10{
+  background-image: url("./myDotIndicatorNumbers.png");
   background-repeat: no-repeat;
-  background-size: 80px 80px;
-  width: 80px;
-  height: 80px;
+  background-size: 130px 130px;
+  width: 160px;
+  height: 160px;
+  opacity: 100%;
+}
+
+
+.k0-1-2{
+  background-image: url("./myIndicator0-1-2.png");
+  background-repeat: no-repeat;
+  background-size: 145px 125px;
+  width: 160px;
+  height: 160px;
+  opacity: 100%;
+  transform: translate(-2%, 3%);
+
+}
   
 
+.td, .tr, .controller{
+  height: 100px;
+}
+
+.inputField{
+  border: 1px solid #235789;
+    border-radius: 5px;
+    background-color: #E6E6EA;
+    font-family: Arial Black, Helvetica, sans-serif;
+    font-size: small;
+    cursor: pointer;
+    width: 50px;  
+    opacity: 100%;
+    text-align: center;
 }
