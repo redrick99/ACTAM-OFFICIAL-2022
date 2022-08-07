@@ -93,7 +93,7 @@ table.chord-play-table {
 }
 
 .chord-mode-cell {
-    border: 1px solid #FFB100;
+    border: 1px solid #D6D6D6;
     border-radius: 5px;
     cursor: pointer;
     background-color: #E6E6EA;
@@ -103,7 +103,7 @@ table.chord-play-table {
 }
 
 .chord-root-cell {
-    border: 1px solid #FFB100;
+    border: 1px solid #D6D6D6;
     border-radius: 5px;
     cursor: pointer;
     background-color: #E6E6EA;
@@ -111,6 +111,10 @@ table.chord-play-table {
     font-family: Arial Black, Helvetica, sans-serif;
     width: 40px;
     height: 30px;
+}
+
+.chord-mode-cell:hover, .chord-root-cell:hover {
+    border-color: #FFB100;
 }
 
 .clicked {

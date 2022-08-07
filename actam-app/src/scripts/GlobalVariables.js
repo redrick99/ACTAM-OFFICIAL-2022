@@ -1,3 +1,4 @@
+import * as Tone from 'tone';
 import { Tonalities as T } from "./Tonalities";
 
 export const rootKeys = "C C# D D# E F F# G G# A A# B".split(" ");
@@ -21,6 +22,9 @@ chordTonalityMap.set("-7", [0, 3, 7, 10]);
 chordTonalityMap.set("7", [0, 4, 7, 10]);
 chordTonalityMap.set("-7♭5", [0, 3, 6, 10])
 
+export const master = new Tone.Gain()
+master.gain.value=0.5;
+
 export const assignables = {
     currentKey: 0,
     currentMode: 0,
@@ -29,7 +33,7 @@ export const assignables = {
     chords: Array(16).join(".").split("."),
     bpm: 60,
     loop: false,
-    legato: true,
+    legato: false,
     waitingFunction: undefined,
     loadingBarFunction: undefined,
 }

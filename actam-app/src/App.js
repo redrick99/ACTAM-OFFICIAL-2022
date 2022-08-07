@@ -5,10 +5,11 @@ import ChordsTable from './components/chordstable/ChordsTable';
 import chordProgressionHandler from './scripts/ChordProgressionHandler';
 import chordAudioHandler from './scripts/ChordAudioHandler';
 import voicingsHandler from './scripts/VoicingsHandler';
-import { assignables } from './scripts/GlobalVariables';
+import { assignables, master } from './scripts/GlobalVariables';
 import ChordsVisualizer from './components/chordsvisualizer/ChordsVisualizer';
 import Chord from './scripts/Chord';
 import VoicingsSelector from './components/voicingsselector/VoicingsSelector';
+import GlobalSettings from './components/settings/GlobalSettings';
 
 function App() {
   const [chords, setChords] = React.useState(Array(16).join(".").split("."))
@@ -21,8 +22,6 @@ function App() {
 
   async function init() {
     await Tone.start().then(() => {
-      const master = new Tone.Gain();
-      master.gain.value = 0.8;
       chordAudioHandler.connect(master);
       master.toDestination();
     });
@@ -89,7 +88,7 @@ function App() {
     <div className="App">
       <h1 className='title'>Voicings Generator</h1>
       <ChordsTable setChords={setChordsArray} playChords={chords} cellsPerRow={16} active={playing} init={init} start={() => {chords[0] !== '' ? start(0) : stop()}} stop={stop}/>
-      <ChordsVisualizer chords={visualizationChords} width={barWidth} hidden={!playing}/>
+      <ChordsVisualizer chords={visualizationChords} width={barWidth} hidden={false}/>
       <VoicingsSelector/>
     </div>
   );

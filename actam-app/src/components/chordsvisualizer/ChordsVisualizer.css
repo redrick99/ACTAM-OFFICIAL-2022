@@ -50,10 +50,16 @@ td.played {
     background-color: #235789;
 }
 
-div.chords-visualizer {
+div.chords-visualizer-container {
+    max-width: 950px;
+    display: flex;
     margin-top: 10px;
     margin-left: 10px;
-    max-width: 749px;
+}
+
+div.chords-visualizer {
+    /*max-width: 749px;*/
+    width: 79%;
     padding: 0px;
     height: fit-content;
     background-color: #D6D6D6;

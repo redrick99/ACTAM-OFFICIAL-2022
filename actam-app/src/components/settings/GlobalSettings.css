@@ -1,0 +1,53 @@
+div.global-settings {
+    /*width: 16.5%;*/
+    height: fit-content;
+    margin-left: 1px;
+}
+
+div.global-settings-div1 {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    margin: 0 auto;
+}
+
+div.global-settings-div2 {
+    width: 100%;
+    margin-top: 10px;
+    height: 167px;
+}
+
+div.loop-button, div.legato-button {
+    background-image: url(../../resources/loop-inactive.png);
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border: 2px solid #D6D6D6;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+div.loop-button {
+    margin-right: 25px;
+}
+
+div.loop-button.checked, div.legato-button.checked {
+    background-image: url(../../resources/loop-active.png);
+    background-repeat: no-repeat;
+    background-color: #FFB100;
+}
+
+div.loop-button:hover, div.legato-button:hover {
+    border-color: #FFB100;
+}
+
+div.legato-button {
+    background-image: url(../../resources/legato-inactive.png);
+}
+
+div.legato-button.checked {
+    background-image: url(../../resources/legato-active.png);
+}

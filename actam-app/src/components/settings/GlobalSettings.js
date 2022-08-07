@@ -1,25 +1,64 @@
 import React, { Component } from 'react';
 import CheckButton from './CheckButton';
-import SimpleInputSetting from './SimpleInputSetting';
+import Knob from './Knob'
+import { assignables, master} from '../../scripts/GlobalVariables';
+import './GlobalSettings.css'
 
 class GlobalSettings extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            loop: false,
+            legato: false,
+            masterVolume: 0.5,
+        }
+
+        this.clickLoop = this.clickLoop.bind(this);
+        this.clickLegato = this.clickLegato.bind(this);
+        this.changeKnob = this.changeKnob.bind(this);
     }
+
+    clickLoop() {
+        assignables.loop = !this.state.loop;
+        this.setState((prevState) => ({
+            loop: !prevState.loop,
+        }));
+    }
+
+    clickLegato() {
+        assignables.legato = !this.state.legato;
+        this.setState((prevState) => ({
+            legato: !prevState.legato,
+        }));
+    }
+
+    changeKnob(value) {
+        this.setState(() => ({
+            masterVolume: value,
+        }))
+        master.gain.value = value;
+    }
+
     render() { 
         return (
             <div className='global-settings'>
-                <div className='global-settings-sliders'>
-                    <SimpleInputSetting className='master-volume-slider' id='master-volume-slider' labelText='Master Volume' type='range' min={0} max={1} step={0.05}
-                    onChange={this.props.changeMasterVolume}/>
-                    <SimpleInputSetting className='bpm-slider' id='bpm-slider' labelText='bpm' type='range' min={40} max={210} step={1}
-                    onChange={this.props.changeBpm}/>
-                    <SimpleInputSetting className='signature-slider' id='signature-slider' labelText='Signature (/4)' type='range' min={1} max={16} step={1}
-                    onChange={this.props.changeSignature}/>
+                <div className='global-settings-div1'>
+                    <CheckButton id='loop-button' className='loop-button' checked={this.state.loop} text='' click={this.clickLoop}/>
+                    <CheckButton id='legato-button' className='legato-button' checked={this.state.legato} text='' click={this.clickLegato}/>
                 </div>
-                <div className='global-settings-buttons'>
-                    <CheckButton id="midi-check-button" className="global-settings-check-button" text="MIDI Melody" click={() => console.log("Clicked")} />
-                    <CheckButton id="beat-check-button" className="global-settings-check-button" text="Beat" click={() => console.log("Clicked")} />
+                <div className='global-settings-div2'>
+                    <Knob 
+                        id='master-volume-knob'
+                        idNumber='0'
+                        dispText={this.state.knobText}
+                        change={this.changeKnob}
+                        name='master'
+                        minRange={0}
+                        maxRange={1}
+                        initial={0.5}
+                        img="k0-1-2"
+                    />
                 </div>
             </div>
         );
