@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import imageKnob from "./knob.png";
 
 import "./Knob.css";
 
@@ -81,7 +80,7 @@ class Knob extends Component {
         deg += 90;
       }
       if (deg < 135 || deg > 225) {
-        event.target.style.transform = "translate(35%, -160%) rotate(" + deg + "deg)";
+        event.target.style.transform = "translate(50%, -160%) rotate(" + deg + "deg)";
         if (deg > 225 && deg <= 360) {
           deg = deg / 360 - 225 / 360;
           if (deg >= 1) deg = 0;
@@ -105,7 +104,7 @@ class Knob extends Component {
     var initialDeg = this.props.initial;
     unity = 135 / ((this.props.maxRange - this.props.minRange) / 2);
     initialDeg = unity * initialDeg - 135 - this.props.minRange * unity;
-    document.getElementById(this.props.id).style.transform = "translate(35%, -160%) rotate(" + initialDeg + "deg)";
+    document.getElementById(this.props.id).style.transform = "translate(50%, -160%) rotate(" + initialDeg + "deg)";
     this.setState(() => ({
       value: this.props.initial,
     }));
@@ -124,7 +123,7 @@ class Knob extends Component {
       var unity;
       unity = 135 / ((this.props.maxRange - this.props.minRange) / 2);
       initialDeg = unity * initialDeg - 135 - this.props.minRange * unity;
-      document.getElementById(this.props.id).style.transform = "translate(35%, -160%) rotate(" + initialDeg + "deg)";
+      document.getElementById(this.props.id).style.transform = "translate(50%, -160%) rotate(" + initialDeg + "deg)";
       this.setState(() => ({
         value: event.target.value,
       }));

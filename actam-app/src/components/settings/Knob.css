@@ -16,7 +16,7 @@
 }
 
 .imgKnob{
-  background-image: url("./knobColored2.png");
+  background-image: url("/src/resources/knobs/knobColored3.png");
   background-repeat: no-repeat;
   background-size: 80px 80px;
   width: 80px;
@@ -28,23 +28,25 @@
 
 
 .k0-10{
-  background-image: url("./myDotIndicatorNumbers.png");
-  background-repeat: no-repeat;
-  background-size: 130px 130px;
-  width: 160px;
-  height: 160px;
-  opacity: 100%;
-}
-
-
-.k0-1-2{
-  background-image: url("./myIndicator0-1-2.png");
+  background-image: url("/src/resources/knobIndicators/myDotIndicator0-10-2.png");
   background-repeat: no-repeat;
   background-size: 145px 125px;
   width: 160px;
   height: 160px;
   opacity: 100%;
-  transform: translate(-2%, 3%);
+  transform: translate(6%, 3%);
+
+}
+
+
+.k0-1-2{
+  background-image: url("/src/resources/knobIndicators/myDotIndicator0-1-3.png");
+  background-repeat: no-repeat;
+  background-size: 145px 125px;
+  width: 160px;
+  height: 160px;
+  opacity: 100%;
+  transform: translate(6%, 3%);
 
 }
   

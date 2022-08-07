@@ -9,10 +9,10 @@ class KnobHandler extends Component {
   render() {
     return (
       <div className="divCont">
-        <table className="controller" height="190px">
-          <tbody height="190px">
-            <tr height="190px">
-              <td height="190px">
+        <table className="controller">
+          <tbody>
+            <tr>
+              <td>
                 <Knob
                   key="0"
                   idNumber={0}
@@ -26,7 +26,7 @@ class KnobHandler extends Component {
                   img="k0-10"
                 ></Knob>
               </td>
-              <td height="190px">
+              <td>
                 <Knob
                   key="1"
                   idNumber={1}
@@ -40,7 +40,7 @@ class KnobHandler extends Component {
                   img="k0-1-2"
                 ></Knob>
               </td>
-              <td height="190px">
+              <td>
                 <Knob
                   key="2"
                   idNumber={2}
@@ -54,7 +54,7 @@ class KnobHandler extends Component {
                   img="k0-10"
                 ></Knob>
               </td>
-              <td height="190px">
+              <td>
                 <Knob
                   key="3"
                   idNumber={3}
@@ -68,7 +68,7 @@ class KnobHandler extends Component {
                   img="k0-10"
                 ></Knob>
               </td>
-              <td height="190px">
+              <td>
                 <Knob
                   key="4"
                   idNumber={4}
