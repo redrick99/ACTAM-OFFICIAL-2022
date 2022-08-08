@@ -37,7 +37,7 @@ const voicingsFunctions = [
 
             case Tonalities.MIN:
                 array = [n[3], n[5], n[7], n[9]];
-                symbol = functions.getChordSymbol(f, "-9");
+                symbol = functions.getChordSymbol(f, "m9");
                 break;
 
             case Tonalities.DOM:
@@ -46,7 +46,7 @@ const voicingsFunctions = [
                 break;
             default:
                 array = [n[1], n[3], n[5], n[7]];
-                symbol = functions.getChordSymbol(f, "-7♭5")
+                symbol = functions.getChordSymbol(f, Tonalities.HDIM)
         }
 
         return new Chord(f, array, options.duration, symbol) // Duration #TODO
@@ -69,7 +69,7 @@ const voicingsFunctions = [
 
             case Tonalities.MIN:
                 array = [n[7]-12, n[9]-12, n[3], n[5]];
-                symbol = functions.getChordSymbol(f, "-9");
+                symbol = functions.getChordSymbol(f, "m9");
                 break;
 
             case Tonalities.DOM:
@@ -78,7 +78,7 @@ const voicingsFunctions = [
                 break;
             default:
                 array = [n[1], n[3], n[5], n[7]];
-                symbol = functions.getChordSymbol(f, "-7♭5")
+                symbol = functions.getChordSymbol(f, Tonalities.HDIM)
         }
 
         return new Chord(f, array, options.duration, symbol); 
