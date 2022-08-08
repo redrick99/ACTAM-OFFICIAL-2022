@@ -55,7 +55,7 @@ class VoicingsSelector extends Component {
             selectedType: 0,
         }))
         const fIndex = functionsMap.indexOf((names[index]+'-'+'Type 1'));
-        if(fIndex) {
+        if(fIndex !== undefined) {
             voicingsHandler.setVoicingsType(fIndex);
         }
     }
@@ -65,7 +65,7 @@ class VoicingsSelector extends Component {
             selectedType: index,
         }))
         const fIndex = functionsMap.indexOf((names[this.state.selectedName]+'-'+(types[this.state.selectedName])[index]));
-        if(fIndex) {
+        if(fIndex !== undefined) {
             voicingsHandler.setVoicingsType(fIndex);
         }
     }
