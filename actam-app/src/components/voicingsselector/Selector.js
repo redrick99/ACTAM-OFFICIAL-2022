@@ -49,7 +49,6 @@ class Selector extends Component {
                                     optionsOpen: false,
                                     selectedOption: index,
                                 }))
-                                console.log(index);
                                 this.props.click(index);
                             }}
                         >
