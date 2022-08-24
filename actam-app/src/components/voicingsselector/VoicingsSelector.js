@@ -6,6 +6,7 @@ import "./VoicingsSelector.css";
 import SettingsButton from "../settings/SettingsButton";
 import MidiButton from "../settings/MidiButton";
 import KnobHandler from "../settings/KnobHandler";
+import PrinterButton from "../settings/PrinterButton";
 import chordAudioHandler from "../../scripts/ChordAudioHandler";
 
 const functionsMap = [
@@ -66,6 +67,7 @@ class VoicingsSelector extends Component {
     this.clickType = this.clickType.bind(this);
     this.activeSettings = this.activeSettings.bind(this);
     this.activeMidi = this.activeMidi.bind(this);
+    this.print = this.print.bind(this);
   }
 
   clickName(index) {
@@ -117,6 +119,8 @@ class VoicingsSelector extends Component {
     }
   }
 
+  print() {}
+
   render() {
     const tP = textParagraphs[this.state.selectedName];
     return (
@@ -154,6 +158,11 @@ class VoicingsSelector extends Component {
                     active={this.activeMidi}
                     state={this.state.midi}
                   />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <PrinterButton id="printer-button" className="printer-button" print={this.print} />
                 </td>
               </tr>
             </tbody>

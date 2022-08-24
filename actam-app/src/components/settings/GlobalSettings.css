@@ -17,7 +17,7 @@ div.global-settings-div2 {
     height: 167px;
 }
 
-div.loop-button, div.legato-button, div.settings-button, div.midi-button {
+div.loop-button, div.legato-button, div.settings-button, div.midi-button, div.printer-button {
     background-image: url(../../resources/loop-inactive.png);
     background-repeat: no-repeat;
     background-size: 35px 35px;
@@ -41,7 +41,7 @@ div.loop-button.checked, div.legato-button.checked {
     background-color: #FFB100;
 }
 
-div.loop-button:hover, div.legato-button:hover, div.settings-button:hover, div.midi-button:hover {
+div.loop-button:hover, div.legato-button:hover, div.settings-button:hover, div.midi-button:hover, div.printer-button:hover {
     border-color: #FFB100;
 }
 
@@ -74,4 +74,8 @@ div.midi-button{
 div.midi-button.inactive{
     background-image: url(../../resources/MIDI_white.png);
     background-color: #FFB100;
+}
+
+div.printer-button{
+    background-image: url(../../resources/printer2.png);
 }
