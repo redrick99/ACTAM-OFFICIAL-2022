@@ -1,7 +1,6 @@
-
-
-
-.divCont{
+/*
+THIS COULD BE REMOVED FOR CONSISTENCY WITH THE REST OF THE APPLICATION
+.divCont{ 
   max-height: 200px;
   max-width: 650px;
   border: 1px solid;
@@ -14,6 +13,7 @@
   overflow: hidden;
   margin-bottom: 10px;
 }
+*/
 
 .imgKnob{
   background-image: url("/src/resources/knobs/knobColored3.png");
@@ -26,7 +26,6 @@
   opacity: 100%;
 }
 
-
 .k0-10{
   background-image: url("/src/resources/knobIndicators/myDotIndicator0-10-2.png");
   background-repeat: no-repeat;
@@ -35,21 +34,18 @@
   height: 160px;
   opacity: 100%;
   transform: translate(6%, 3%);
-
 }
-
 
 .k0-1-2{
   background-image: url("/src/resources/knobIndicators/myDotIndicator0-1-3.png");
   background-repeat: no-repeat;
-  background-size: 145px 125px;
+  background-size: 145px 120px;
   width: 160px;
   height: 160px;
   opacity: 100%;
   transform: translate(6%, 3%);
 
-}
-  
+} 
 
 .td, .tr, .controller{
   height: 100px;

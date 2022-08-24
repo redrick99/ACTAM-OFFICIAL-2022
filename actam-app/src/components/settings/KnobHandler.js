@@ -14,20 +14,6 @@ class KnobHandler extends Component {
             <tr>
               <td>
                 <Knob
-                  key="0"
-                  idNumber={0}
-                  dispText={this.props.value}
-                  change={this.props.change[0]}
-                  name="volume"
-                  id={"knob-0"}
-                  minRange={0}
-                  maxRange={10}
-                  initial={3}
-                  img="k0-10"
-                ></Knob>
-              </td>
-              <td>
-                <Knob
                   key="1"
                   idNumber={1}
                   dispText={this.props.value}

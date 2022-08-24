@@ -17,7 +17,7 @@ div.global-settings-div2 {
     height: 167px;
 }
 
-div.loop-button, div.legato-button {
+div.loop-button, div.legato-button, div.settings-button, div.midi-button {
     background-image: url(../../resources/loop-inactive.png);
     background-repeat: no-repeat;
     background-size: 35px 35px;
@@ -34,13 +34,14 @@ div.loop-button {
     margin-right: 25px;
 }
 
+
 div.loop-button.checked, div.legato-button.checked {
     background-image: url(../../resources/loop-active.png);
     background-repeat: no-repeat;
     background-color: #FFB100;
 }
 
-div.loop-button:hover, div.legato-button:hover {
+div.loop-button:hover, div.legato-button:hover, div.settings-button:hover, div.midi-button:hover {
     border-color: #FFB100;
 }
 
@@ -50,4 +51,27 @@ div.legato-button {
 
 div.legato-button.checked {
     background-image: url(../../resources/legato-active.png);
+}
+
+div.settings-button{
+    background-image: url(../../resources/gear_orange.png);
+}
+
+div.settings-button.inactive{
+    background-image: url(../../resources/gear_white.png);
+    background-color: #FFB100;
+}
+
+div.settings-button {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+div.midi-button{
+    background-image: url(../../resources/MIDI_orange.png);
+}
+
+div.midi-button.inactive{
+    background-image: url(../../resources/MIDI_white.png);
+    background-color: #FFB100;
 }

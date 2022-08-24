@@ -96,3 +96,7 @@ ul.names-selector li:hover {
     color: white;
     cursor: pointer;
 }
+
+.hidden{
+    display: none;
+}
