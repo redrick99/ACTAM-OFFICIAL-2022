@@ -5,7 +5,13 @@ class MidiButton extends Component {
   }
 
   render() {
-    return <div className={"midi-button " + (this.props.state ? "inactive" : "active")} onClick={this.props.active} />;
+    return (
+      <div
+        title={this.props.state ? "Close MIDI controls" : "Open MIDI controls"}
+        className={"midi-button " + (this.props.state ? "inactive" : "active")}
+        onClick={this.props.active}
+      />
+    );
   }
 }
 

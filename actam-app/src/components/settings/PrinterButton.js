@@ -5,7 +5,7 @@ class PrinterButton extends Component {
   }
 
   render() {
-    return <div className={"printer-button "} onClick={this.props.print} />;
+    return <div title="Print the chords" className={"printer-button "} onClick={this.props.print} />;
   }
 }
 

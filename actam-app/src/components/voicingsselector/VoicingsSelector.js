@@ -119,7 +119,9 @@ class VoicingsSelector extends Component {
     }
   }
 
-  print() {}
+  print() {
+    // Function to print all the chords and maybe the sheet
+  }
 
   render() {
     const tP = textParagraphs[this.state.selectedName];
