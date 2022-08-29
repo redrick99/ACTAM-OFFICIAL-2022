@@ -8,6 +8,7 @@ import MidiButton from "../settings/MidiButton";
 import KnobHandler from "../settings/KnobHandler";
 import PrinterButton from "../settings/PrinterButton";
 import chordAudioHandler from "../../scripts/ChordAudioHandler";
+import midiHandler from "../../scripts/MidiHandler";
 
 const functionsMap = [
   "Rootless-Type 1",
@@ -39,34 +40,34 @@ const audioChordSettings = [
     chordAudioHandler.getInstrument().volume.gain.value = value;
   },
   (value) => {
-    chordAudioHandler.getInstrument().chorus.wet.value = value;
+    chordAudioHandler.getInstrument().cGain.gain.value = value;
   },
   (value) => {
-    chordAudioHandler.getInstrument().reverb.wet.value = value;
+    chordAudioHandler.getInstrument().rGain.gain.value = value;
   },
   (value) => {
-    chordAudioHandler.getInstrument().attack = value;
+    chordAudioHandler.getInstrument().sampler.attack = value;
   },
   (value) => {
-    chordAudioHandler.getInstrument().release = value;
+    chordAudioHandler.getInstrument().sampler.release = value;
   },
 ];
 
 const audioMelodySettings = [
   (value) => {
-    chordAudioHandler.getInstrument().volume.gain.value = value;
+    midiHandler.getInstrument().volume.gain.value = value;
   },
   (value) => {
-    chordAudioHandler.getInstrument().chorus.wet.value = value;
+    midiHandler.getInstrument().cGain.gain.value = value;
   },
   (value) => {
-    chordAudioHandler.getInstrument().reverb.wet.value = value;
+    midiHandler.getInstrument().rGain.gain.value = value;
   },
   (value) => {
-    chordAudioHandler.getInstrument().attack = value;
+    midiHandler.getInstrument().sampler.attack = value;
   },
   (value) => {
-    chordAudioHandler.getInstrument().release = value;
+    midiHandler.getInstrument().sampler.release = value;
   },
 ];
 

@@ -4,6 +4,7 @@ import * as Tone from 'tone'
 import ChordsTable from './components/chordstable/ChordsTable';
 import chordProgressionHandler from './scripts/ChordProgressionHandler';
 import chordAudioHandler from './scripts/ChordAudioHandler';
+import midiHandler from './scripts/MidiHandler';
 import voicingsHandler from './scripts/VoicingsHandler';
 import { assignables, master } from './scripts/GlobalVariables';
 import ChordsVisualizer from './components/chordsvisualizer/ChordsVisualizer';
@@ -23,7 +24,10 @@ function App() {
   async function init() {
     await Tone.start().then(() => {
       chordAudioHandler.connect(master);
+      midiHandler.connect(master);
       master.toDestination();
+      midiHandler.init();
+      Tone.context.lookAhead = 0.05;
     });
   }
   

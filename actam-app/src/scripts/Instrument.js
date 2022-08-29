@@ -5,21 +5,29 @@ class Instrument {
     constructor() {
         this.sampler = new Tone.Sampler();
 
-        //this.parentNode = parentNode;
         this.volume = new Tone.Gain();
-        this.reverb = new Tone.Reverb();
+        this.dGain = new Tone.Gain();
+        this.reverb = new Tone.Freeverb();
+        this.rGain = new Tone.Gain();
         this.chorus = new Tone.Chorus();
+        this.cGain = new Tone.Gain();
 
-        this.sampler.connect(this.reverb);
-        this.reverb.connect(this.chorus);
-        this.chorus.connect(this.volume);
-        //this.volume.connect(this.parentNode);
+        this.sampler.chain(this.dGain, this.volume);
+        this.sampler.chain(this.chorus, this.cGain, this.volume);
+        this.sampler.chain(this.reverb, this.rGain, this.volume);
 
         this.createSampler("https://tonejs.github.io/audio/salamander/");
 
         this.volume.gain.value = 0.8;
-        this.reverb.wet.value = 0;
-        this.chorus.wet.value = 0;
+        this.reverb.wet.value = 1;
+        this.chorus.wet.value = 1;
+        this.dGain.gain.value = 1;
+        this.rGain.gain.value = 0;
+        this.cGain.gain.value = 0;
+    }
+
+    playNote(note, velocity) {
+        this.sampler.triggerAttack(note, Tone.now(), velocity);
     }
 
     play(notes, start, duration) {
@@ -37,7 +45,10 @@ class Instrument {
     createSampler(baseUrl_) {
         const sampAttack = this.sampler.attack;
         const sampRelease = this.sampler.release;
+        this.sampler.disconnect(this.dGain);
+        this.sampler.disconnect(this.chorus);
         this.sampler.disconnect(this.reverb);
+        this.sampler.dispose();
 
         this.sampler = new Tone.Sampler({
             urls: {
@@ -75,7 +86,10 @@ class Instrument {
             attack: sampAttack,
             release: sampRelease,
             baseUrl: baseUrl_,
-        }).connect(this.reverb);
+        });
+        this.sampler.chain(this.dGain, this.volume);
+        this.sampler.chain(this.reverb, this.rGain, this.volume);
+        this.sampler.chain(this.chorus, this.cGain, this.volume);
     };
 }
 

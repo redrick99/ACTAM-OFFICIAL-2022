@@ -49,8 +49,8 @@ class KnobHandler extends Component {
                   name="attack"
                   id={"knob-"+(3+this.props.idNumber)}
                   minRange={0}
-                  maxRange={1}
-                  initial={0.7}
+                  maxRange={100}
+                  initial={0}
                   img="k0-10"
                 ></Knob>
               </td>
@@ -63,8 +63,8 @@ class KnobHandler extends Component {
                   name="release"
                   id={"knob-"+(4+this.props.idNumber)}
                   minRange={0}
-                  maxRange={100}
-                  initial={90}
+                  maxRange={2000}
+                  initial={0}
                   img="k0-10"
                 ></Knob>
               </td>

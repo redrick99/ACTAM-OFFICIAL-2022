@@ -124,6 +124,7 @@ class Knob extends Component {
       unity = 135 / ((this.props.maxRange - this.props.minRange) / 2);
       initialDeg = unity * initialDeg - 135 - this.props.minRange * unity;
       document.getElementById(this.props.id).style.transform = "translate(50%, -160%) rotate(" + initialDeg + "deg)";
+      this.props.change(event.target.value);
       this.setState(() => ({
         value: event.target.value,
       }));
