@@ -98,7 +98,29 @@ const chordProgressionHandler = (function() {
                 index: ++idx,
                 ended: chords[index] === undefined || chords[index] === '',
             });
-        }
+        },
+
+        getChordsForPrint: function(chords, legato) {
+            const chordsToPrint = [];
+
+            for(let i = 0; i < chords.length; i++) {
+                let duration = 1;
+                let chord = chords[i];
+                if(chord === '' || chord === undefined) {
+                    return chordsToPrint;
+                }
+                while(legato && chord === chords[i-1]) {
+                    duration++;
+                    i++;
+                }
+                chordsToPrint.push({
+                    chord: chord,
+                    duration: duration,
+                });
+            }
+
+            return chordsToPrint;
+        },
     };
 })();
 
