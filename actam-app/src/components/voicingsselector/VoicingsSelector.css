@@ -3,7 +3,7 @@ div.voicings-selector-container {
     margin-top: 20px;
     margin-bottom: 10px;
     display: flex;
-    height: 450px;
+    min-height: 450px;
     width: 900px;
 }
 
@@ -99,4 +99,19 @@ ul.names-selector li:hover {
 
 .hidden{
     display: none;
+}
+
+.melody-player-settings, .chords-player-settings {
+    max-height: 203px;
+    margin: 10px;
+}
+
+.melody-player-settings {
+    margin-top: 35px;
+    margin-bottom: 0;
+}
+
+p.settings-name {
+    margin-top: 10px;
+    margin-bottom: 5px;
 }

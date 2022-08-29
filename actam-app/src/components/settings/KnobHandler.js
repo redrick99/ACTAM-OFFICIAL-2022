@@ -19,7 +19,7 @@ class KnobHandler extends Component {
                   dispText={this.props.value}
                   change={this.props.change[1]}
                   name="chorous"
-                  id={"knob-1"}
+                  id={"knob-"+(1+this.props.idNumber)}
                   minRange={0}
                   maxRange={1}
                   initial={0.1}
@@ -33,7 +33,7 @@ class KnobHandler extends Component {
                   dispText={this.props.value}
                   change={this.props.change[2]}
                   name="reverb"
-                  id={"knob-2"}
+                  id={"knob-"+(2+this.props.idNumber)}
                   minRange={0}
                   maxRange={1}
                   initial={0.7}
@@ -47,7 +47,7 @@ class KnobHandler extends Component {
                   dispText={this.props.value}
                   change={this.props.change[3]}
                   name="attack"
-                  id={"knob-3"}
+                  id={"knob-"+(3+this.props.idNumber)}
                   minRange={0}
                   maxRange={1}
                   initial={0.7}
@@ -61,7 +61,7 @@ class KnobHandler extends Component {
                   dispText={this.props.value}
                   change={this.props.change[4]}
                   name="release"
-                  id={"knob-4"}
+                  id={"knob-"+(4+this.props.idNumber)}
                   minRange={0}
                   maxRange={100}
                   initial={90}

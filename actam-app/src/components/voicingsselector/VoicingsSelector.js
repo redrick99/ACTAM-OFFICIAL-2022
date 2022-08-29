@@ -42,7 +42,25 @@ const audioChordSettings = [
     chordAudioHandler.getInstrument().chorus.wet.value = value;
   },
   (value) => {
-    chordAudioHandler.getInstrument().rever.wet.value = value;
+    chordAudioHandler.getInstrument().reverb.wet.value = value;
+  },
+  (value) => {
+    chordAudioHandler.getInstrument().attack = value;
+  },
+  (value) => {
+    chordAudioHandler.getInstrument().release = value;
+  },
+];
+
+const audioMelodySettings = [
+  (value) => {
+    chordAudioHandler.getInstrument().volume.gain.value = value;
+  },
+  (value) => {
+    chordAudioHandler.getInstrument().chorus.wet.value = value;
+  },
+  (value) => {
+    chordAudioHandler.getInstrument().reverb.wet.value = value;
   },
   (value) => {
     chordAudioHandler.getInstrument().attack = value;
@@ -179,11 +197,17 @@ class VoicingsSelector extends Component {
           </div>
         </div>
         <div className={"voicings-description-container" + (this.state.settings ? " " : " hidden")}>
-          <h2 className="voicings-name">Settings</h2>
-          <KnobHandler change={audioChordSettings}></KnobHandler>
+          <div className="chords-player-settings">
+            <p className="settings-name"><b>Chords Player Settings</b></p>
+            <KnobHandler idNumber={0} change={audioChordSettings}></KnobHandler>
+          </div>
+          <div className="melody-player-settings">
+            <p className="settings-name"><b>MIDI Keyboard Settings</b></p>
+            <KnobHandler idNumber={4} change={audioMelodySettings}></KnobHandler>
+          </div>
         </div>
         <div className={"voicings-description-container" + (this.state.midi ? " " : " hidden")}>
-          <h2 className="voicings-name">MIDI controls</h2>
+          <h2 className="voicings-name">MIDI Keyboard</h2>
         </div>
       </div>
     );
