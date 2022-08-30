@@ -34,6 +34,8 @@ export const assignables = {
     bpm: 60,
     loop: false,
     legato: false,
+    octaveShift: 0,
+    selectedName: 0,
     waitingFunction: undefined,
     loadingBarFunction: undefined,
 }

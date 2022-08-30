@@ -1,7 +1,7 @@
 div.global-settings {
     /*width: 16.5%;*/
     height: fit-content;
-    margin-left: 1px;
+    margin-left: 15px;
 }
 
 div.global-settings-div1 {
@@ -11,10 +11,27 @@ div.global-settings-div1 {
     margin: 0 auto;
 }
 
-div.global-settings-div2 {
-    width: 100%;
-    margin-top: 10px;
-    height: 167px;
+div.octave-selector {
+    width: 85%;
+    margin-top: 29px;
+    height: fit-content;
+    border: 1px solid #D6D6D6;
+    border-radius: 5px;
+    background-color: #D6D6D6;
+    padding: 7%;
+    display: flex;
+    opacity: 30%;
+}
+
+div.octave-selector.active {
+    opacity: 100%;
+}
+
+div.octave-selector-indicator {
+    text-align: center;
+    font-size: xx-large;
+    color: #235789;
+    margin: auto;
 }
 
 div.loop-button,
@@ -32,6 +49,56 @@ div.printer-button {
     border: 2px solid #D6D6D6;
     border-radius: 5px;
     padding: 10px;
+}
+
+div.up,
+div.down {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #E6E6EA;
+    background-color: #E6E6EA;
+    border-radius: 5px;
+    padding: 10px;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: center;
+}
+
+div.up.hid,
+div.down.hid {
+    visibility: hidden;
+}
+
+div.up.active,
+div.down.active {
+    cursor: pointer;
+}
+
+div.up.active:hover,
+div.down.active:hover {
+    border-color: #235789;
+}
+
+div.up.active:active,
+div.down.active:active {
+    background-color: #235789;
+}
+
+div.up {
+    background-image: url(../../resources/arrow-up-blue.png);
+    margin-bottom: 20px;
+}
+
+div.down {
+    background-image: url(../../resources/arrow-down-blue.png);
+}
+
+div.up.active:active {
+    background-image: url(../../resources/arrow-up-white.png);
+}
+
+div.down.active:active {
+    background-image: url(../../resources/arrow-down-white.png);
 }
 
 div.loop-button {

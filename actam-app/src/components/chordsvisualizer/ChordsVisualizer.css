@@ -62,6 +62,7 @@ div.chords-visualizer {
     width: 79%;
     padding: 0px;
     height: fit-content;
+    min-height: 232px;
     background-color: #D6D6D6;
     border: 1px solid #D6D6D6;
     border-radius: 5px;

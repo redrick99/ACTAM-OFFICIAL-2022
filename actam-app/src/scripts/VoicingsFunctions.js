@@ -170,8 +170,7 @@ const voicingsFunctions = [
             default:
                 array = [n[1], n[3]+12, n[7]+12];
         }
-
-        return new Chord(f, array, options.duration, symbol);
+        return new Chord(f, array.sort((a, b) => a - b), options.duration, symbol);
     },
 
     // Four Note Voicings
@@ -198,7 +197,7 @@ const voicingsFunctions = [
                 array = [n[1], n[3]+12, n[5]+12, n[7]+12];
         }
 
-        return new Chord(f, array, options.duration, symbol); 
+        return new Chord(f, array.sort((a, b) => a - b), options.duration, symbol); 
     },
 
     // Open Chord Voicings - Type 1

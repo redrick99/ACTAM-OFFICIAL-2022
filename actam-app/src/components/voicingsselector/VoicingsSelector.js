@@ -109,9 +109,11 @@ class VoicingsSelector extends Component {
       selectedName: index,
       selectedType: 0,
     }));
+    assignables.selectedName = index;
     const fIndex = functionsMap.indexOf(names[index] + "-" + "Type 1");
     if (fIndex !== undefined) {
       voicingsHandler.setVoicingsType(fIndex);
+      this.props.changeVoicingsType(index);
     }
   }
 

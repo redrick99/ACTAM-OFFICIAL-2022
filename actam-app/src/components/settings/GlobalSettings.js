@@ -4,6 +4,7 @@ import Knob from "./Knob";
 import { assignables, master } from "../../scripts/GlobalVariables";
 import "./GlobalSettings.css";
 import SettingsButton from "./SettingsButton";
+import OctaveSelector from "./OctaveSelector";
 
 class GlobalSettings extends Component {
   constructor(props) {
@@ -12,12 +13,13 @@ class GlobalSettings extends Component {
     this.state = {
       loop: false,
       legato: false,
-      masterVolume: 0.5,
+      octave: 0,
     };
 
     this.clickLoop = this.clickLoop.bind(this);
     this.clickLegato = this.clickLegato.bind(this);
-    this.changeKnob = this.changeKnob.bind(this);
+    this.clickUp = this.clickUp.bind(this);
+    this.clickDown = this.clickDown.bind(this);
   }
 
   clickLoop() {
@@ -34,11 +36,24 @@ class GlobalSettings extends Component {
     }));
   }
 
-  changeKnob(value) {
-    this.setState(() => ({
-      masterVolume: value,
+  clickUp() {
+    if(this.state.octave === 1) {
+      return;
+    }
+    assignables.octaveShift++;
+    this.setState((prevState) => ({
+      octave: prevState.octave + 1,
     }));
-    master.gain.value = value;
+  }
+
+  clickDown() {
+    if(this.state.octave === -1) {
+      return;
+    }
+    assignables.octaveShift--;
+    this.setState((prevState) => ({
+      octave: prevState.octave - 1,
+    }));
   }
 
   render() {
@@ -62,19 +77,7 @@ class GlobalSettings extends Component {
             click={this.clickLegato}
           />
         </div>
-        <div className="global-settings-div2">
-          <Knob
-            id="master-volume-knob"
-            idNumber="0"
-            dispText={this.state.knobText}
-            change={this.changeKnob}
-            name="master"
-            minRange={0}
-            maxRange={1}
-            initial={0.5}
-            img="k0-1-2"
-          />
-        </div>
+        <OctaveSelector active={this.props.octaveActive} value={this.state.octave} min={-1} max={1} clickUp={this.clickUp} clickDown={this.clickDown} />
       </div>
     );
   }

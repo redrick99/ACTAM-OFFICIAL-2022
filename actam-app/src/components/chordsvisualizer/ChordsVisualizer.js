@@ -23,7 +23,7 @@ class ChordsVisualizer extends Component {
                         </tbody>
                     </table>
                 </div>
-                <GlobalSettings />
+                <GlobalSettings octaveActive={this.props.octaveActive} />
             </div>
         );
     }

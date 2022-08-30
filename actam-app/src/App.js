@@ -20,7 +20,8 @@ function App() {
   const [visualizationChords, setVisualizationChords] = React.useState(['', '', '']);
   const [barWidth, setBarWidth] = React.useState(0);
   const [playing, setPlaying] = React.useState(false);
-  const [currentChord,setCurrentChord] = React.useState([]);
+  const [currentChord, setCurrentChord] = React.useState([]);
+  const [octaveActive, setOctaveActive] = React.useState(false);
   const firstNote = MidiNumbers.fromNote('a0');
   const lastNote = MidiNumbers.fromNote('c8');
   const keyboardShortcuts = KeyboardShortcuts.create({
@@ -42,6 +43,10 @@ function App() {
   function setChordsArray(chords) {
     setChords(chords);
     assignables.chords = chords;
+  }
+
+  function changeVoicingsType(index) {
+    setOctaveActive(index > 2);
   }
 
   function start(index) {
@@ -102,7 +107,7 @@ function App() {
     <div className="App">
       <h1 className='title'>Voicings Generator</h1>
       <ChordsTable setChords={setChordsArray} playChords={chords} cellsPerRow={16} active={playing} init={init} start={() => {chords[0] !== '' ? start(0) : stop()}} stop={stop}/>
-      <ChordsVisualizer chords={visualizationChords} width={barWidth} hidden={false}/>
+      <ChordsVisualizer chords={visualizationChords} width={barWidth} hidden={false} octaveActive={octaveActive}  />
       <Piano
         noteRange={{ first: firstNote, last: lastNote }}
         playNote={(midiNumber) => {
@@ -115,7 +120,7 @@ function App() {
         disabled={false}
         activeNotes={currentChord}
       />
-      <VoicingsSelector/>
+      <VoicingsSelector changeVoicingsType={changeVoicingsType}/>
     </div>
   );
 }

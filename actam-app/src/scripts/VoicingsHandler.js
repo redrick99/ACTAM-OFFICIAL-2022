@@ -51,7 +51,7 @@ const voicingsHandler = (function() {
         const fundamental = getChordFundamental(mode, key, grade);
 
         return calculateVoicings({
-            fundamental: fundamental + 48, 
+            fundamental: fundamental + 48 + (assignables.selectedName > 2 ? (assignables.octaveShift*12) : 0), 
             key: key, 
             shift: 48,
             intervals: intervalsPerGrade[grade],
@@ -70,12 +70,6 @@ const voicingsHandler = (function() {
         setVoicingsType: function(index) {
             calculateVoicings = voicingsFunctions[index];
         },
-
-        /*getVoicings: function(chord, duration) {
-            if(!chord || chord === '')
-                return '';
-            return getChordVoicings(chord, duration);
-        },*/
 
         getVoicings: function(chords, duration) {
             return Array.from(chords, chord => !chord || chord === '' ? '' : getChordVoicings(chord, duration));
