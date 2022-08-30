@@ -1,6 +1,7 @@
 import './App.css';
 import React, { Component, useEffect } from 'react'
 import * as Tone from 'tone'
+import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
 import ChordsTable from './components/chordstable/ChordsTable';
 import chordProgressionHandler from './scripts/ChordProgressionHandler';
 import chordAudioHandler from './scripts/ChordAudioHandler';
@@ -11,15 +12,22 @@ import ChordsVisualizer from './components/chordsvisualizer/ChordsVisualizer';
 import Chord from './scripts/Chord';
 import VoicingsSelector from './components/voicingsselector/VoicingsSelector';
 import GlobalSettings from './components/settings/GlobalSettings';
+import 'react-piano/dist/styles.css';
+import './components/piano.css'
 
 function App() {
   const [chords, setChords] = React.useState(Array(16).join(".").split("."))
   const [visualizationChords, setVisualizationChords] = React.useState(['', '', '']);
   const [barWidth, setBarWidth] = React.useState(0);
   const [playing, setPlaying] = React.useState(false);
-  const [bpm, setBpm] = React.useState(60);
-  const [loop, setLoop] = React.useState(false);
-  const [legato, setLegato] = React.useState(true);
+  const [currentChord,setCurrentChord] = React.useState([]);
+  const firstNote = MidiNumbers.fromNote('a0');
+  const lastNote = MidiNumbers.fromNote('c8');
+  const keyboardShortcuts = KeyboardShortcuts.create({
+    firstNote: firstNote,
+    lastNote: lastNote,
+    keyboardConfig: KeyboardShortcuts.HOME_ROW,
+  });
 
   async function init() {
     await Tone.start().then(() => {
@@ -46,16 +54,17 @@ function App() {
     //console.log("Number: "+(index+1));
     const chords = voicingsHandler.getVoicings(result.chords, result.duration);
 
-    const time = result.duration*assignables.bpm/60;
+    const time = result.duration*60/assignables.bpm;
 
     // Display Chord
     setPlaying(true);
+    setCurrentChord(chords[1].array);
     setVisualizationChords(chords);
     moveBar(time);
 
     // Play Chord
     const startT = Tone.now();
-    chordAudioHandler.playChord(chords[1], startT, time, assignables.bpm);
+    chordAudioHandler.playChord(chords[1], startT, time);
 
     assignables.waitingFunction = setTimeout(start, 1000*time, result.index);
   }
@@ -69,6 +78,7 @@ function App() {
     setPlaying(false);
     setBarWidth(0);
     setVisualizationChords(['', '', '']);
+    setCurrentChord([]);
   }
 
   function moveBar(time) {
@@ -93,6 +103,18 @@ function App() {
       <h1 className='title'>Voicings Generator</h1>
       <ChordsTable setChords={setChordsArray} playChords={chords} cellsPerRow={16} active={playing} init={init} start={() => {chords[0] !== '' ? start(0) : stop()}} stop={stop}/>
       <ChordsVisualizer chords={visualizationChords} width={barWidth} hidden={false}/>
+      <Piano
+        noteRange={{ first: firstNote, last: lastNote }}
+        playNote={(midiNumber) => {
+          // Play a given note - see notes below
+        }}
+        stopNote={(midiNumber) => {
+          // Stop playing a given note - see notes below
+        }}
+        width={904}
+        disabled={false}
+        activeNotes={currentChord}
+      />
       <VoicingsSelector/>
     </div>
   );

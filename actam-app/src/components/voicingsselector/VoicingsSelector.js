@@ -9,6 +9,10 @@ import KnobHandler from "../settings/KnobHandler";
 import PrinterButton from "../settings/PrinterButton";
 import chordAudioHandler from "../../scripts/ChordAudioHandler";
 import midiHandler from "../../scripts/MidiHandler";
+import CheckButton from "../settings/CheckButton";
+import VolumeControls from "../settings/VolumeControls";
+import { assignables, master } from "../../scripts/GlobalVariables";
+import Knob from "../settings/Knob";
 
 const functionsMap = [
   "Rootless-Type 1",
@@ -37,9 +41,6 @@ const types = [
 
 const audioChordSettings = [
   (value) => {
-    chordAudioHandler.getInstrument().volume.gain.value = value;
-  },
-  (value) => {
     chordAudioHandler.getInstrument().cGain.gain.value = value;
   },
   (value) => {
@@ -55,9 +56,6 @@ const audioChordSettings = [
 
 const audioMelodySettings = [
   (value) => {
-    midiHandler.getInstrument().volume.gain.value = value;
-  },
-  (value) => {
     midiHandler.getInstrument().cGain.gain.value = value;
   },
   (value) => {
@@ -71,6 +69,22 @@ const audioMelodySettings = [
   },
 ];
 
+const volumeSettings = [
+  (value) => {
+    master.gain.value = value;
+  },
+  (value) => {
+    chordAudioHandler.getInstrument().volume.gain.value = value;
+  },
+  (value) => {
+    midiHandler.getInstrument().volume.gain.value = value;
+  },
+]
+
+const changeBpm = (value) => {
+  assignables.bpm = value;
+}
+
 class VoicingsSelector extends Component {
   constructor(props) {
     super(props);
@@ -79,7 +93,7 @@ class VoicingsSelector extends Component {
       selectedName: 0,
       selectedType: 0,
       settings: false,
-      midi: false,
+      globalSettings: false,
     };
 
     this.clickName = this.clickName.bind(this);
@@ -95,7 +109,7 @@ class VoicingsSelector extends Component {
       selectedType: 0,
     }));
     const fIndex = functionsMap.indexOf(names[index] + "-" + "Type 1");
-    if (fIndex) {
+    if (fIndex !== undefined) {
       voicingsHandler.setVoicingsType(fIndex);
     }
   }
@@ -105,7 +119,7 @@ class VoicingsSelector extends Component {
       selectedType: index,
     }));
     const fIndex = functionsMap.indexOf(names[this.state.selectedName] + "-" + types[this.state.selectedName][index]);
-    if (fIndex) {
+    if (fIndex !== undefined) {
       voicingsHandler.setVoicingsType(fIndex);
     }
   }
@@ -114,25 +128,25 @@ class VoicingsSelector extends Component {
     if (!this.state.settings) {
       this.setState(() => ({
         settings: true,
-        midi: false,
+        globalSettings: false,
       }));
     } else {
       this.setState(() => ({
         settings: false,
-        midi: false,
+        globalSettings: false,
       }));
     }
   }
 
   activeMidi() {
-    if (!this.state.midi) {
+    if (!this.state.globalSettings) {
       this.setState(() => ({
-        midi: true,
+        globalSettings: true,
         settings: false,
       }));
     } else {
       this.setState(() => ({
-        midi: false,
+        globalSettings: false,
         settings: false,
       }));
     }
@@ -173,11 +187,12 @@ class VoicingsSelector extends Component {
                   />
                 </td>
                 <td>
-                  <MidiButton
-                    id="midi-button"
-                    className="midi-button"
-                    active={this.activeMidi}
-                    state={this.state.midi}
+                  <CheckButton
+                    id="global-settings-button"
+                    className="global-settings-button"
+                    click={this.activeMidi}
+                    checked={this.state.globalSettings}
+                    title="global-settings"
                   />
                 </td>
               </tr>
@@ -189,7 +204,7 @@ class VoicingsSelector extends Component {
             </tbody>
           </table>
         </div>
-        <div className={"voicings-description-container" + (this.state.settings || this.state.midi ? " hidden" : " ")}>
+        <div className={"voicings-description-container" + (this.state.settings || this.state.globalSettings ? " hidden" : " ")}>
           <h2 className="voicings-name">{names[this.state.selectedName]}</h2>
           <div className="voicings-description">
             <div className="paragraph-1">{tP[0]}</div>
@@ -207,8 +222,22 @@ class VoicingsSelector extends Component {
             <KnobHandler idNumber={4} change={audioMelodySettings}></KnobHandler>
           </div>
         </div>
-        <div className={"voicings-description-container" + (this.state.midi ? " " : " hidden")}>
-          <h2 className="voicings-name">MIDI Keyboard</h2>
+        <div className={"voicings-description-container" + (this.state.globalSettings ? " " : " hidden")}>
+          <h2 className="voicings-name">Global Settings</h2>
+          <VolumeControls change={volumeSettings}></VolumeControls>
+          <div className="other-controls">
+            <Knob
+              key={10}
+              idNumber={10}
+              change={changeBpm}
+              name="bpm"
+              id="knob-1-bpm"
+              minRange={1}
+              maxRange={200.0}
+              initial={60.0}
+              img="k0-1-2"
+            ></Knob>
+          </div>
         </div>
       </div>
     );

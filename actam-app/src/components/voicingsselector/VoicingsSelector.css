@@ -97,11 +97,12 @@ ul.names-selector li:hover {
     cursor: pointer;
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
-.melody-player-settings, .chords-player-settings {
+.melody-player-settings,
+.chords-player-settings {
     max-height: 203px;
     margin: 10px;
 }
@@ -114,4 +115,13 @@ ul.names-selector li:hover {
 p.settings-name {
     margin-top: 10px;
     margin-bottom: 5px;
+}
+
+div.other-controls {
+    width: fit-content;
+}
+
+div.volume-controls,
+div.other-controls {
+    max-height: 200px;
 }

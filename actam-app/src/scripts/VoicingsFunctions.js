@@ -22,7 +22,7 @@ const voicingsFunctions = [
 
     // Rootless - Type A
     (options) => {
-        const f = options.fundamental;
+        const f = options.key > 7 ? options.fundamental-12 : options.fundamental;
         // Contains all notes intervals summed with the fundamental
         const n = Array.from(options.intervals, x => x + f);
 
@@ -41,11 +41,11 @@ const voicingsFunctions = [
                 break;
 
             case Tonalities.DOM:
-                array = [n[7]-12, n[9]-12, n[3], n[13]];
+                array = [n[7]-12, n[9]-12, n[3], n[13]-12];
                 symbol = functions.getChordSymbol(f, "13");
                 break;
             default:
-                array = [n[1], n[3], n[5], n[7]];
+                array = [n[1], n[3], n[5]-12, n[7]-12];
                 symbol = functions.getChordSymbol(f, Tonalities.HDIM)
         }
 
@@ -54,7 +54,7 @@ const voicingsFunctions = [
 
     // Rootless - Type B
     (options) => {
-        const f = options.fundamental;
+        const f = options.key > 3 ? options.fundamental-12 : options.fundamental;
         // Contains all notes intervals summed with the fundamental
         const n = Array.from(options.intervals, x => x + f);
 
@@ -63,12 +63,12 @@ const voicingsFunctions = [
 
         switch(options.tonality) {
             case Tonalities.MAJ:
-                array = [n[7]-12, n[9]-12, n[3], n[5]];
+                array = [n[7], n[9], n[3]+12, n[5]+12];
                 symbol = functions.getChordSymbol(f, "△9");
                 break;
 
             case Tonalities.MIN:
-                array = [n[7]-12, n[9]-12, n[3], n[5]];
+                array = [n[7], n[9], n[3]+12, n[5]+12];
                 symbol = functions.getChordSymbol(f, "m9");
                 break;
 
@@ -88,17 +88,17 @@ const voicingsFunctions = [
     (options) => {
         const f = options.fundamental;
         const k = options.key;
-        const s = options.shift;
+        const s = k > 3 ? options.shift-12 : options.shift;
         // Contains all notes intervals summed with the key
         const n = Array.from(assignables.currentModalIntervals, x => x + k);
         const symbol = getChordSymbol(f, options.tonality);
 
         let array;
         if(isTonic(f, k)) {
-            array = [s+n[7]-12, s+n[1], s+n[3]];
+            array = [s+n[7], s+n[1]+12, s+n[3]+12];
         }
         else {
-            array = [s+n[3], s+n[4], s+n[6]];
+            array = [s+n[3]+12, s+n[4]+12, s+n[6]+12];
         }
         return new Chord(f, array, options.duration, symbol);
     },
@@ -116,7 +116,7 @@ const voicingsFunctions = [
 
     // Bud Powell Chord Voicings - Type 2
     (options) => {
-        const f = options.fundamental;
+        const f = options.key > 7 ? options.fundamental-12 : options.fundamental;
         // Contains all notes intervals summed with the fundamental
         const n = Array.from(options.intervals, x => x + f);
         const symbol = getChordSymbol(f, options.tonality);
@@ -127,7 +127,7 @@ const voicingsFunctions = [
 
     // Bud Powell Chord Voicings - Type 3
     (options) => {
-        const f = options.fundamental;
+        const f = options.key > 7 ? options.fundamental-12 : options.fundamental;
         // Contains all notes intervals summed with the fundamental
         const n = Array.from(options.intervals, x => x + f);
         const symbol = getChordSymbol(f, options.tonality);
@@ -138,7 +138,7 @@ const voicingsFunctions = [
 
     // Bud Powell Chord Voicings - Type 4
     (options) => {
-        const f = options.fundamental;
+        const f = options.key > 7 ? options.fundamental-12 : options.fundamental;
         // Contains all notes intervals summed with the fundamental
         const n = Array.from(options.intervals, x => x + f);
         const symbol = getChordSymbol(f, options.tonality);
@@ -153,7 +153,23 @@ const voicingsFunctions = [
         // Contains all notes intervals summed with the fundamental
         const n = Array.from(options.intervals, x => x + f);
         const symbol = getChordSymbol(f, options.tonality);
-        const array = [n[1]-12, n[3], n[7]];
+        let array;
+
+        switch(options.tonality) {
+            case Tonalities.MAJ:
+                array = [n[1], n[3]+12, n[7]+12];
+                break;
+
+            case Tonalities.MIN:
+                array = [n[1], n[3]+12, n[7]+12];
+                break;
+
+            case Tonalities.DOM:
+                array = [n[1], n[3]+12, n[7]];
+                break;
+            default:
+                array = [n[1], n[3]+12, n[7]+12];
+        }
 
         return new Chord(f, array, options.duration, symbol);
     },
@@ -164,7 +180,23 @@ const voicingsFunctions = [
         // Contains all notes intervals summed with the fundamental
         const n = Array.from(options.intervals, x => x + f);
         const symbol = getChordSymbol(f, options.tonality);
-        const array = [n[1]-12, n[3], n[5], n[7]];
+        let array;
+
+        switch(options.tonality) {
+            case Tonalities.MAJ:
+                array = [n[1], n[3]+12, n[5]+12, n[7]+12];
+                break;
+
+            case Tonalities.MIN:
+                array = [n[1], n[3]+12, n[5]+12, n[7]+12];
+                break;
+
+            case Tonalities.DOM:
+                array = [n[1], n[3]+12, n[5], n[7]];
+                break;
+            default:
+                array = [n[1], n[3]+12, n[5]+12, n[7]+12];
+        }
 
         return new Chord(f, array, options.duration, symbol); 
     },
@@ -175,7 +207,7 @@ const voicingsFunctions = [
         // Contains all notes intervals summed with the fundamental
         const n = Array.from(options.intervals, x => x + f);
         const symbol = getChordSymbol(f, options.tonality);
-        const array = [n[1]-12, n[2], n[5], n[7]];
+        const array = [n[1], n[10], n[5]+12, n[7]+12];
 
         return new Chord(f, array, options.duration, symbol); 
     },
@@ -186,7 +218,7 @@ const voicingsFunctions = [
         // Contains all notes intervals summed with the fundamental
         const n = Array.from(options.intervals, x => x + f);
         const symbol = getChordSymbol(f, options.tonality);
-        const array = [n[1]-12, n[7]-12, n[3], n[5]];
+        const array = [n[1], n[7], n[3]+12, n[5]+12];
 
         return new Chord(f, array, options.duration, symbol); 
     }

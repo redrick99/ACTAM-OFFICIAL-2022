@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './GlobalSettings.css';
 
 class CheckButton extends Component {
   constructor(props) {
