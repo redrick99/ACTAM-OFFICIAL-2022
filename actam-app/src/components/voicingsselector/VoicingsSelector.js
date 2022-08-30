@@ -79,11 +79,12 @@ const volumeSettings = [
   (value) => {
     midiHandler.getInstrument().volume.gain.value = value;
   },
-]
+];
 
 const changeBpm = (value) => {
-  assignables.bpm = value;
-}
+  assignables.bpm = Math.trunc(value);
+  console.log(assignables.bpm);
+};
 
 class VoicingsSelector extends Component {
   constructor(props) {
@@ -204,7 +205,11 @@ class VoicingsSelector extends Component {
             </tbody>
           </table>
         </div>
-        <div className={"voicings-description-container" + (this.state.settings || this.state.globalSettings ? " hidden" : " ")}>
+        <div
+          className={
+            "voicings-description-container" + (this.state.settings || this.state.globalSettings ? " hidden" : " ")
+          }
+        >
           <h2 className="voicings-name">{names[this.state.selectedName]}</h2>
           <div className="voicings-description">
             <div className="paragraph-1">{tP[0]}</div>
@@ -214,11 +219,15 @@ class VoicingsSelector extends Component {
         </div>
         <div className={"voicings-description-container" + (this.state.settings ? " " : " hidden")}>
           <div className="chords-player-settings">
-            <p className="settings-name"><b>Chords Player Settings</b></p>
+            <p className="settings-name">
+              <b>Chords Player Settings</b>
+            </p>
             <KnobHandler idNumber={0} change={audioChordSettings}></KnobHandler>
           </div>
           <div className="melody-player-settings">
-            <p className="settings-name"><b>MIDI Keyboard Settings</b></p>
+            <p className="settings-name">
+              <b>MIDI Keyboard Settings</b>
+            </p>
             <KnobHandler idNumber={4} change={audioMelodySettings}></KnobHandler>
           </div>
         </div>
@@ -233,9 +242,10 @@ class VoicingsSelector extends Component {
               name="bpm"
               id="knob-1-bpm"
               minRange={1}
-              maxRange={200.0}
-              initial={60.0}
+              maxRange={200}
+              initial={60}
               img="k0-1-2"
+              discrete="true"
             ></Knob>
           </div>
         </div>

@@ -88,6 +88,7 @@ class Knob extends Component {
           deg = deg / 360 + 1 - 225 / 360;
         }
         deg = ((deg * 4) / 3) * (this.props.maxRange - this.props.minRange) + this.props.minRange;
+        if (this.props.discrete) deg = Math.trunc(deg);
         this.props.change(deg);
         this.setState(() => ({
           value: deg,
