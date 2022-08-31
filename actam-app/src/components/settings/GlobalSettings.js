@@ -77,7 +77,7 @@ class GlobalSettings extends Component {
             click={this.clickLegato}
           />
         </div>
-        <OctaveSelector active={this.props.octaveActive} value={this.state.octave} min={-1} max={1} clickUp={this.clickUp} clickDown={this.clickDown} />
+        <OctaveSelector active={this.props.octaveActive} value={this.state.octave} min={-1} max={0} clickUp={this.clickUp} clickDown={this.clickDown} />
       </div>
     );
   }

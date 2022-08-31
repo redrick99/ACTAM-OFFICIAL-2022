@@ -29,22 +29,23 @@ export const assignables = {
     currentKey: 0,
     currentMode: 0,
     currentProgression: Array.from(basicProgression, (element, index) => element + majorScale[index]),
-    currentModalIntervals: [],
+    currentModalIntervals: [0, 0, 2, 4, 5, 7, 9, 11, 12, 14, 16, 17, 19, 21, 23],
     chords: Array(16).join(".").split("."),
     bpm: 60,
     loop: false,
     legato: false,
     octaveShift: 0,
     selectedName: 0,
+    selectedType: 0,
     waitingFunction: undefined,
     loadingBarFunction: undefined,
 }
 
 export const scoreOptions = {
     rWidth: 160,
-    rHeight: 200,
+    rHeight: 120,
     sPosX: 20,
-    sPosY: 30,
+    sPosY: 0,
     sWidth: 130,
 }
 

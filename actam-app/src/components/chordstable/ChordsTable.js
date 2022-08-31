@@ -4,9 +4,9 @@ import ChordPlayRow from './ChordPlayRow';
 import ChordProgressionRow from './ChordProgressionRow';
 import ChordRootRow from './ChordRootRow';
 import chordProgressionHandler from '../../scripts/ChordProgressionHandler';
-import voicingsHandler from '../../scripts/VoicingsHandler';
 import { modalScalesText, rootKeys, voicingsTypes } from '../../scripts/GlobalVariables'
 import StartButton from '../settings/StartButton';
+import ChordSuper from '../../scripts/Chords/ChordSuper';
  
 /**
  * Table where the chords to be played can be selected
@@ -68,7 +68,7 @@ class ChordsTable extends Component {
         this.setState(() => ({
             progression: chordProgressionHandler.getChordProgression(),
         }))
-        voicingsHandler.clickedOnMode(index);
+        ChordSuper.clickedOnMode(index);
     }
 
     /**

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Selector from "./Selector";
 import textParagraphs from "./VoicingsSelectorDescriptions";
-import voicingsHandler from "../../scripts/VoicingsHandler";
 import "./VoicingsSelector.css";
 import SettingsButton from "../settings/SettingsButton";
 import MidiButton from "../settings/MidiButton";
@@ -13,20 +12,6 @@ import CheckButton from "../settings/CheckButton";
 import VolumeControls from "../settings/VolumeControls";
 import { assignables, master } from "../../scripts/GlobalVariables";
 import Knob from "../settings/Knob";
-
-const functionsMap = [
-  "Rootless-Type 1",
-  "Rootless-Type 2",
-  "Monk-Type 1",
-  "Powell-Type 1",
-  "Powell-Type 2",
-  "Powell-Type 3",
-  "Powell-Type 4",
-  "Three Notes-Type 1",
-  "Four Notes-Type 1",
-  "Open Chord-Type 1",
-  "Open Chord-Type 2",
-];
 
 const names = ["Rootless", "Monk", "Powell", "Three Notes", "Four Notes", "Open Chord"];
 
@@ -110,21 +95,15 @@ class VoicingsSelector extends Component {
       selectedType: 0,
     }));
     assignables.selectedName = index;
-    const fIndex = functionsMap.indexOf(names[index] + "-" + "Type 1");
-    if (fIndex !== undefined) {
-      voicingsHandler.setVoicingsType(fIndex);
-      this.props.changeVoicingsType(index);
-    }
+    assignables.selectedType = 0;
+    this.props.changeVoicingsType(index);
   }
 
   clickType(index) {
     this.setState(() => ({
       selectedType: index,
     }));
-    const fIndex = functionsMap.indexOf(names[this.state.selectedName] + "-" + types[this.state.selectedName][index]);
-    if (fIndex !== undefined) {
-      voicingsHandler.setVoicingsType(fIndex);
-    }
+    assignables.selectedType = index;
   }
 
   activeSettings() {

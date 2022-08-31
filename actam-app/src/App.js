@@ -6,11 +6,11 @@ import ChordsTable from './components/chordstable/ChordsTable';
 import chordProgressionHandler from './scripts/ChordProgressionHandler';
 import chordAudioHandler from './scripts/ChordAudioHandler';
 import midiHandler from './scripts/MidiHandler';
-import voicingsHandler from './scripts/VoicingsHandler';
+import chordsFactory from './scripts/Chords/ChordsFactory';
 import { assignables, master } from './scripts/GlobalVariables';
 import ChordsVisualizer from './components/chordsvisualizer/ChordsVisualizer';
-import Chord from './scripts/Chord';
 import VoicingsSelector from './components/voicingsselector/VoicingsSelector';
+import ChordSuper from './scripts/Chords/ChordSuper';
 import GlobalSettings from './components/settings/GlobalSettings';
 import 'react-piano/dist/styles.css';
 import './components/piano.css'
@@ -57,8 +57,7 @@ function App() {
       return;
     }
     //console.log("Number: "+(index+1));
-    const chords = voicingsHandler.getVoicings(result.chords, result.duration);
-
+    const chords = chordsFactory.getChords(result.chords, result.duration, assignables.selectedName, assignables.selectedType);
     const time = result.duration*60/assignables.bpm;
 
     // Display Chord

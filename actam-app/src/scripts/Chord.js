@@ -5,7 +5,7 @@ const { Renderer, Stave, StaveNote, Voice, Formatter, Accidental } = Vex.Flow;
 class Chord {
     constructor(fundamental, array, duration, name) {
         this.fundamental = fundamental;
-        this.array = array;
+        this.array = array.sort((a, b) => a - b);
         this.duration = duration;
         this.score = this.#calculateScore(duration, array, fundamental);
         this.name = name;
@@ -18,31 +18,37 @@ class Chord {
         return score;
     }
 
-    renderScore(trebleDiv, opt) {
-        trebleDiv.innerHTML = '';
-        const renderer = new Renderer(trebleDiv, Renderer.Backends.SVG);
+    renderScore(div, opt, treble) {
+        div.innerHTML = '';
+        const renderer = new Renderer(div, Renderer.Backends.SVG);
         renderer.resize(opt.rWidth, opt.rHeight);
         const context = renderer.getContext();
 
         const stave = new Stave(opt.sPosX, opt.sPosY, opt.sWidth);
-        stave.addClef('treble');
+        stave.addClef((treble ? 'treble' : 'bass'));
         stave.setContext(context).draw();
 
-        const staveNote = new StaveNote({ keys: this.score, duration: 'q' });
-        this.score.forEach((element, index) => {
-            if(element.includes("#")) {
-                staveNote.addModifier(new Accidental('#'), index);
-            }
-        });
+        if(this.score.length > 0) {
+            const staveNote = new StaveNote({clef: (treble ? "treble" : "bass"), keys: this.score, duration: 'q' });
+            this.score.forEach((element, index) => {
+                if(element.includes("#")) {
+                    staveNote.addModifier(new Accidental('#'), index);
+                }
+            });
 
-        const notes = [
-            staveNote,
-        ];
-        const voice = new Voice({ num_beats: 1, beat_value: 4 });
-        voice.addTickables(notes);
+            const notes = [
+                staveNote,
+            ];
+            const voice = new Voice({ num_beats: 1, beat_value: 4 });
+            voice.addTickables(notes);
 
-        new Formatter().joinVoices([voice]).format([voice], opt.sWidth);
-        voice.draw(context, stave);
+            new Formatter().joinVoices([voice]).format([voice], opt.sWidth);
+            voice.draw(context, stave);
+        }
+    }
+
+    copyChord(array) {
+        return new Chord(this.fundamental, array, this.duration, this.name);
     }
 }
 
