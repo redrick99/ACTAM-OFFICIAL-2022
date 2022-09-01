@@ -36,8 +36,8 @@ class FourNoteChord extends ChordSuper {
     }
 
     drawScore(divs) {
-        this.renderChord(this.array.slice(0, 1), divs.bass, scoreOptions, false);
-        this.renderChord(this.array.slice(1, this.array.length), divs.treble, scoreOptions, true);
+        this.renderChord(this.array.slice(0, 1), divs.bass, scoreOptions.bass, false);
+        this.renderChord(this.array.slice(1, this.array.length), divs.treble, scoreOptions.treble, true, -1);
         return [true, true];
     }
 }

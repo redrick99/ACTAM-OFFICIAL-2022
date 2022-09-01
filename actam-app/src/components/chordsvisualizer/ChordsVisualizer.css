@@ -28,12 +28,16 @@ td.chord-score:last-child {
 
 table.chord-score {
     width: 100%;
+    min-height: 220px;
+    max-height: 260px;
     border-spacing: 0px;
     border-collapse: collapse;
 }
 
 td.chord-score-name {
     height: 100%;
+    min-width: 50px;
+    word-wrap: break-word;
     background-color: #235789;
     color: white;
     font-family: Arial Black, Helvetica, sans-serif;

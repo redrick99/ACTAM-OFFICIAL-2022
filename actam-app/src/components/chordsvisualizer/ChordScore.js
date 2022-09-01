@@ -45,12 +45,12 @@ class ChordScore extends Component {
                                 <table className='chord-score-score-table'>
                                     <tbody>
                                         <tr className={'treble-tr '+(this.state.treble ? '' : 'hidden')}>
-                                            <td id={'treble-td-'+this.props.id}>
+                                            <td id={'treble-td-'+this.props.id} className="treble-td">
 
                                             </td>
                                         </tr>
                                         <tr className={'bass-tr '+(this.state.bass ? '' : 'hidden')}>
-                                            <td id={'bass-td-'+this.props.id}>
+                                            <td id={'bass-td-'+this.props.id} className="bass-td">
                                                 
                                             </td>
                                         </tr>

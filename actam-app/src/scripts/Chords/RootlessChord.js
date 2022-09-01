@@ -67,7 +67,7 @@ class RootlessChord extends ChordSuper {
     }
 
     drawScore(divs) {
-        this.renderChord(this.array, divs.treble, scoreOptions, true);
+        this.renderChord(this.array, divs.treble, scoreOptions.onlyOne, true);
         return [true, false];
     }
 }

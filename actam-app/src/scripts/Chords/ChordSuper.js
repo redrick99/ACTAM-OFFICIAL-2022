@@ -107,7 +107,7 @@ class ChordSuper {
      * @param {object} opt GUI options of the score
      * @param {boolean} treble true if the key is treble, false if bass 
      */
-    renderChord(array, div, opt, treble) {
+    renderChord(array, div, opt, treble, stemDirection = 0) {
         const score = this.#calculateScore(this.duration, array.sort((a, b) => a - b));
 
         div.innerHTML = '';
@@ -121,6 +121,7 @@ class ChordSuper {
 
         if(score.length > 0) {
             const staveNote = new StaveNote({clef: (treble ? "treble" : "bass"), keys: score, duration: 'q' });
+            staveNote.setStemDirection(stemDirection); 
             score.forEach((element, index) => {
                 if(element.includes("#")) {
                     staveNote.addModifier(new Accidental('#'), index);
@@ -146,7 +147,8 @@ class ChordSuper {
      */
     #calculateScore(duration, array) {
         const score = Array.from(array, (element) => {
-            return rootKeys[element%12].toLowerCase() + '/' + (Math.floor(element/12)-1);
+            const octave = Math.floor(element/12) - ((assignables.octaveShift < 0 && assignables.selectedName > 2) ? 0 : 1);
+            return rootKeys[element%12].toLowerCase() + '/' + octave;
         })
         return score;
     }
