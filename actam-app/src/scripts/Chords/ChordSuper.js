@@ -100,6 +100,10 @@ class ChordSuper {
         throw new Error("Method has to be implemented");
     }
 
+    outOfBounds() {
+        return Math.max(...this.array) > 100 || Math.min(...this.array) < 10;
+    }
+
     /**
      * Renders a score inside a div
      * @param {array} array containing the notes in integer form 

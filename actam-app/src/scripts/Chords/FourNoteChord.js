@@ -9,7 +9,7 @@ class FourNoteChord extends ChordSuper {
     }
 
     calculateVoicings(type, intervals) {
-        const f = this.fundamental+48+(assignables.octaveShift*12);
+        const f = this.fundamental+(assignables.currentKey > 7 ? 36 : 48)+(assignables.octaveShift*12);;
         // Contains all notes intervals summed with the fundamental
         const n = Array.from(intervals, x => x + f);
         const symbol = this.getChordSymbol(f, this.tonality);
@@ -39,6 +39,10 @@ class FourNoteChord extends ChordSuper {
         this.renderChord(this.array.slice(0, 1), divs.bass, scoreOptions.bass, false);
         this.renderChord(this.array.slice(1, this.array.length), divs.treble, scoreOptions.treble, true, -1);
         return [true, true];
+    }
+
+    outOfBounds() {
+        return Math.max(...this.array) > 88 || Math.min(...this.array) < 34;
     }
 }
 

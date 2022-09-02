@@ -32,7 +32,7 @@ class RootlessChord extends ChordSuper {
                         symbol = this.getChordSymbol(f, "13");
                         break;
                     default:
-                        array = [n[1], n[3], n[5]-12, n[7]-12];
+                        array = [n[1], n[3], n[5], n[7]];
                         symbol = this.getChordSymbol(f, Tonalities.HDIM)
                 }
                 break;
@@ -54,7 +54,7 @@ class RootlessChord extends ChordSuper {
                         symbol = this.getChordSymbol(f, "13");
                         break;
                     default:
-                        array = [n[1], n[3], n[5], n[7]];
+                        array = [n[1]+12, n[3]+12, n[5], n[7]];
                         symbol = this.getChordSymbol(f, Tonalities.HDIM)
                 }
                 break;
@@ -69,6 +69,10 @@ class RootlessChord extends ChordSuper {
     drawScore(divs) {
         this.renderChord(this.array, divs.treble, scoreOptions.onlyOne, true);
         return [true, false];
+    }
+
+    outOfBounds() {
+        return Math.max(...this.array) > 73 || Math.min(...this.array) < 48;
     }
 }
 

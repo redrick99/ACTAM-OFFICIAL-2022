@@ -28,7 +28,7 @@ td.chord-score:last-child {
 
 table.chord-score {
     width: 100%;
-    min-height: 220px;
+    min-height: 240px;
     max-height: 260px;
     border-spacing: 0px;
     border-collapse: collapse;

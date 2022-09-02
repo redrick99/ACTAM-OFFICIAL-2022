@@ -15,6 +15,8 @@ import GlobalSettings from './components/settings/GlobalSettings';
 import 'react-piano/dist/styles.css';
 import './components/piano.css'
 
+let playChords = ['', '', ''];
+
 function App() {
   const [chords, setChords] = React.useState(Array(16).join(".").split("."))
   const [visualizationChords, setVisualizationChords] = React.useState(['', '', '']);
@@ -51,24 +53,40 @@ function App() {
 
   function start(index) {
     stop();
+    if(assignables.chords[0] === '') {
+      return;
+    }
+
     const result = chordProgressionHandler.getChords(assignables.chords, index, assignables.legato);
     if(result.ended) {
       assignables.loop ?  start(0) : stop();
       return;
     }
-    //console.log("Number: "+(index+1));
-    const chords = chordsFactory.getChords(result.chords, result.duration, assignables.selectedName, assignables.selectedType);
+
+    if(index === 0) {
+      playChords = chordsFactory.getChords(result.chords, result.duration, assignables.selectedName, assignables.selectedType);
+      chordsFactory.checkChords(playChords);
+    }
+    else {
+      playChords.shift();
+      playChords.push((chordsFactory.getChords(result.chords, result.duration, assignables.selectedName, assignables.selectedType))[2]);
+      chordsFactory.checkChords(playChords);
+    }
+    if(playChords[2] && playChords[2] !== '' && playChords[2].outOfBounds()) {
+      playChords[2] = (chordsFactory.getChords(result.chords, result.duration, assignables.selectedName, assignables.selectedType))[2];
+    }
+    //const chords = chordsFactory.getChords(result.chords, result.duration, assignables.selectedName, assignables.selectedType);
     const time = result.duration*60/assignables.bpm;
 
     // Display Chord
     setPlaying(true);
-    setCurrentChord(chords[1].array);
-    setVisualizationChords(chords);
+    setCurrentChord(playChords[1].array);
+    setVisualizationChords(playChords);
     moveBar(time);
 
     // Play Chord
     const startT = Tone.now();
-    chordAudioHandler.playChord(chords[1], startT, time);
+    chordAudioHandler.playChord(playChords[1], startT, time);
 
     assignables.waitingFunction = setTimeout(start, 1000*time, result.index);
   }

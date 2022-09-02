@@ -40,7 +40,7 @@ class PowellChord extends ChordSuper {
                 // Contains all notes intervals summed with the fundamental
                 n = Array.from(intervals, x => x + f);
                 symbol = this.getChordSymbol(f, this.tonality);
-                array = [n[1], n[10]];
+                array = [n[1]-12, n[10]-12];
                 break;
 
             default:
@@ -51,8 +51,12 @@ class PowellChord extends ChordSuper {
     }
 
     drawScore(divs) {
-        this.renderChord(this.array, divs.treble, scoreOptions.onlyOne, true);
-        return [true, false];
+        this.renderChord(this.array, divs.bass, scoreOptions.onlyOne, false);
+        return [false, true];
+    }
+
+    outOfBounds() {
+        return Math.max(...this.array) > 61 || Math.min(...this.array) < 34;
     }
 }
 

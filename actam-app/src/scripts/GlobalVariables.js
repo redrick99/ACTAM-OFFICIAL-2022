@@ -44,29 +44,29 @@ export const assignables = {
 export const scoreOptions = {
     treble: {
         rWidth: 160,
-        rHeight: 100,
-        sPosX: 20,
-        sPosY: -10,
-        sWidth: 130,
-    },
-    bass: {
-        rWidth: 160,
-        rHeight: 100,
+        rHeight: 110,
         sPosX: 20,
         sPosY: 0,
         sWidth: 130,
     },
+    bass: {
+        rWidth: 160,
+        rHeight: 110,
+        sPosX: 20,
+        sPosY: 20,
+        sWidth: 130,
+    },
     onlyOne: {
         rWidth: 160,
-        rHeight: 208,
+        rHeight: 228,
         sPosX: 20,
-        sPosY: 30,
+        sPosY: 40,
         sWidth: 130,
     },
     rWidth: 160,
     rHeight: 208,
     sPosX: 20,
-    sPosY: 30,
+    sPosY: 40,
     sWidth: 130,
 }
 

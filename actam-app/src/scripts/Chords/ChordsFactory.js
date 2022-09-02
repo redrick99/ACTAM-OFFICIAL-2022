@@ -41,8 +41,27 @@ const chordsFactory = (function() {
          * Creates a list of chords of a certain sub-class given their symbols
          */
         getChords: function(symbols, duration, voicingName, voicingType) {
-            return Array.from(symbols, symbol => !symbol || symbol === '' ? '' : this.createChord(symbol, duration, voicingName, voicingType));
+            const chords = Array.from(symbols, symbol => !symbol || symbol === '' ? '' : this.createChord(symbol, duration, voicingName, voicingType));
+            return chords;
         },
+
+        checkChords: function(chords) {
+            if(!chords[2] || chords[2] === '') {
+                return;
+            }
+            const maxPrevChord = Math.max(...chords[1].array);
+            const minPrevChord = Math.min(...chords[1].array);
+            const maxNextChord = Math.max(...chords[2].array);
+            const minNextChord = Math.min(...chords[2].array);
+            if(minNextChord >= (minPrevChord+6)) {
+                console.log("SHIFTA BASSO");
+                chords[2].array = Array.from(chords[2].array, element => element-12);
+            }
+            else if(maxNextChord <= (maxPrevChord-6)) {
+                console.log("SHIFTA ALTO");
+                chords[2].array = Array.from(chords[2].array, element => element+12);
+            }
+        }
     }
 })();
 

@@ -31,6 +31,10 @@ class MonkChord extends ChordSuper {
         return [true, false];
     }
 
+    outOfBounds() {
+        return Math.max(...this.array) > 73 || Math.min(...this.array) < 48;
+    }
+
     #isTonic(fundamental, key) {
         return key === (fundamental % 12);
     }
