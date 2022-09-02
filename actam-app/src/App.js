@@ -75,7 +75,6 @@ function App() {
     if(playChords[2] && playChords[2] !== '' && playChords[2].outOfBounds()) {
       playChords[2] = (chordsFactory.getChords(result.chords, result.duration, assignables.selectedName, assignables.selectedType))[2];
     }
-    //const chords = chordsFactory.getChords(result.chords, result.duration, assignables.selectedName, assignables.selectedType);
     const time = result.duration*60/assignables.bpm;
 
     // Display Chord

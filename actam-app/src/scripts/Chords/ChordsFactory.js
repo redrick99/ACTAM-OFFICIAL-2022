@@ -45,6 +45,11 @@ const chordsFactory = (function() {
             return chords;
         },
 
+        /**
+         * Shifts the next chord according to the values of the previous chord.
+         * @param {array} chords to check 
+         * @returns 
+         */
         checkChords: function(chords) {
             if(!chords[2] || chords[2] === '') {
                 return;
@@ -54,13 +59,48 @@ const chordsFactory = (function() {
             const maxNextChord = Math.max(...chords[2].array);
             const minNextChord = Math.min(...chords[2].array);
             if(minNextChord >= (minPrevChord+6)) {
-                console.log("SHIFTA BASSO");
                 chords[2].array = Array.from(chords[2].array, element => element-12);
             }
             else if(maxNextChord <= (maxPrevChord-6)) {
-                console.log("SHIFTA ALTO");
                 chords[2].array = Array.from(chords[2].array, element => element+12);
             }
+        },
+
+        /**
+         * Calculates chords when the sequence is printed
+         * @param {array} symbols of the chords
+         * @param {number} duration of the chords
+         * @param {number} voicingName index of the voicing type selected
+         * @param {number} voicingType index of the type of voicing type selected
+         * @returns 
+         */
+        getChordsToPrint: function(symbols, duration, voicingName, voicingType) {
+            const chords = this.getChords(symbols, duration, voicingName, voicingType);
+            const printChords = [chords[0]];
+            for(let i = 1; i < chords.length; i++) {
+                if(chords[i] === '') {
+                    break;
+                }
+                const maxPrevChord = Math.max(...chords[i-1].array);
+                const minPrevChord = Math.min(...chords[i-1].array);
+                const maxNextChord = Math.max(...chords[i].array);
+                const minNextChord = Math.min(...chords[i].array);
+                if(minNextChord >= (minPrevChord+6)) {
+                    console.log(chords[i].array);
+                    chords[i].array = Array.from(chords[i].array, element => element-12);
+                }
+                else if(maxNextChord <= (maxPrevChord-6)) {
+                    chords[i].array = Array.from(chords[i].array, element => element+12);
+                }
+                if(chords[i].outOfBounds()) {
+                    chords[i] = this.createChord(symbols[i], duration, voicingName, voicingType)
+                    printChords.push(chords[i]);
+                }
+                else {
+                    printChords.push(chords[i])
+                }
+            }
+            return printChords;
         }
     }
 })();
