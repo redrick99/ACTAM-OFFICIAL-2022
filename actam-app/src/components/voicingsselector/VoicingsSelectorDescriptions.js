@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * Contains the description of all voicings types in jxml format
+ */
+
 const rootlessP1 = (
     <React.Fragment>
         <p>A smooth and popular type of chord voicing are called (Bill Evans style) Rootless Chord Voicings. As the name suggests, these chord voicings exclude the root note. Instead of the root (and sometimes the 5th) we play chord tensions. This gives us a jazzy sound (because of the tensions) while not being too crowded (you only ever play 4 notes because we drop the root).</p>

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import './GlobalSettings.css';
 
+/**
+ * On-Off type button
+ */
 class CheckButton extends Component {
   constructor(props) {
     super(props);

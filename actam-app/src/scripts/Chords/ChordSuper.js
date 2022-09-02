@@ -100,6 +100,10 @@ class ChordSuper {
         throw new Error("Method has to be implemented");
     }
 
+    /**
+     * Checks if a chord is out of bounds, given absolute MIDI bounds
+     * @returns true if the chord falls out of bounds
+     */
     outOfBounds() {
         return Math.max(...this.array) > 100 || Math.min(...this.array) < 10;
     }

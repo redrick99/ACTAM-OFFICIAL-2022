@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import ChordScore from './ChordScore';
-import LoadingBar from './LoadingBar'
 import './ChordsVisualizer.css';
 import GlobalSettings from '../settings/GlobalSettings';
 
+/**
+ * Contains the table where currently played chords are visualized
+ */
 class ChordsVisualizer extends Component {
     constructor(props) {
         super(props);

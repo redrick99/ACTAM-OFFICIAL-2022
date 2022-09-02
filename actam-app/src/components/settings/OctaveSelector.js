@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+/**
+ * Changes the octave
+ */
 class OctaveSelector extends Component {
     constructor(props) {
         super(props);

@@ -1,6 +1,8 @@
 import * as Tone from 'tone'
-import Chord from './Chord';
 
+/**
+ * Contains a chain of effects and a sampler used to play audio
+ */
 class Instrument {
     constructor() {
         this.sampler = new Tone.Sampler();
@@ -26,22 +28,45 @@ class Instrument {
         this.cGain.gain.value = 0;
     }
 
+    /**
+     * Plays a single note
+     * @param {number} note MIDI number of the note to play 
+     * @param {number} velocity of the note
+     */
     playNote(note, velocity) {
         this.sampler.triggerAttack(note, Tone.now(), velocity);
     }
 
+    /**
+     * Plays an array of notes
+     * @param {array} notes MIDI numbers of the notes to play
+     * @param {number} start time of start
+     * @param {number} duration of the notes to be played
+     */
     play(notes, start, duration) {
         this.sampler.triggerAttack(notes, start, 1/notes.length);
     }
 
+    /**
+     * Stops specified notes from being played
+     * @param {array} frequencies of the notes to stop playing
+     */
     stop(frequencies) {
         this.sampler.triggerRelease(frequencies);
     }
     
+    /**
+     * Connects the top Gain Node to another, Master Gain Node
+     * @param {node} node to connect to 
+     */
     connect(node) {
         this.volume.connect(node);
     }
 
+    /**
+     * Creates a new sampler from the specified base url
+     * @param {string} baseUrl_ base url from where to find the sampler files
+     */
     createSampler(baseUrl_) {
         const sampAttack = this.sampler.attack;
         const sampRelease = this.sampler.release;

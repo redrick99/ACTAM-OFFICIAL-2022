@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 
+/**
+ * Custom Selector to replace the standard, HTML one
+ */
 class Selector extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            // Used to visualize the options
             optionsOpen: false,
             selectedOption: 0,
         }
@@ -12,6 +16,9 @@ class Selector extends Component {
         this.toggleOptions = this.toggleOptions.bind(this);
     }
 
+    /**
+     * Toggles the shown options of the selector
+     */
     toggleOptions() {
         this.setState((prevState) => ({
             optionsOpen: !prevState.optionsOpen,

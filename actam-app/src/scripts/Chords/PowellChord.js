@@ -1,12 +1,20 @@
 import { assignables, scoreOptions } from "../GlobalVariables";
 import ChordSuper from "./ChordSuper"
 
+/**
+ * Powell Voicings - ChordSuper Subclass
+ */
 class PowellChord extends ChordSuper {
     constructor(symbol, duration, type) {
         super(symbol, duration);
         this.calculateVoicings(type, ChordSuper.intervalsPerGrade[this.grade]);
     }
 
+    /**
+     * Calculates the chord's voicings
+     * @param {number} type sub-type of the voicings type
+     * @param {array} intervals of the chord's grade referring to the current mode
+     */
     calculateVoicings(type, intervals) {
         let f, n, symbol, array;
 
@@ -50,11 +58,20 @@ class PowellChord extends ChordSuper {
         this.array = array;
     }
 
+    /**
+     * Draws the score of the chord inside two distinct html elements
+     * @param {object} divs contains the two html elements to which to draw the treble and bass staves 
+     * @returns an array of booleans to hide or show the divs
+     */
     drawScore(divs) {
         this.renderChord(this.array, divs.bass, scoreOptions.onlyOne, false);
         return [false, true];
     }
 
+    /**
+     * Checks if a chord is out of bounds, given absolute MIDI bounds
+     * @returns true if the chord falls out of bounds
+     */
     outOfBounds() {
         return Math.max(...this.array) > 61 || Math.min(...this.array) < 34;
     }

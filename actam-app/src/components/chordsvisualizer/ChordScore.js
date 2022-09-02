@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { scoreOptions, assignables } from '../../scripts/GlobalVariables';
 
+/**
+ * Contains the representation of the played chord
+ */
 class ChordScore extends Component {
     constructor(props) {
         super(props);
@@ -14,12 +16,19 @@ class ChordScore extends Component {
         this.bassContainer = undefined
     }
 
+    /**
+     * Gets the score containers as html elements on startup
+     */
     componentDidMount() {
         this.scoreContainer = document.getElementById('chord-score-td-'+this.props.id);
         this.trebleContainer = document.getElementById('treble-td-'+this.props.id);
         this.bassContainer = document.getElementById('bass-td-'+this.props.id);
     }
 
+    /**
+     * Displays the new chord whenever it is updated from the upper component
+     * @param {object} prevProps previous props 
+     */
     componentDidUpdate(prevProps) {
         if(prevProps.chord !== this.props.chord && this.props.chord && this.props.chord !== '') {
             const [showTreble, showBass] = this.props.chord.drawScore({treble: this.trebleContainer, bass: this.bassContainer});

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Knob from "./Knob";
 
+/**
+ * Handles the knobs of the instrument settings
+ */
 class KnobHandler extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +21,7 @@ class KnobHandler extends Component {
                   idNumber={1}
                   dispText={this.props.value}
                   change={this.props.change[0]}
-                  name="chorous"
+                  name="chorus"
                   id={"knob-"+(1+this.props.idNumber)}
                   minRange={0}
                   maxRange={1}

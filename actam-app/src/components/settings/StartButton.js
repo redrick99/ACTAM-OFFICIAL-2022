@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 
+/**
+ * Start button of the application
+ */
 class StartButton extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            // Used to initialize Tone at the first click
             initialized: false,
         }
 
         this.start = this.start.bind(this);
     }
 
+    /**
+     * Initializes and starts the application
+     */
     start() {
         if(!this.state.initialized) {
             this.props.init();

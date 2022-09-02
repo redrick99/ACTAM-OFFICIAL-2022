@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Knob from './Knob';
 
+/**
+ * Contains settings for the volumes of the instruments of the application
+ */
 class VolumeControls extends Component {
     constructor(props) {
         super(props);
