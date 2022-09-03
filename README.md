@@ -3,9 +3,11 @@
 In music, in particular jazz, voicing is the vertical displacement of the notes in a chord. The goal of this web application is to propose an easy way to generate the most common voicing types.
 
 The tools that has been used for this application are:
-* Tone.js
 * Node.js
+* Tone.js
 * React
+* react-piano
+* VexFlow
 * *LINK ALLA PAGINA DELLA LIBRERIA PER SCRIVERE SUL PENTAGRAMMA*
 
 ## User Interface
