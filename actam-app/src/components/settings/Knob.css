@@ -47,6 +47,28 @@ THIS COULD BE REMOVED FOR CONSISTENCY WITH THE REST OF THE APPLICATION
 
 } 
 
+.k0-200{
+  background-image: url("/src/resources/knobIndicators/knobIndicator-0-200-2.png");
+  background-repeat: no-repeat;
+  background-size: 145px 120px;
+  width: 160px;
+  height: 160px;
+  opacity: 100%;
+  transform: translate(6%, 3%);
+
+} 
+
+.k0-100{
+  background-image: url("/src/resources/knobIndicators/knobIndicator-0-100.png");
+  background-repeat: no-repeat;
+  background-size: 145px 120px;
+  width: 160px;
+  height: 160px;
+  opacity: 100%;
+  transform: translate(6%, 3%);
+
+} 
+
 .td, .tr, .controller{
   height: 100px;
 }

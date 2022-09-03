@@ -22,7 +22,7 @@ class KnobHandler extends Component {
                   dispText={this.props.value}
                   change={this.props.change[0]}
                   name="chorus"
-                  id={"knob-"+(1+this.props.idNumber)}
+                  id={"knob-" + (1 + this.props.idNumber)}
                   minRange={0}
                   maxRange={1}
                   initial={0.1}
@@ -36,7 +36,7 @@ class KnobHandler extends Component {
                   dispText={this.props.value}
                   change={this.props.change[1]}
                   name="reverb"
-                  id={"knob-"+(2+this.props.idNumber)}
+                  id={"knob-" + (2 + this.props.idNumber)}
                   minRange={0}
                   maxRange={1}
                   initial={0.7}
@@ -50,11 +50,11 @@ class KnobHandler extends Component {
                   dispText={this.props.value}
                   change={this.props.change[2]}
                   name="attack"
-                  id={"knob-"+(3+this.props.idNumber)}
+                  id={"knob-" + (3 + this.props.idNumber)}
                   minRange={0}
                   maxRange={100}
                   initial={0}
-                  img="k0-10"
+                  img="k0-100"
                 ></Knob>
               </td>
               <td>
@@ -64,11 +64,11 @@ class KnobHandler extends Component {
                   dispText={this.props.value}
                   change={this.props.change[3]}
                   name="release"
-                  id={"knob-"+(4+this.props.idNumber)}
+                  id={"knob-" + (4 + this.props.idNumber)}
                   minRange={0}
-                  maxRange={2000}
+                  maxRange={100}
                   initial={0}
-                  img="k0-10"
+                  img="k0-100"
                 ></Knob>
               </td>
             </tr>
