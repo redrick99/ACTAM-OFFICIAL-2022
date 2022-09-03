@@ -26,7 +26,7 @@ class PrinterButton extends Component {
 
     let scope = document.createElement("div");
     let tableHtmlContent = document.createElement("h1");
-    tableHtmlContent.textContent = "Voicing Generator";
+    tableHtmlContent.textContent = "Voicings Generator";
     let keySignature = document.createElement("h3");
     keySignature.textContent = "Key Signature: " + rootKeys[assignables.currentKey];
     let modalContent = document.createElement("h3");
