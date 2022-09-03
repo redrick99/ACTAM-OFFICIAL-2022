@@ -12,6 +12,7 @@ class PrinterButton extends Component {
   }
 
   print() {
+    if (assignables.chords[0] === "") return;
     /*
     const printingChord = chordProgressionHandler.getChordsForPrint(assignables.chords, false);
     const effettiveChords = voicingsHandler.getVoicings(printingChord[0].chord, printingChord[0].duration);
