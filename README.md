@@ -135,26 +135,33 @@ To play in ‘close harmony’ means to play all the notes of the chord within t
     │   │   ├── Knob.js
     │   │   ├── KnobHandler.js
     │   │   ├── MidiButton.js
+    │   │   ├── OctaveSelector.js
+    │   │   ├── PrinterButton.js
     │   │   ├── SettingsButton.js
     │   │   ├── SimpleInputSettings.js
-    │   │   └── StartButton.js
+    │   │   ├── StartButton.js
+    │   │   └── VolumeControls.js
     │   ├── voicingsselector
     │   │   ├── Selector.js
     │   │   ├── VoicingsSelector.css
     │   │   ├── VoicingsSelector.js
     │   │   └── VoicingsSelectorDescriptions.js
-    │   ├── resources
-    │   │   ├── Knob.png
-    │   │   └── KnobIndicator.png
     │   ├── scripts
-    │   │   ├── Chord.js
+    │   │   ├── Chords
+    │   │   │   ├── ChordsFactory.js
+    │   │   │   ├── ChordSuper.js
+    │   │   │   ├── FourNoteChord.js
+    │   │   │   ├── MonkChord.js
+    │   │   │   ├── OpenChord.js
+    │   │   │   ├── PowellChord.js
+    │   │   │   ├── RootlessChord.js
+    │   │   │   └── ThreeNoteChord.js
     │   │   ├── ChordAudioHandler.js
     │   │   ├── ChordProgressionHandler.js
     │   │   ├── GlobalVariables.js
     │   │   ├── Instruments.js
-    │   │   ├── Tonalities.js
-    │   │   ├── VoicingsFunctions.js
-    │   │   └── VoicingsHandler.js
+    │   │   ├── MidiHandler.js
+    │   │   └── Tonalities.js
     │   ├── App.css
     │   ├── App.js
     │   ├── index.css
