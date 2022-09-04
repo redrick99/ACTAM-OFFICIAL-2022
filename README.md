@@ -5,7 +5,7 @@
 </p>
 
 ## Introduction
-In music, in particular jazz, voicing is the vertical displacement of the notes in a chord. The goal of this web application is to propose an easy way to generate the most common voicing types. The project was developed for the courses **Advanced Coding Tools and Methodologies** and **Computer Music Representations and Models**, part the Master degree in [Music and Acoustic Engineering](https://suono.polimi.it/), based in [Politecnico di Milano](https://www.polimi.it/).
+In music, in particular jazz, voicing is the vertical displacement of the notes in a chord. The goal of this web application is to propose an easy way to generate the most common voicing types. The project was developed for the courses **Advanced Coding Tools and Methodologies** and **Computer Music Representations and Models**, part of the Master degree in [Music and Acoustic Engineering](https://suono.polimi.it/), based in [Politecnico di Milano](https://www.polimi.it/).
 
 ### Tools
 The tools that have been used to delevop the application are:
@@ -15,7 +15,20 @@ The tools that have been used to delevop the application are:
 * [react-piano](https://github.com/kevinsqi/react-piano)
 * [VexFlow](https://www.vexflow.com/)
 
-This web application can be used downloadind the github project and running it with VS Code live server
+### Setup
+Follow these steps to use the app on your device:
+1. Install Node.js on your device 
+2. Download the github repo and extract it inside a directory of your choice
+3. With the terminal or command console, navigate to said directory and into `actam-app`
+4. While inside `actam-app`, run `npm install`, then `npm start`
+5. App should be up and running!
+
+Example: repo is extraced in `C:\Users\Pippo\Desktop\VoicingsGenerator`
+```
+  cd C:\Users\Pippo\Desktop\VoicingsGenerator\actam-app
+  npm install
+  npm start
+```
 
 ## User Interface
 The web application is very easy to use and understand. At the beginning it is possible to choose the key signature and the modal scale, then, with a double click or a drag and drop, it is possible to insert the chords in the top cells. It is possible to change the key signature and the modal scale, also after the insert of the chords or even when the player is running.
