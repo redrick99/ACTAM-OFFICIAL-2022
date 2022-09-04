@@ -1,4 +1,9 @@
-# Voicings Generator
+# **Voicings Generator**
+<!-- ![](./GitAssets/home-screen.png) -->
+<p align="center">
+  <img src="./GitAssets/home-screen.png" width="100%" />
+</p>
+
 ## Introduction and Tools
 In music, in particular jazz, voicing is the vertical displacement of the notes in a chord. The goal of this web application is to propose an easy way to generate the most common voicing types.
 
