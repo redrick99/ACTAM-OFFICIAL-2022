@@ -31,37 +31,36 @@ Example: repo is extraced in `C:\Users\Pippo\Desktop\VoicingsGenerator`
 ```
 
 ## User Interface
-The web application is very easy to use and understand. At the beginning it is possible to choose the key signature and the modal scale, then, with a double click or a drag and drop, it is possible to insert the chords in the top cells. It is possible to change the key signature and the modal scale, also after the insert of the chords or even when the player is running.
+The web application is very easy to use and understand. Through buttons, it is possible to choose the key signature and the modal scale, then, with a double click or a drag and drop gesture, the user can insert the chords inside the chords sequence (top row with empty cells). Key signature modal scale can also be changed while the audio player is running.
 
 ## Guide
 <p align="center">
   <img src="./GitAssets/First.png" width="70%" />
 </p>
 
-When the application is tuned on the first line is empty. With a drag and drop (or a click) the user can insert the chords in the list. The user can also change the key signature and the modal scale and decide to activate or not the loop or the legato.
+When the application is first run the chords sequence is empty. With a drag and drop gesture (or a click) you can insert the chords into the list. You can also change the key signature and the modal scale and decide whether to activate the `loop` and `legato` settings. Press `START` to play and visualize the chords you've just chosen. 
 
 <p align="center">
   <img src="./GitAssets/selection-start.gif" width="70%" />
 </p>
 
-Then clicking the START button it turns red, the music start playing and the note on the stave will be shown.
 
 ### Descriptions and Settings
-On the bottom of the page, the user can read the description of the voicings type he is currently using, and also change it by clicking on the name or type selectors. If the user clicks on the knob or settings icons, the descriptions are replaced by settings which either control the volumes and bpm of the chords' playback, or the instruments' characteristics (effects, attack and release)
+On the bottom of the page you can read the description of the voicings type you're currently using. To change it, click on the voicings name or type selectors. When the knob or settings icons are clicked, the descriptions are replaced by settings which either control the volumes and bpm of the chords' playback, or the instruments' characteristics (effects, attack and release)
 
 <p align="center">
   <img src="./GitAssets/voicing-knob.gif" width="70%" />
 </p>
 
 ### Printing the Chords Sequence
-Clicking on the printer icon it is possible to print the voicings with the musical stave
+You can print the chords sequence along with their representation on the stave by clicking the print button.
 <p align="center">
   <img src="./GitAssets/Chords.png" width="70%" />
 </p>
 
 ## Algorithm - Factory Pattern
 
-In order to achieve a high flexibility in terms of adding new Voicings Types or removing existing ones, the Voicings Algorithm has been implemented following a simplified Factory Pattern, in which ChordSuper contains methods ussed by all the sub-classes.
+In order to achieve a high flexibility in terms of adding new Voicings Types or removing existing ones, the Voicings Algorithm has been implemented following a simplified Factory Pattern, in which ChordSuper contains methods used by all its sub-classes.
 
 <p align="center">
   <img src="./GitAssets/FactoryPattern.png" width="70%" />
