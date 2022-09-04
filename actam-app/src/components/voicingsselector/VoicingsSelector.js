@@ -67,6 +67,7 @@ const volumeSettings = [
 ];
 
 const changeBpm = (value) => {
+  if (value == 0) value = 1;
   assignables.bpm = Math.trunc(value);
   console.log(assignables.bpm);
 };
@@ -225,7 +226,7 @@ class VoicingsSelector extends Component {
               minRange={1}
               maxRange={200}
               initial={60}
-              img="k0-1-2"
+              img="k0-200"
               discrete="true"
             ></Knob>
           </div>

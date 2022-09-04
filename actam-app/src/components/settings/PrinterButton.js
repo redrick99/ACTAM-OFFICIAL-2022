@@ -11,12 +11,12 @@ class PrinterButton extends Component {
     this.scoreContainer = undefined;
   }
 
+  /**
+   * Function to print or save on pdf
+   * @returns if the list of the chords is empty
+   */
   print() {
     if (assignables.chords[0] === "") return;
-    /*
-    const printingChord = chordProgressionHandler.getChordsForPrint(assignables.chords, false);
-    const effettiveChords = voicingsHandler.getVoicings(printingChord[0].chord, printingChord[0].duration);
-    */
 
     const effettiveChords = chordsFactory.getChordsToPrint(
       assignables.chords,
@@ -88,8 +88,6 @@ class PrinterButton extends Component {
       if (!bass) {
         innerCellBass.classList.add("hidden");
       }
-
-      //effettiveChords[i].renderScore(innerCell, scoreOptions);
       label.textContent = effettiveChords[i].name;
       i++;
     }
@@ -101,28 +99,6 @@ class PrinterButton extends Component {
     scope.appendChild(voiceTypeContent);
     scope.appendChild(chordScope);
     scope.appendChild(scoreCont);
-
-    /*
-    let tableHtmlContent =
-      "<h1 className='title'>Voicing Generator</h1><h3>Key Signature: " + rootKeys[assignables.currentKey] + "</h3>";
-    tableHtmlContent += "<h3>Modal Scale: " + modalScalesText[assignables.currentMode] + "</h3>";
-    tableHtmlContent += "<h3>Voicing Name: " + voicingNames[assignables.currentVoicingName] + "</h3>";
-    tableHtmlContent += "<h3>Voicing Type: " + voicingType[assignables.currentVoicingType] + "</h3>";
-    let i = 0;
-    tableHtmlContent += "<h3>Chords List: ";
-    while (effettiveChords[i] != null) {
-      tableHtmlContent += effettiveChords[i].name + ", ";
-      i++;
-    }
-    tableHtmlContent += "</h3>";
-
-    // tableHtmlContent += '<div id="scoreCont></div>';
-    // this.scoreContainer = document.getElementById("scoreCont");
-    let score = document.createElement("div");
-    score.id = "scoreCont";
-    */
-
-    //effettiveChords[0].renderScore(this.scoreContainer, scoreOptions);
 
     let oHideFrame = document.createElement("iframe");
     oHideFrame.style.position = "fixed";
@@ -140,6 +116,9 @@ class PrinterButton extends Component {
     oDoc.close();
   }
 
+  /**
+   * This function creates a html page under the original one and opens the printing prompt
+   */
   writePage(document, innerHTML) {
     document.write('<head><link type="text/css" rel="stylesheet" href="../../App.css"><title>Chords</title></head>');
     document.write('<body onload="this.focus(); this.print();">');

@@ -112,7 +112,7 @@ class Knob extends Component {
   }
 
   /**
-   *
+   * Function to change the knob value from the text box instead of rotating the image
    * @param {input change} event
    */
   changeValue(event) {
