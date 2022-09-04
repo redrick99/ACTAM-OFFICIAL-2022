@@ -4,9 +4,10 @@
   <img src="./GitAssets/home-screen.png" width="100%" />
 </p>
 
-## Introduction and Tools
-In music, in particular jazz, voicing is the vertical displacement of the notes in a chord. The goal of this web application is to propose an easy way to generate the most common voicing types.
+## Introduction
+In music, in particular jazz, voicing is the vertical displacement of the notes in a chord. The goal of this web application is to propose an easy way to generate the most common voicing types. The project was developed for the courses **Advanced Coding Tools and Methodologies** and **Computer Music Representations and Models**, part the Master degree in [Music and Acoustic Engineering](https://suono.polimi.it/), based in [Politecnico di Milano](https://www.polimi.it/). 
 
+### Tools
 The tools that have been used to delevop the application are:
 * [Node.js](https://nodejs.org/it/)
 * [Tone.js](https://tonejs.github.io/)
