@@ -33,28 +33,14 @@ When the application is tuned on the first line is empty. With a drag and drop (
 
 Then clicking the START button it turns red, the music start playing and the note on the stave will be shown.
 
-### Descriptions
-On the bottom of the page, the user read the descriptions of the voicing he is currently using, and also change it clicking on the name, or type, of it
+### Descriptions and Settings
+On the bottom of the page, the user can read the description of the voicings type he is currently using, and also change it by clicking on the name or type selectors. If the user clicks on the knob or settings icons, the descriptions are replaced by settings which either control the volumes and bpm of the chords' playback, or the instruments' characteristics (effects, attack and release)
 
 <p align="center">
-  <img src="./GitAssets/Description.png" width="70%" />
+  <img src="./GitAssets/voicing-knob.gif" width="70%" />
 </p>
 
-### Effect
-Clicking on the knob icon, the description will be replaced by the following knobs which control the effects, both for the chords played by the application and for the midi, if plugged in.
-
-<p align="center">
-  <img src="./GitAssets/Effects.png" width="70%" />
-</p>
-
-### Settings
-Clicking on the gear icon, the user can control the volume and the bpm of the application.
-
-<p align="center">
-  <img src="./GitAssets/Global settings.png" width="70%" />
-</p>
-
-### Print
+### Printing the Chords Sequence
 Clicking on the printer icon it is possible to print the voicings with the musical stave
 <p align="center">
   <img src="./GitAssets/Chords.png" width="70%" />
