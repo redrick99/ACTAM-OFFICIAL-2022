@@ -69,6 +69,17 @@ THIS COULD BE REMOVED FOR CONSISTENCY WITH THE REST OF THE APPLICATION
 
 } 
 
+.k0-1000{
+  background-image: url("/src/resources/knobIndicators/knobIndicator-0-1000.png");
+  background-repeat: no-repeat;
+  background-size: 145px 120px;
+  width: 160px;
+  height: 160px;
+  opacity: 100%;
+  transform: translate(6%, 3%);
+
+} 
+
 .td, .tr, .controller{
   height: 100px;
 }

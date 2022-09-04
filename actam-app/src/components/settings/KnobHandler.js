@@ -66,9 +66,10 @@ class KnobHandler extends Component {
                   name="release"
                   id={"knob-" + (4 + this.props.idNumber)}
                   minRange={0}
-                  maxRange={100}
-                  initial={0.1}
-                  img="k0-100"
+                  maxRange={1000}
+                  initial={0}
+                  img="k0-1000"
+                  discrete="true"
                 ></Knob>
               </td>
             </tr>
