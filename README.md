@@ -59,14 +59,14 @@ In order to achieve a high flexibility in terms of adding new Voicings Types or 
 The sampler of Tone.js, is connected in parallel with two effects, Reverb and Chorus, each connected to a Gain node that controls their gain. The sampler is also connected to another Gain node which is used to deliver the dry output. All three nodes are connected to another Gain node which controls the overall volume of the instrument.
 
 <p align="center">
-  <img src="./GitAssets/sampler-chain.png" width="70%" />
+  <img src="./GitAssets/sampler-chain-background.png" width="70%" />
 </p>
 
 ## The Main Loop
 Voicings Generator's core comes down to a single loop which starts when the user presses the start button and stops either when the chords sequence is finished (if the loop mode is off) or when the user clicks the stop button. This loop is not an actual while or for loop, but rather a recursive function which continuously calls itself after a certain time has passed. This is achive using the function setTimeout()
 
 <p align="center">
-  <img src="./GitAssets/main-loop.png" width="70%" />
+  <img src="./GitAssets/main-loop-background.png" width="70%" />
 </p>
 
 # Voicings Types
