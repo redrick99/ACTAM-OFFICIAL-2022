@@ -18,6 +18,9 @@ import './components/piano.css'
  */
 let playChords = ['', '', ''];
 
+/**
+ * Brain of the application
+ */
 function App() {
   // --- React States --- //
   // True if a MIDI is connected
