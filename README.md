@@ -2,13 +2,12 @@
 ## Introduction and Tools
 In music, in particular jazz, voicing is the vertical displacement of the notes in a chord. The goal of this web application is to propose an easy way to generate the most common voicing types.
 
-The tools that has been used for this application are:
-* Node.js
-* Tone.js
-* React
-* react-piano
-* VexFlow
-* *LINK ALLA PAGINA DELLA LIBRERIA PER SCRIVERE SUL PENTAGRAMMA*
+The tools that have been used for this application are:
+* [Node.js](https://nodejs.org/it/)
+* [Tone.js](https://tonejs.github.io/)
+* [React](https://reactjs.org/) 
+* [react-piano](https://github.com/kevinsqi/react-piano)
+* [VexFlow](https://www.vexflow.com/)
 
 ## User Interface
 The web application is very easy to use and understand. At the beginning it is possible to choose the key signature and the modal scale, then, with a double click or a drag and drop, it is possible to insert the chords in the top cells. It is possible to change the key signature and the modal scale, also after the insert of the chords or even when the player is running.
