@@ -1,8 +1,8 @@
-# ACTAM-OFFICIAL-2022
+# Voivings Generator
 ## Introduction and Tools
 In music, in particular jazz, voicing is the vertical displacement of the notes in a chord. The goal of this web application is to propose an easy way to generate the most common voicing types.
 
-The tools that have been used for this application are:
+The tools that have been used to delevop the application are:
 * [Node.js](https://nodejs.org/it/)
 * [Tone.js](https://tonejs.github.io/)
 * [React](https://reactjs.org/) 
