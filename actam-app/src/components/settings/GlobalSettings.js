@@ -78,6 +78,10 @@ class GlobalSettings extends Component {
           />
         </div>
         <OctaveSelector active={this.props.octaveActive} value={this.state.octave} min={-1} max={0} clickUp={this.clickUp} clickDown={this.clickDown} />
+        <div className="midi-check-container">
+          <div id='midi-check' className={'midi-check '+(this.props.midiConnected ? 'green' : 'red')}></div>
+          <p className="midi-check-text">MIDI</p>
+        </div>
       </div>
     );
   }

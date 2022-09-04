@@ -1,8 +1,8 @@
 h1.title {
     text-align: left;
     font-family: Arial Black, Helvetica, sans-serif;
-    margin-left: 10px;
-    margin-top: 10px;
+    margin-left: 0;
+    margin-top: 0;
     color: white;
     border: 1px solid #235789;
     background-color: #235789;
@@ -37,7 +37,7 @@ table.chord-play-table {
     padding: 5px;
     border: 1px solid #D6D6D6;
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: 0;
     margin-left: 10px;
 }
 
@@ -113,7 +113,8 @@ table.chord-play-table {
     height: 30px;
 }
 
-.chord-mode-cell:hover, .chord-root-cell:hover {
+.chord-mode-cell:hover,
+.chord-root-cell:hover {
     border-color: #FFB100;
 }
 

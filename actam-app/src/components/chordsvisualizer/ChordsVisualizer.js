@@ -25,7 +25,7 @@ class ChordsVisualizer extends Component {
                         </tbody>
                     </table>
                 </div>
-                <GlobalSettings octaveActive={this.props.octaveActive} />
+                <GlobalSettings octaveActive={this.props.octaveActive} midiConnected={this.props.midiConnected} />
             </div>
         );
     }

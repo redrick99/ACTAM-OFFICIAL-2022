@@ -3,7 +3,6 @@ import Selector from "./Selector";
 import textParagraphs from "./VoicingsSelectorDescriptions";
 import "./VoicingsSelector.css";
 import SettingsButton from "../settings/SettingsButton";
-import MidiButton from "../settings/MidiButton";
 import KnobHandler from "../settings/KnobHandler";
 import PrinterButton from "../settings/PrinterButton";
 import chordAudioHandler from "../../scripts/ChordAudioHandler";
@@ -13,8 +12,10 @@ import VolumeControls from "../settings/VolumeControls";
 import { assignables, master } from "../../scripts/GlobalVariables";
 import Knob from "../settings/Knob";
 
+// Names of the voicings types
 const names = ["Rootless", "Monk", "Powell", "Three Notes", "Four Notes", "Open Chord"];
 
+// Types of voicings divided by the voicings' indexes
 const types = [
   ["Type 1", "Type 2"],
   ["Type 1"],
@@ -24,6 +25,9 @@ const types = [
   ["Type 1", "Type 2"],
 ];
 
+/**
+ * Functions to be used by knobs to control chord audio settings
+ */
 const audioChordSettings = [
   (value) => {
     chordAudioHandler.getInstrument().cGain.gain.value = value;
@@ -39,6 +43,9 @@ const audioChordSettings = [
   },
 ];
 
+/**
+ * Functions to be used by knobs to control MIDI audio settings
+ */
 const audioMelodySettings = [
   (value) => {
     midiHandler.getInstrument().cGain.gain.value = value;
@@ -54,6 +61,9 @@ const audioMelodySettings = [
   },
 ];
 
+/**
+ * Functions to be used by knobs to control volume settings
+ */
 const volumeSettings = [
   (value) => {
     master.gain.value = value;
@@ -66,19 +76,29 @@ const volumeSettings = [
   },
 ];
 
+/**
+ * Changes the bpm of the played chords
+ * @param {number} value of the bpm
+ */
 const changeBpm = (value) => {
   if (value == 0) value = 1;
   assignables.bpm = Math.trunc(value);
-  console.log(assignables.bpm);
 };
 
+/**
+ * Contains the selectors for the types of voicings, their descriptions and
+ * Buttons to change the app's settings
+ */
 class VoicingsSelector extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      // Currently selected voicings type
       selectedName: 0,
+      // Currently selected voicings sub-type
       selectedType: 0,
+      // Used to show the settings
       settings: false,
       globalSettings: false,
     };
@@ -90,6 +110,10 @@ class VoicingsSelector extends Component {
     this.print = this.print.bind(this);
   }
 
+  /**
+   * Fired when the name of a voicing is clicked inside the selector
+   * @param {number} index of the clicked option
+   */
   clickName(index) {
     this.setState(() => ({
       selectedName: index,
@@ -100,6 +124,10 @@ class VoicingsSelector extends Component {
     this.props.changeVoicingsType(index);
   }
 
+  /**
+   * Fired when the type of voicing is clicked inside the selector
+   * @param {number} index of the clicked option
+   */
   clickType(index) {
     this.setState(() => ({
       selectedType: index,

@@ -1,4 +1,4 @@
-import { rootKeys, basicProgression, modalScales, modalScalesText, assignables} from "./GlobalVariables";
+import { rootKeys, basicProgression, modalScales, assignables} from "./GlobalVariables";
 /**
  * IIFE - Singleton Implementation.
  * 
@@ -72,7 +72,14 @@ const chordProgressionHandler = (function() {
             assignables.currentProgression = getProgressionFromModeIndex(assignables.currentMode);
             return [...assignables.currentProgression];
         },
-
+        /**
+         * Return the array of chords to be visualized
+         * @param {array} chords to be visualized
+         * @param {number} index of the chords to be visualized
+         * @param {boolean} legato true if the app is in legato mode
+         * @returns an object containing an array of three strings and information
+         * needed by the app to determine the state of the play
+         */
         getChords: function(chords, index, legato) {
             let duration = 1;
             let idx = index;
@@ -88,10 +95,6 @@ const chordProgressionHandler = (function() {
                     }
                 }
             }
-            //console.log("GET CHORDS: ")
-            //console.log(chords);
-            //console.log("index: " +index);
-            //console.log("duration: " +duration);
             return ({
                 chords: [chords[index - 1], chords[idx], chords[idx + 1]],
                 duration: duration,
@@ -100,6 +103,12 @@ const chordProgressionHandler = (function() {
             });
         },
 
+        /**
+         * Return the array of chords to be printed
+         * @param {array} chords to be printed
+         * @param {boolean} legato true if the app is in legato mode
+         * @returns an array of objects with the chords to print and their duration
+         */
         getChordsForPrint: function(chords, legato) {
             const chordsToPrint = [];
 

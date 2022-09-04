@@ -1,4 +1,4 @@
-import { rootKeys } from "./GlobalVariables";
+/*import { rootKeys } from "./GlobalVariables";
 import * as Vex from "vexflow";
 const { Renderer, Stave, StaveNote, Voice, Formatter, Accidental } = Vex.Flow;
 
@@ -52,4 +52,4 @@ class Chord {
     }
 }
 
-export default Chord;
+export default Chord;*/

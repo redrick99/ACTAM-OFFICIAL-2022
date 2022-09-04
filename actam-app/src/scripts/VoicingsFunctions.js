@@ -1,4 +1,4 @@
-import { Tonalities } from "./Tonalities";
+/*import { Tonalities } from "./Tonalities";
 import Chord from "./Chord";
 import { rootKeys, functions, assignables } from "./GlobalVariables";
 
@@ -11,15 +11,6 @@ function isTonic(fundamental, key) {
 }
 
 const voicingsFunctions = [
-    /**
-     * options:
-     * - fundamental
-     * - key
-     * - intervals
-     * - tonality
-     * - duration
-     */
-
     // Rootless - Type A
     (options) => {
         const f = options.key > 7 ? options.fundamental-12 : options.fundamental;
@@ -223,4 +214,4 @@ const voicingsFunctions = [
     }
 ]
 
-export default voicingsFunctions;
+export default voicingsFunctions; */

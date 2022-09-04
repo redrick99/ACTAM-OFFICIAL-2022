@@ -1,3 +1,7 @@
+.ReactPiano__Key {
+  cursor: default;
+}
+
 .ReactPiano__Key--disabled.ReactPiano__Key--accidental {
   background: black;
   border: 1px solid #999;

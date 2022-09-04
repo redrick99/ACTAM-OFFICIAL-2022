@@ -1,4 +1,4 @@
-import voicingsFunctions from "./VoicingsFunctions";
+/*import voicingsFunctions from "./VoicingsFunctions";
 import { ionianTonalDistance, scalesDistances, assignables, functions } from "./GlobalVariables";
 
 const voicingsHandler = (function() {
@@ -39,14 +39,6 @@ const voicingsHandler = (function() {
         const key = assignables.currentKey;
         const grade = assignables.currentProgression.indexOf(symbol);
         const tonality = functions.getTonalityOfChord(grade);
-
-        /*
-        console.log("--------------------")
-        console.log("Mode: "+mode);
-        console.log("Key: "+key);
-        console.log("Grade: "+grade);
-        console.log("Tonality: "+tonality);
-        */
     
         const fundamental = getChordFundamental(mode, key, grade);
 
@@ -78,4 +70,4 @@ const voicingsHandler = (function() {
 
 })();
 
-export default voicingsHandler;
+export default voicingsHandler; */

@@ -1,3 +1,10 @@
 .App {
   text-align: center;
 }
+
+div.title {
+  display: flex;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 0;
+}

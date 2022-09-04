@@ -11,9 +11,38 @@ div.global-settings-div1 {
     margin: 0 auto;
 }
 
+.midi-check-container {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    margin-left: 2px;
+}
+
+.midi-check-text {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    height: 100%;
+    font-size: larger;
+    font-family: Arial Black, Helvetica, sans-serif;
+}
+
+.midi-check {
+    height: 18px;
+    width: 18px;
+    background-color: rgb(0, 204, 0);
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;
+    border-radius: 100%;
+}
+
+.midi-check.red {
+    background-color: rgb(229, 1, 1);
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;
+}
+
 div.octave-selector {
     width: 85%;
-    margin-top: 62px;
+    margin-top: 10px;
     height: fit-content;
     border: 1px solid #D6D6D6;
     border-radius: 5px;
