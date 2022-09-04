@@ -21,17 +21,19 @@ This web application can be used downloadind the github project and running it w
 The web application is very easy to use and understand. At the beginning it is possible to choose the key signature and the modal scale, then, with a double click or a drag and drop, it is possible to insert the chords in the top cells. It is possible to change the key signature and the modal scale, also after the insert of the chords or even when the player is running.
 
 ## Guide
-![Alt Text](./GitAssets/selection-start.gif)
+<p align="center">
+  <img src="./GitAssets/First.png" width="70%" />
+</p>
 
 When the application is tuned on the first line is empty. With a drag and drop (or a click) the user can insert the chords in the list. The user can also change the key signature and the modal scale and decide to activate or not the loop or the legato.
 
 <p align="center">
-  <img src="./GitAssets/Third.png" width="70%" />
+  <img src="./GitAssets/selection-start.gif" width="70%" />
 </p>
 
 Then clicking the START button it turns red, the music start playing and the note on the stave will be shown.
 
-### Desctiptions
+### Descriptions
 On the bottom of the page, the user read the descriptions of the voicing he is currently using, and also change it clicking on the name, or type, of it
 
 <p align="center">
