@@ -128,32 +128,35 @@ More details are in the report (LINKARE REPORT)
     │   │   ├── SimpleInputSettings.js
     │   │   ├── StartButton.js
     │   │   └── VolumeControls.js
-    │   ├── voicingsselector
-    │   │   ├── Selector.js
-    │   │   ├── VoicingsSelector.css
-    │   │   ├── VoicingsSelector.js
-    │   │   └── VoicingsSelectorDescriptions.js
-    │   ├── scripts
-    │   │   ├── Chords
-    │   │   │   ├── ChordsFactory.js
-    │   │   │   ├── ChordSuper.js
-    │   │   │   ├── FourNoteChord.js
-    │   │   │   ├── MonkChord.js
-    │   │   │   ├── OpenChord.js
-    │   │   │   ├── PowellChord.js
-    │   │   │   ├── RootlessChord.js
-    │   │   │   └── ThreeNoteChord.js
-    │   │   ├── ChordAudioHandler.js
-    │   │   ├── ChordProgressionHandler.js
-    │   │   ├── GlobalVariables.js
-    │   │   ├── Instruments.js
-    │   │   ├── MidiHandler.js
-    │   │   └── Tonalities.js
-    │   ├── App.css
-    │   ├── App.js
-    │   ├── index.css
-    │   └── index.js
-    └──
+    │   └── voicingsselector
+    │       ├── Selector.js
+    │       ├── VoicingsSelector.css
+    │       ├── VoicingsSelector.js
+    │       └── VoicingsSelectorDescriptions.js
+    │
+    ├── scripts
+    │   ├── Chords
+    │   │   ├── ChordsFactory.js
+    │   │   ├── ChordSuper.js
+    │   │   ├── FourNoteChord.js
+    │   │   ├── MonkChord.js
+    │   │   ├── OpenChord.js
+    │   │   ├── PowellChord.js
+    │   │   ├── RootlessChord.js
+    │   │   └── ThreeNoteChord.js
+    │   ├── ChordAudioHandler.js
+    │   ├── ChordProgressionHandler.js
+    │   ├── GlobalVariables.js
+    │   ├── Instrument.js
+    │   ├── MidiHandler.js
+    │   └── Tonalities.js
+    │
+    ├── resources
+    │   └── ...
+    ├── App.css
+    ├── App.js
+    ├── index.css
+    └── index.js
     
     
 # Group members
