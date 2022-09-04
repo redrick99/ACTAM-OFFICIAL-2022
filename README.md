@@ -1,4 +1,4 @@
-# Voivings Generator
+# Voicings Generator
 ## Introduction and Tools
 In music, in particular jazz, voicing is the vertical displacement of the notes in a chord. The goal of this web application is to propose an easy way to generate the most common voicing types.
 
