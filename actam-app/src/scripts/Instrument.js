@@ -11,7 +11,7 @@ class Instrument {
         this.dGain = new Tone.Gain();
         this.reverb = new Tone.Freeverb();
         this.rGain = new Tone.Gain();
-        this.chorus = new Tone.Chorus();
+        this.chorus = new Tone.Chorus(10, 5, 20);
         this.cGain = new Tone.Gain();
 
         this.sampler.chain(this.dGain, this.volume);

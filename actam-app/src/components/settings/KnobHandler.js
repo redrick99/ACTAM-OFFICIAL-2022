@@ -25,7 +25,7 @@ class KnobHandler extends Component {
                   id={"knob-" + (1 + this.props.idNumber)}
                   minRange={0}
                   maxRange={1}
-                  initial={0.1}
+                  initial={0}
                   img="k0-1-2"
                 ></Knob>
               </td>
@@ -39,7 +39,7 @@ class KnobHandler extends Component {
                   id={"knob-" + (2 + this.props.idNumber)}
                   minRange={0}
                   maxRange={1}
-                  initial={0.7}
+                  initial={0}
                   img="k0-10"
                 ></Knob>
               </td>
@@ -67,7 +67,7 @@ class KnobHandler extends Component {
                   id={"knob-" + (4 + this.props.idNumber)}
                   minRange={0}
                   maxRange={100}
-                  initial={0}
+                  initial={0.1}
                   img="k0-100"
                 ></Knob>
               </td>
