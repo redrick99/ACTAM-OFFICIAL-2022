@@ -175,7 +175,7 @@ class VoicingsSelector extends Component {
                     className="global-settings-button"
                     click={this.activeMidi}
                     checked={this.state.globalSettings}
-                    title="global-settings"
+                    title="Open global settings to control the volume and the bpm"
                   />
                 </td>
               </tr>
