@@ -133,8 +133,11 @@ More details can be found in the [**report**](./docs/VoicingsGenerator-ACTAM-rep
 
 ## Troubleshooting
 Here are some known issues you might encounter when using the application:
--  Sampler samples can sometimes fail to load or take a long time loading due to the internet connection. We suggest waiting for a bit before playing the start button if it's the first time you use the application (samples should get loaded in cache). **We are currently working on a fix for this**.
-- Tone can (very rarely) have issues when playing sounds and may cause the chords to sound strange or clipping. If this happens we suggest trying the application on another browser.
+-  ~~Sampler samples can sometimes fail to load or take a long time loading due to the internet connection~~ **Solved, samples are now local**. 
+  - We suggest reloading the page without cache if the issue is still present:
+    - `Ctrl + Shift + R` on Windows
+    - `cmd + R` on Mac
+- Tone can (very rarely) have issues when playing sounds and may cause the chords to sound strange or clipping. If this happens we suggest reloading the page without cache or trying the application on another browser.
 
 
 ## Folder Structure
