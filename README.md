@@ -8,6 +8,7 @@
   - [Introduction](#introduction)
     - [Tools](#tools)
     - [Setup](#setup)
+  - [Video Demonstration](#video-demonstration)
   - [User Interface](#user-interface)
     - [Guide](#guide)
     - [Descriptions and Settings](#descriptions-and-settings)
@@ -46,6 +47,11 @@ Example: repo is extraced in `C:\Users\Pippo\Desktop\VoicingsGenerator`
   npm install
   npm start
 ```
+
+## Video Demonstration
+<a align="center" href="https://youtu.be/I6lA76nVLkk" target="_blank">
+ <img src="./GitAssets/video-image.png" alt="Watch the video" width="860" height="540" />
+</a>
 
 ## User Interface
 The web application is very easy to use and understand. Through buttons, it is possible to choose the key signature and the modal scale, then, with a double click or a drag and drop gesture, the user can insert the chords inside the chords sequence (top row with empty cells). Key signature modal scale can also be changed while the audio player is running.
@@ -122,7 +128,13 @@ Another good way to start playing voicings with both hands are Four Note Voicing
 To play in ‘close harmony’ means to play all the notes of the chord within the range of a single octave. While to play in ‘open harmony’ means to play all the same notes but over a span larger than an octave. This spreads the chord out over a wider range and in this way creates a richer, more balanced and more ‘open’ sound. This is called Voicing Tension.
 
 ## REPORT AND PRESENTATION
-More details are in the report (LINKARE REPORT)
+More details can be found in the [**report**](./docs/VoicingsGenerator-ACTAM-report.pdf) or on the [**presentation slides**](./docs/VoicingsGenerator-ACTAM-presentation.pdf)
+
+## Troubleshooting
+Here are some known issues you might encounter when using the application:
+-  Sampler samples can sometimes fail to load or take a long time loading due to the internet connection. We suggest waiting for a bit before playing the start button if it's the first time you use the application (samples should get loaded in cache). **We are currently working on a fix for this**.
+- Tone can (very rarely) have issues when playing sounds and may cause the chords to sound strange or clipping. If this happens we suggest trying the application on another browser.
+
 
 ## Folder Structure
     src
