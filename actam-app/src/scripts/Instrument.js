@@ -18,7 +18,7 @@ class Instrument {
         this.sampler.chain(this.chorus, this.cGain, this.volume);
         this.sampler.chain(this.reverb, this.rGain, this.volume);
 
-        this.createSampler("https://tonejs.github.io/audio/salamander/");
+        this.createSampler("./samples/");
 
         this.volume.gain.value = 0.8;
         this.reverb.wet.value = 1;
@@ -108,6 +108,7 @@ class Instrument {
                 "A7": "A7.mp3",
                 "C8": "C8.mp3",
             },
+            onload: () => {console.log('Sampler Loaded')},
             attack: sampAttack,
             release: sampRelease,
             baseUrl: baseUrl_,
