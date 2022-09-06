@@ -206,7 +206,7 @@ Here are some known issues you might encounter when using the application:
     
 ## Group members
 * Piferi Francesco - francesco.piferi@mail.polimi.it
-* Rossi Riccardo - ricardo18.rossi@mail.polimi.it
+* Rossi Riccardo - riccardo18.rossi@mail.polimi.it
 * Terminiello Fredinando - ferdinando.terminiello@mail.polimi.it
 
 
