@@ -18,6 +18,7 @@
   - [The Main Loop](#the-main-loop)
   - [Voicings Types](#voicings-types)
   - [**REPORT AND PRESENTATION**](#report-and-presentation)
+  - [Troubleshooting](#troubleshooting)
   - [Folder Structure](#folder-structure)
   - [Group Members](#group-members)
   
