@@ -129,7 +129,7 @@ Another good way to start playing voicings with both hands are Four Note Voicing
 To play in ‘close harmony’ means to play all the notes of the chord within the range of a single octave. While to play in ‘open harmony’ means to play all the same notes but over a span larger than an octave. This spreads the chord out over a wider range and in this way creates a richer, more balanced and more ‘open’ sound. This is called Voicing Tension.
 
 ## REPORT AND PRESENTATION
-More details can be found in the [**report**](./docs/VoicingsGenerator-ACTAM-report.pdf) or on the [**presentation slides**](./docs/VoicingsGenerator-ACTAM-presentation.pdf)
+More details can be found in the [**report**](./docs/VoicingsGenerator-ACTAM-report.pdf), on the [** ACTAM presentation slides**](./docs/VoicingsGenerator-ACTAM-presentation.pdf) or on the [** CMRM presentation slides**](./docs/VoicingsGenerator-CMRM-presentation.pdf)
 
 ## Troubleshooting
 Here are some known issues you might encounter when using the application:
