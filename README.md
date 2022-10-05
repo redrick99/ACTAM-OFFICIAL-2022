@@ -1,8 +1,8 @@
 # **Voicings Generator**
 <!-- ![](./GitAssets/home-screen.png) -->
-<p align="center">
+<a align="center" href="https://redrick99.github.io/ACTAM-OFFICIAL-2022/" target="_blank">
   <img src="./GitAssets/home-screen.png" width="100%" />
-</p>
+</a>
 
 - [**Voicings Generator**](#voicings-generator)
   - [Introduction](#introduction)
