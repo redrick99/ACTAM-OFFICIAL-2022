@@ -8,6 +8,7 @@
   - [Introduction](#introduction)
     - [Tools](#tools)
     - [Setup](#setup)
+  - [**Live Version**](#live-version)
   - [Video Demonstration](#video-demonstration)
   - [User Interface](#user-interface)
     - [Guide](#guide)
@@ -48,6 +49,9 @@ Example: repo is extraced in `C:\Users\Pippo\Desktop\VoicingsGenerator`
   npm install
   npm start
 ```
+
+## **Live Version**
+[Here you can find the live version of the web application hosted on GitHub Pages](https://redrick99.github.io/ACTAM-OFFICIAL-2022/)
 
 ## Video Demonstration
 <a align="center" href="https://youtu.be/I6lA76nVLkk" target="_blank">
@@ -136,7 +140,7 @@ Here are some known issues you might encounter when using the application:
 -  ~~Sampler samples can sometimes fail to load or take a long time loading due to the internet connection~~ **Solved, samples are now local**. 
   - We suggest reloading the page without cache if the issue is still present:
     - `Ctrl + Shift + R` on Windows
-    - `cmd + R` on Mac
+    - `cmd + opt + E` and then `cmd + R` on Mac
 - Tone can (very rarely) have issues when playing sounds and may cause the chords to sound strange or clipping. If this happens we suggest reloading the page without cache or trying the application on another browser.
 
 
