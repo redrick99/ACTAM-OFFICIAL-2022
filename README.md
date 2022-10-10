@@ -22,6 +22,7 @@
   - [Troubleshooting](#troubleshooting)
   - [Folder Structure](#folder-structure)
   - [Group Members](#group-members)
+  - [*Acknowledgments*](#acknowledgments)
   
 
 ## Introduction
@@ -212,5 +213,8 @@ Here are some known issues you might encounter when using the application:
 * Piferi Francesco - francesco.piferi@mail.polimi.it
 * Rossi Riccardo - riccardo18.rossi@mail.polimi.it
 * Terminiello Fredinando - ferdinando.terminiello@mail.polimi.it
+
+## *Acknowledgments*
+This project was awarded with maximum grades of **30/30** and **5/5** in *Advanced Coding Tools Methodologies* and *Computer Music Representations and Models* exams, respectively, at the master's degree of Music and Acoustics Engineering at [*Politecnico di Milano*](https://www.polimi.it).
 
 
