@@ -214,7 +214,7 @@ Here are some known issues you might encounter when using the application:
 * Rossi Riccardo - riccardo18.rossi@mail.polimi.it
 * Terminiello Fredinando - ferdinando.terminiello@mail.polimi.it
 
-## *Acknowledgments*
+## *Rewards*
 This project was awarded with maximum grades of **30/30** and **5/5** in *Advanced Coding Tools Methodologies* and *Computer Music Representations and Models* exams, respectively, at the master's degree of Music and Acoustics Engineering at [*Politecnico di Milano*](https://www.polimi.it).
 
 
