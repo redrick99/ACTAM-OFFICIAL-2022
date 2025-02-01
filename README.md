@@ -121,7 +121,7 @@ There are also two ‘types’ of rootless chord voicings, in particular the fir
 Thelonious Monk is a Bebop Pianist known for his dissonant, quirky and asymmetrical style, rhythm and harmony. So, as could be expected, Thelonious Monk Chord Voicings have a bit of ‘bite’ (read dissonance). They have a semitone interval at the bottom of the chord and a 3rd on top. And because there are only two semitones in a diatonic scale (both Major and melodic minor), then there are only two possible chord shapes – one for the tonic chord and one for every other chord in that key.
 
 ### Powell
-In Jazz, it’s possible to omit the less important notes (root \& 5th) to create a Shell Chord. Bud Powell Chord Voicings are also Shell Chords (they contain only two or three notes), but they always include the root (establishing the tonality of the chord). To facilitate this (and still keep it a Shell Chord) it is dropped either the 3rd or the 7th. Also these voicings are played by the left hand.
+In Jazz, it’s possible to omit the less important notes (root \& 5th) to create a Shell Chord. Bud Powell Chord Voicings are also Shell Chords (they contain only two or three notes), but they always include the root (establishing the tonality of the chord). To facilitate this (and still keep it a Shell Chord) it is dropped either the 3rd or the 7th. Also, these voicings are played by the left hand.
 
 ### Three Notes
 The basic Shell Chord consists of only the 3rd and 7th (Guide Tones) of the chord. The Guide Tones are the two notes that determine the quality of the chord (Maj, min, V7, etc). These two notes are the bare minimum to play a chord.
@@ -216,5 +216,7 @@ Here are some known issues you might encounter when using the application:
 
 ## *Rewards*
 This project was awarded with maximum grades of **30/30** and **5/5** in *Advanced Coding Tools Methodologies* and *Computer Music Representations and Models* exams, respectively, at the master's degree of Music and Acoustics Engineering at [*Politecnico di Milano*](https://www.polimi.it).
+
+
 
 
